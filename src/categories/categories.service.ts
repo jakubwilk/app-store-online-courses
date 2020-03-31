@@ -1,8 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Categories } from './categories.entity';
 
 @Injectable()
 export class CategoriesService {
-    displayPopularCategories() {
+    constructor(
+        @InjectRepository(Categories)
+        private categoriesRepository: Repository<Categories>,
+    ) {}
+    
+    async displayAllCategories(): Promise<Categories[]> {
+        return this.categoriesRepository.find();
+    }
+    
+    async displayPopularCategories() {
         return [
             {
                 id: 1,

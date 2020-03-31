@@ -35,3 +35,6 @@ lerna-debug.log*
 
 # ENV files
 .env
+
+# TypeORM files
+ormconfig.json
