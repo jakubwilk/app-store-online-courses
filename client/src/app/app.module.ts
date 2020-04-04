@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InputComponent } from './atoms/input/input.component';
+import { ButtonComponent } from './atoms/button/button.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InputComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
