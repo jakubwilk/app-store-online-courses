@@ -1,0 +1,23 @@
+.c-menu {
+  &__bar {
+    color: white;
+    text-decoration: none;
+  }
+  &__iconLoop {
+    margin-right: 30px;
+  }
+  &__divide {
+    width: 1px;
+    height: 50px;
+    background-color: white;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+
+  &__icon {
+  }
+  &__list {
+    display: none;
+  }
+}

@@ -3,14 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InputComponent } from './atoms/input/input.component';
-import { ButtonComponent } from './atoms/button/button.component';
+import { CardLogoComponent } from './header-section/card-logo/card-logo.component';
+import { CardNavComponent } from './header-section/card-nav/card-nav.component';
+import { HeaderComponent } from './header-section/header/header.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputComponent,
-    ButtonComponent
+    CardLogoComponent,
+    CardNavComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

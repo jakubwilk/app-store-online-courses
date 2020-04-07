@@ -1,0 +1,14 @@
+<nav class="c-menu">
+  <a href="#" class="c-menu__iconLoop">
+    <img src="../../../assets/images/search.svg" alt="toogle menu" class="c-menu__icon">
+  </a>
+  <div class="c-menu__divide"></div>
+  <a href="#" class="c-menu__iconLink">
+    <img src="../../../assets/images/menuBar.svg" alt="toogle menu" class="c-menu__icon">
+  </a>
+  <ul class="c-menu__list">
+    <li *ngFor="let item of itemsOfMenu" class="c-menu__item">
+      <a href="#" class="c-menu__link">{{item}}</a>
+    </li>
+  </ul>
+</nav>

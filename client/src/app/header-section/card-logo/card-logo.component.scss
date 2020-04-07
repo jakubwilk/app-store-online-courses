@@ -1,0 +1,12 @@
+.c-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  &__icon {
+  }
+  &__title {
+    text-decoration: none;
+    color: white;
+    margin-left: 1rem;
+  }
+}
