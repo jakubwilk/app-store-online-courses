@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-nav.component.scss']
 })
 export class CardNavComponent implements OnInit {
-  itemsOfMenu: string[] = ['Home', 'Courses', 'Events', 'Pages', 'Blog', 'Contant'];
+  itemsOfMenu: string[] = ['Home', 'Courses', 'Events', 'Pages', 'Blog', 'Contact'];
 
   constructor() { }
 
