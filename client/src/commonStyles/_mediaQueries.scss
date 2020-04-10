@@ -1,0 +1,32 @@
+@mixin responsive($breakpoint) {
+  @if ($breakpoint == small-devices) {
+    // Small devices (landscape phones, 576px and up)
+    @media only screen and (min-width: 576px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == medium-devices) {
+    // Medium devices (tablets, 768px and up)
+    @media only screen and (min-width: 768px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == less-medium-devices) {
+    // Small devices (landscape phones, less than 768px)
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == large-devices) {
+    // Large devices (desktops, 992px and up)
+    @media only screen and (min-width: 992px) {
+      @content;
+    }
+  }
+  @if ($breakpoint ==extra-large-devices) {
+    // Extra large devices (large desktops, 1200px and up)
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+}

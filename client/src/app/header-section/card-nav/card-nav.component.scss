@@ -1,23 +1,86 @@
+@import "variables";
+@import "mediaQueries";
+.l-container-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  padding: 0 16px;
+  align-items: center;
+}
 .c-menu {
-  &__bar {
-    color: white;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-between;
+  @include responsive(medium-devices) {
+    width: auto;
   }
-  &__iconLoop {
-    margin-right: 30px;
-  }
-  &__divide {
-    width: 1px;
-    height: 50px;
-    background-color: white;
-    position: absolute;
-    top: 20px;
-    right: 40px;
-  }
-
-  &__icon {
+  &__iconBar {
+    @include responsive(medium-devices) {
+      display: none;
+    }
   }
   &__list {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    list-style-type: none;
+    height: 100vh;
+    background: $bg-list;
+    width: 75vw;
+    color: $font-primary;
+    text-align: right;
+    @include responsive(medium-devices) {
+      position: inherit;
+      height: auto;
+      display: flex;
+      width: auto;
+      background: inherit;
+    }
+  }
+  &__navHeading {
+    background-color: $bg-menu-heading;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba($border-menu-primary, 0.2);
+    @include responsive(medium-devices) {
+      display: none;
+    }
+  }
+  &__item {
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid rgba($border-menu-primary, 0.2);
+    @include responsive(less-medium-devices) {
+      &:not(:last-child):before {
+        position: absolute;
+        left: 40px;
+        content: "♥";
+        font-size: 1.8rem;
+      }
+    }
+    @include responsive(medium-devices) {
+      border: 0;
+      &:not(:first-child):before {
+        position: absolute;
+        left: 0;
+        content: "";
+        height: 20px;
+        width: 1px;
+        background-color: rgba($border-menu-primary, 0.8);
+      }
+    }
+  }
+  &__link {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: $font-primary;
+    display: block;
+  }
+}
+.c-loginSection {
+  display: none;
+  @include responsive(extra-large-devices) {
+    display: block;
   }
 }

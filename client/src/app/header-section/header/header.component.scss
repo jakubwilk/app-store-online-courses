@@ -1,23 +1,31 @@
+@import "variables";
+@import "mediaQueries";
 .l-header {
-  width: 100vw;
+  //height: 100vh;
   height: 550px;
-  background-image: linear-gradient(135deg, rgba(9, 192, 24, 0.8), rgba(40, 99, 209, 0.8)),
+  background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.8), rgba($bg-gradient-secondary, 0.8)),
     url("../../../assets/images/banner.jpg");
   background-size: cover;
   background-position: center;
+  // @include responsive(medium-devices) {
+  //   height: 450px;
+  // }
 }
 .l-flex-nav {
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 95px;
-  margin: 0px 16px 80px 16px;
+  margin-bottom: 100px;
+  @include responsive(medium-devices) {
+    border-bottom: 1px solid rgba($border-menu-primary, 0.2);
+    justify-content: inherit;
+  }
 }
 .c-header-content {
   padding: 25px;
   text-align: center;
-  color: white;
+  color: $font-primary;
   //like this or diffrent way
   &__banner {
     font-size: 3rem;
@@ -33,9 +41,9 @@
     padding: 12px;
     background: transparent;
     border-radius: 26px;
-    border: solid 2px white;
+    border: solid 2px $btn-border;
     outline: none;
-    color: white;
+    color: $font-primary;
     cursor: pointer;
   }
 }
