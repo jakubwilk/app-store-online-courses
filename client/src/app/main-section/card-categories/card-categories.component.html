@@ -1,3 +1,12 @@
 <section class="c-section-categories">
-
+  <h3 style="text-align: center;">Category</h3>
+  <ul class="flexlist">
+    <li *ngFor="let image of images;">
+      <img src="{{image}}">
+      <p>
+        Names<br>
+        Over courses
+      </p>
+    </li>
+  </ul>
 </section>
