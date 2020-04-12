@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { Connection } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CategoriesModule } from './categories/categories.module';
-import { Connection } from 'typeorm';
 import { Categories } from './categories/categories.entity';
+import { CoursesModule } from './courses/courses.module';
+import { Courses } from './courses/courses.entity';
 
 @Module({
   imports: [
@@ -17,7 +19,7 @@ import { Categories } from './categories/categories.entity';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Categories],
+      entities: [Categories, Courses],
       migrations: [__dirname + '/migrations/*.ts'],
       synchronize: false,
       logging: false,
@@ -26,6 +28,7 @@ import { Categories } from './categories/categories.entity';
       }
     }),
     CategoriesModule,
+    CoursesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
