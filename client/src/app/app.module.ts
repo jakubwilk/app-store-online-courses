@@ -9,6 +9,9 @@ import { MainComponent } from './main-section/main/main.component';
 import { CardCategoriesComponent } from './main-section/card-categories/card-categories.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardCoursesComponent } from './main-section/card-courses/card-courses.component';
+import { CardOpinionsComponent } from './main-section/card-opinions/card-opinions.component';
+import { CardInvitationComponent } from './main-section/card-invitation/card-invitation.component';
+import { FooterComponent } from './footer-section/footer/footer.component';
 
 
 
@@ -21,6 +24,9 @@ import { CardCoursesComponent } from './main-section/card-courses/card-courses.c
     MainComponent,
     CardCategoriesComponent,
     CardCoursesComponent,
+    CardOpinionsComponent,
+    CardInvitationComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
