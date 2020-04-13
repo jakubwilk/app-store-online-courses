@@ -1,1 +1,28 @@
-<p>card-courses works!</p>
+<section class="c-courses">
+  <div class="wrapper">
+    <h3 class="c-courses__title">
+      Top rated courses
+    </h3>
+    <div class="c-courses__list">
+      <div class="c-courses__item" *ngFor="let course of courses;">
+        <div class="c-courses__locked">
+          <img src="#" alt="space" class="c-courses__image">
+        </div>
+        <div class="c-courses__info">
+          <p class="c-courses__date">
+            Updated 11-02-2020
+          </p>
+          <h5 class="c-courses__name">
+            {{course.name}}
+          </h5>
+          <p class="c-courses__rating">
+            {{course.rate}}/10
+          </p>
+          <p class="c-courses__author">
+            {{course.author}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

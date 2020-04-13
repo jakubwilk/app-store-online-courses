@@ -1,6 +1,6 @@
 @import "share";
 
-.c-section-categories {
+.c-categories {
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
 
@@ -16,7 +16,7 @@
     grid-template-rows: repeat(8, 1fr);
     grid-gap: 2rem;
 
-    @include responsive(medium-devices) {
+    @include responsive(small-devices) {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, 1fr);
     }
