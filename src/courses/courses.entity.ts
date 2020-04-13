@@ -21,7 +21,7 @@ export class Courses {
     author: string;
     
     @Column()
-    cover_image: string;
+    coverPhoto: string;
     
     @Column()
     category: string;

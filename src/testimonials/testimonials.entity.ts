@@ -15,7 +15,7 @@ export class Testimonials {
     created: Date;
     
     @Column()
-    avatar: string;
+    userAvatar: string;
     
     @Column()
     status: boolean;

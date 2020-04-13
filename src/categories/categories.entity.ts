@@ -18,5 +18,8 @@ export class Categories {
     updated: Date;
     
     @Column()
-    is_visible: boolean;
+    coverPhoto: string;
+    
+    @Column()
+    isVisible: boolean;
 }
