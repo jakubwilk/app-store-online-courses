@@ -1,6 +1,6 @@
-@import './commonStyles/variables';
-
+@import "variables";
 * {
+  //outline: 1px solid red;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -32,5 +32,4 @@ body {
   @include responsive(extra-large-devices) {
     max-width: 1170px;
   }
-
 }

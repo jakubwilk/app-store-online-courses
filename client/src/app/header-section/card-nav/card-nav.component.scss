@@ -1,5 +1,4 @@
-@import "variables";
-@import "mediaQueries";
+@import "share";
 .l-container-flex {
   display: flex;
   justify-content: space-between;
@@ -10,10 +9,10 @@
 .c-menu {
   display: flex;
   align-items: center;
-  width: 100vw;
   justify-content: space-between;
+  width: 100%;
   @include responsive(medium-devices) {
-    width: auto;
+    justify-content: start;
   }
   &__iconBar {
     @include responsive(medium-devices) {
@@ -30,12 +29,15 @@
     width: 75vw;
     color: $font-primary;
     text-align: right;
+    overflow-y: scroll;
+    z-index: 10;
     @include responsive(medium-devices) {
       position: inherit;
       height: auto;
       display: flex;
       width: auto;
       background: inherit;
+      overflow-y: inherit;
     }
   }
   &__navHeading {
@@ -72,12 +74,12 @@
     }
   }
   &__link {
-    font-size: .875rem;
-    opacity: .85;
+    font-size: 0.875rem;
+    opacity: 0.85;
     text-decoration: none;
     color: $font-primary;
     display: block;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 
     &:hover,
     &:focus {
@@ -89,6 +91,7 @@
 }
 .c-loginSection {
   display: none;
+  position: relative;
   @include responsive(extra-large-devices) {
     display: block;
   }

@@ -4,7 +4,7 @@
     <div class="c-list">
       <div class="c-list-item" *ngFor="let category of categories;">
         <div class="c-list-image">
-          <img src="{{ category.coverPhoto }}" alt="{{ category.name }}" />
+          <img [src]="[ category.coverPhoto ]" [alt]="[ category.name ]" />
         </div>
         <div class="c-list-content">
           <h4>{{ category.name }}</h4>
@@ -13,4 +13,5 @@
       </div>
     </div>
   </div>
+
 </section>

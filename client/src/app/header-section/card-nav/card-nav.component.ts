@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-card-nav',
@@ -11,7 +11,6 @@ export class CardNavComponent implements OnInit {
 
 
   constructor(private eRef: ElementRef) {
-    console.log('no click yet');
   }
 
   ngOnInit(): void {

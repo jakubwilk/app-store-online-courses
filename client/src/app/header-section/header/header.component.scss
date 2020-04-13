@@ -1,7 +1,7 @@
 @import "variables";
 @import "mediaQueries";
 .l-header {
-  //height: 100vh;
+  max-width: 100vw;
   height: 550px;
   background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.8), rgba($bg-gradient-secondary, 0.8)),
     url("../../../assets/images/banner.jpg");
@@ -12,14 +12,15 @@
   // }
 }
 .l-flex-nav {
-  position: relative;
-  display: flex;
+  // position: relative;
+  // display: flex;
   align-items: center;
   height: 95px;
   margin-bottom: 100px;
+  padding: 20px;
   @include responsive(medium-devices) {
     border-bottom: 1px solid rgba($border-menu-primary, 0.2);
-    justify-content: inherit;
+    //justify-content: inherit;
   }
 }
 .c-header-content {

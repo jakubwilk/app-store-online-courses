@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../services/http.service';
+
+
 
 @Component({
   selector: 'app-card-categories',
@@ -8,18 +11,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class CardCategoriesComponent implements OnInit {
   categories = [];
-  constructor() {}
+  constructor(private http: HttpService) { }
+
   ngOnInit(): void {
-    this.fetchDate();
+    this.getCategories();
+  }
+  getCategories() {
+    this.http.getCategories().subscribe(categories => {
+      categories.forEach(element => this.categories.push(element));
+    })
   }
 
-  fetchDate() {
-    fetch('http://localhost:44125/categories/popular', { method: 'GET', headers: { ContentType: 'text/json' } })
-      .then(response => response.json())
-      .then(json => {
-        json.forEach(element => {
-          this.categories.push(element);
-        });
-      });
-  }
 }
