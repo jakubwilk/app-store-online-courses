@@ -17,9 +17,8 @@ export class CardCategoriesComponent implements OnInit {
     this.getCategories();
   }
   getCategories() {
-    this.http.getCategories().subscribe(categories => {
-      categories.forEach(element => this.categories.push(element));
-    })
+    this.http.getCategories().subscribe(categories => this.categories = categories);
+
   }
 
 }
