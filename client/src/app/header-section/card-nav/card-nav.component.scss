@@ -2,8 +2,7 @@
 .l-container-flex {
   display: flex;
   justify-content: space-between;
-  width: calc(100vw - 15px);
-  padding: 0 16px;
+  width: 100%;
   align-items: center;
 }
 .c-menu {
@@ -15,6 +14,7 @@
     justify-content: start;
   }
   &__iconBar {
+    height: 25px;
     @include responsive(medium-devices) {
       display: none;
     }
@@ -25,7 +25,7 @@
     right: 0;
     list-style-type: none;
     height: 100vh;
-    background: $bg-list;
+    background: rgba($bg-list, 0.99);
     width: 75vw;
     color: $font-primary;
     text-align: right;
@@ -80,7 +80,6 @@
     color: $font-primary;
     display: block;
     transition: all 0.1s ease-in-out;
-
     &:hover,
     &:focus {
       opacity: 1;

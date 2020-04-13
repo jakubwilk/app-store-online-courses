@@ -11,13 +11,13 @@ import { HttpService } from '../../services/http.service';
 
 export class CardCategoriesComponent implements OnInit {
   categories = [];
-  constructor(private http: HttpService) { }
+  constructor(private httpCategories: HttpService) { }
 
   ngOnInit(): void {
     this.getCategories();
   }
   getCategories() {
-    this.http.getCategories().subscribe(categories => this.categories = categories);
+    this.httpCategories.getCategories().subscribe(categories => this.categories = categories);
 
   }
 

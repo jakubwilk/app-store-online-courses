@@ -12,6 +12,9 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   getCategories(): Observable<Array<Categories>> {
-    return this.http.get<Array<Categories>>("http://localhost:44125/categories/popular");
+    return this.http.get<Array<Categories>>('http://localhost:44125/categories/popular');
+  }
+  getCourses(): Observable<Array<Categories>> {
+    return this.http.get<Array<Categories>>('http://localhost:44125/courses/popular');
   }
 }

@@ -8,6 +8,7 @@ import { HeaderComponent } from './header-section/header/header.component';
 import { MainComponent } from './main-section/main/main.component';
 import { CardCategoriesComponent } from './main-section/card-categories/card-categories.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CardCoursesComponent } from './main-section/card-courses/card-courses.component';
 
 
 
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     MainComponent,
     CardCategoriesComponent,
+    CardCoursesComponent,
   ],
   imports: [
     BrowserModule,

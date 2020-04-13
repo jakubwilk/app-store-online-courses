@@ -17,6 +17,12 @@
       @content;
     }
   }
+  @if ($breakpoint == range-medium-large) {
+    // Medium devices (tablets, 768px and up)
+    @media only screen and (min-width: 768px) and (max-width: 1200px) {
+      @content;
+    }
+  }
   @if ($breakpoint == large-devices) {
     // Large devices (desktops, 992px and up)
     @media only screen and (min-width: 992px) {
