@@ -40,70 +40,51 @@
       justify-content: center;
       align-items: center;
       transition: all .1s ease-in-out;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
 
       &:hover,
       &:focus {
         transform: scale(1.03);
       }
     }
+
+    &-image {
+      & > img {
+        width: auto;
+        height: 100%;
+      }
+    }
+
+    &-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0, .25);
+
+      & > h4 {
+        color: $font-primary;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      & > p {
+        color: $font-primary;
+
+        & > span {
+          font-weight: 700;
+        }
+      }
+    }
   }
 }
-
-.flexlist {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
-  }
-  li{
-    padding-top:10px;
-    margin:5px;
-  }
-  li img{
-    width:45vw;
-    height:150px;
-    border-radius: 5px;
-    border: 1px solid green;
-  }
-  p{
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 900;
-    color: black;
-    text-shadow: black 0px 0px 5px;
-    position: relative;
-    bottom:95px;
-  }
-  @media only screen and (min-width:600px)
-  {
-    .flexlist{
-      flex-direction: row;
-      }
-      li img{
-        width:35vw;
-        height:200px;
-      }
-      p{
-        font-size: 1.4rem;
-        position: relative;
-        bottom:125px;
-      }
-  }
-  @media only screen and (min-width:1000px)
-  {
-    .flexlist{
-      flex-direction: row;
-      justify-content: space-around;
-      }
-      li img{
-        width:20vw;
-        height:200px;
-      }
-      p{
-        font-size: 1.6rem;
-        position: relative;
-        bottom:125px;
-      }
-  }
