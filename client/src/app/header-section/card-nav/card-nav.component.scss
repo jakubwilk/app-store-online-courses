@@ -3,7 +3,7 @@
 .l-container-flex {
   display: flex;
   justify-content: space-between;
-  width: 100vw;
+  width: calc(100vw - 15px);
   padding: 0 16px;
   align-items: center;
 }
@@ -56,7 +56,7 @@
         position: absolute;
         left: 40px;
         content: "♥";
-        font-size: 1.8rem;
+        font-size: 1rem;
       }
     }
     @include responsive(medium-devices) {
@@ -72,10 +72,19 @@
     }
   }
   &__link {
-    font-size: 1.6rem;
+    font-size: .875rem;
+    opacity: .85;
     text-decoration: none;
     color: $font-primary;
     display: block;
+    transition: all .1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      border: 0;
+      outline: none;
+    }
   }
 }
 .c-loginSection {
