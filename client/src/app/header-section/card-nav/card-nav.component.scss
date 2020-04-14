@@ -1,20 +1,34 @@
 @import "share";
 .l-container-flex {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
-  align-items: center;
+  padding: 20px;
+  margin-bottom: 80px;
+}
+.h-mobile {
+  display: none;
+  @include responsive(extra-large-devices) {
+    display: flex;
+  }
 }
 .c-menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  @include responsive(medium-devices) {
-    justify-content: start;
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    @include responsive(medium-devices) {
+      justify-content: flex-start;
+    }
   }
   &__iconBar {
     height: 25px;
+    outline: none;
+    background: inherit;
+    border: none;
     @include responsive(medium-devices) {
       display: none;
     }
@@ -86,12 +100,5 @@
       border: 0;
       outline: none;
     }
-  }
-}
-.c-loginSection {
-  display: none;
-  position: relative;
-  @include responsive(extra-large-devices) {
-    display: block;
   }
 }

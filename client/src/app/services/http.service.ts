@@ -11,10 +11,13 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   constructor(private http: HttpClient) { }
-  getCategories(): Observable<Array<Categories>> {
+  public getCategories(): Observable<Array<Categories>> {
     return this.http.get<Array<Categories>>('http://localhost:44125/categories/popular');
   }
-  getCourses(): Observable<Array<Categories>> {
+  public getCourses(): Observable<Array<Categories>> {
     return this.http.get<Array<Categories>>('http://localhost:44125/courses/popular');
+  }
+  public getTestimonials(): Observable<Array<Categories>> {
+    return this.http.get<Array<Categories>>('http://localhost:44125/testimonials/homepage');
   }
 }

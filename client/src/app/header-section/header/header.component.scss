@@ -1,24 +1,14 @@
 @import "share";
 .l-header {
   width: 100%;
-  height: auto;
   min-height: 550px;
   background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.8), rgba($bg-gradient-secondary, 0.8)),
     url("../../../assets/images/banner.jpg");
   background-size: cover;
   background-position: center;
 }
-.l-flex-nav {
-  align-items: center;
-  height: 95px;
-  margin-bottom: 60px;
-  padding: 20px 25px;
-  @include responsive(medium-devices) {
-    border-bottom: 1px solid rgba($border-menu-primary, 0.2);
-  }
-}
 .c-header-content {
-  padding: 25px;
+  margin: 20px;
   text-align: center;
   color: $font-primary;
   //like this or diffrent way

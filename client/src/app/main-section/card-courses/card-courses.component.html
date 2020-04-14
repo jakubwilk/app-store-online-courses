@@ -6,14 +6,14 @@
     <div class="c-courses__list">
       <div class="c-courses__item" *ngFor="let course of courses;">
         <div class="c-courses__locked">
-          <img src="{{ course.coverPhoto }}" alt="space" class="c-courses__image">
+          <img [src]=" course.coverPhoto " alt="space" class="c-courses__image">
         </div>
         <div class="c-courses__info">
           <div>
             <span class="c-courses__date">
               Updated 11-02-2020
             </span>
-            <a class="c-courses__name" href="#" title="{{ course.name }}">
+            <a class="c-courses__name" href="#" [title]=" course.name ">
               {{course.name}}
             </a>
           </div>

@@ -40,7 +40,7 @@
     border: 1px solid $border-courses;
     background-color: $font-primary;
     border-radius: 5px;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 
     &:hover,
     &:focus {
@@ -81,7 +81,7 @@
     line-height: 1.3rem;
     margin-bottom: 1rem;
     text-decoration: none;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 
     &:hover,
     &:focus {
@@ -91,17 +91,17 @@
 
   &__rating {
     font-size: 0.85rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   &__author {
     width: 100%;
-    font-size: .875rem;
+    font-size: 0.875rem;
 
     & > a {
-      color: rgba($font-dark, .75);
+      color: rgba($font-dark, 0.75);
       text-decoration: none;
-      transition: all .1s ease-in-out;
+      transition: all 0.1s ease-in-out;
 
       &:hover,
       &:focus {

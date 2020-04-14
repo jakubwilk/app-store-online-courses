@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-card-opinions',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardOpinionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpTestimonials: HttpService) { }
 
   ngOnInit(): void {
+    this.getTestimonials();
+  }
+  getTestimonials() {
+    this.httpTestimonials.getTestimonials().subscribe(testimonials => console.log(testimonials));
+
   }
 
 }
