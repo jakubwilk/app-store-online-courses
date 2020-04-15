@@ -86,6 +86,8 @@
     &:hover,
     &:focus {
       color: rgba(40, 99, 209, 1);
+      border: 0;
+      outline: none;
     }
   }
 
@@ -106,6 +108,8 @@
       &:hover,
       &:focus {
         color: rgba(40, 99, 209, 1);
+        border: 0;
+        outline: none;
       }
     }
   }
