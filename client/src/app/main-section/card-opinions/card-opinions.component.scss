@@ -1,5 +1,7 @@
 @import "share";
 .c-opinions {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   width: 100%;
   text-align: center;
   justify-content: center;
@@ -20,8 +22,8 @@
     background-color: $font-primary;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 180px;
+    justify-content: center;
+    min-height: 170px;
     font-size: 0.875rem;
     line-height: 1.6;
 
@@ -33,7 +35,7 @@
 
     &:nth-child(2) {
       min-width: 40%;
-      min-height: 220px;
+      min-height: 200px;
       z-index: 10;
       padding: 20px;
     }
@@ -47,10 +49,30 @@
   &__index {
   }
   &__description {
+    font-style: italic;
   }
   &__author {
+    margin-top: 1.5rem;
+    font-size: .785rem;
+
+    & > a {
+      color: rgba(40, 99, 209, 1);
+      text-decoration: none;
+      transition: all .1s ease-in-out;
+
+      &:hover,
+      &:focus {
+        color: $font-secondary;
+        border: 0;
+        outline: none;
+      }
+    }
   }
-  &__text {
-    padding: 6rem 0;
+
+  &__title {
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 3rem;
+    margin-bottom: 3rem;
   }
 }
