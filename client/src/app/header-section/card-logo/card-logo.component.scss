@@ -1,0 +1,15 @@
+@import "variables";
+.c-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-right: 20px;
+
+  &__icon {
+  }
+  &__title {
+    text-decoration: none;
+    color: $font-primary;
+    margin-left: 15px;
+  }
+}

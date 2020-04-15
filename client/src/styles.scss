@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import "share";
+
+* {
+  //outline: 1px solid red;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: $font-dark;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 100%;
+}
+
+.wrapper {
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  @include responsive(large-devices) {
+    width: 100%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include responsive(extra-large-devices) {
+    max-width: 1170px;
+  }
+}

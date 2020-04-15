@@ -1,8 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { Connection } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CategoriesModule } from './categories/categories.module';
+import { Categories } from './categories/categories.entity';
+import { CoursesModule } from './courses/courses.module';
+import { Courses } from './courses/courses.entity';
+import { TestimonialsModule } from './testimonials/testimonials.module';
+import { Testimonials } from './testimonials/testimonials.entity';
 
 @Module({
   imports: [
@@ -14,11 +21,22 @@ import { AppService } from './app.service';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      synchronize: true,
-      logging: false
+      entities: [Categories, Courses, Testimonials],
+      migrations: [__dirname + '/migrations/*.ts'],
+      synchronize: false,
+      logging: false,
+      cli: {
+        "migrationsDir": "src/migrations"
+      }
     }),
+    CategoriesModule,
+    CoursesModule,
+    TestimonialsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private connection: Connection) {}
+  
+}
