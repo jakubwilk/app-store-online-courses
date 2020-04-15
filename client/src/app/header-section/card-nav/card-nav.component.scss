@@ -10,6 +10,12 @@
     display: flex;
   }
 }
+.h-range {
+  display: none;
+  @include responsive(range-medium-large) {
+    display: block;
+  }
+}
 .c-menu {
   display: flex;
   align-items: center;
@@ -92,7 +98,7 @@
     opacity: 0.85;
     text-decoration: none;
     color: $font-primary;
-    display: block;
+    //display: block;
     transition: all 0.1s ease-in-out;
     &:hover,
     &:focus {

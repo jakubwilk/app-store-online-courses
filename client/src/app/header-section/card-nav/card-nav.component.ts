@@ -7,6 +7,7 @@ import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 })
 export class CardNavComponent implements OnInit {
   itemsOfMenu: string[] = ['Home', 'Courses', 'Events', 'Pages', 'Blog', 'Contact'];
+  itemsUser: string[] = ['Login', 'Register'];
   isHidden: boolean = true;
 
 
