@@ -1,48 +1,57 @@
 @import "share";
-.c-invitation{
-    padding:3rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.c-invitation {
+    padding:5rem 0;
     width: 100%;
     min-height: 300px;
     background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.8), rgba($bg-gradient-secondary, 0.8)),
     url("../../../assets/images/invitation-banner.jpg");
     background-size: cover;
     background-position: center;
-    &__title{
+
+    &__title {
         font-size: 2.5rem;
         text-align: center;
-        margin-bottom: 2rem;
-        color:$font-primary;
+        margin-bottom: 2.5rem;
+        color: $font-primary;
     }
-    &__text{
+
+    &__text {
         text-align: center;
-        color:$font-primary;
+        line-height: 1.5rem;
+        color: $font-primary;
     }
-    &__list{
+
+    &__list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    &__item{
+
+    &__item {
         justify-content: center;
-        width:80vw;
         display: flex;
-        background: transparent;
-        border-radius: 5px;
-        border: solid 1px $btn-border;
-         margin:20px;
-         @include responsive(small-devices) {
-            width:30vw;
-          }
-          @include responsive(large-devices) {
-            width:15vw;
-          }
+        margin: 20px;
     }
-    &__link{
+
+    &__link {
+        display: block;
+        width: 100%;
+        max-width: 240px;
+        background: transparent;
         text-decoration: none;
         font-size: 1rem;
-        color:$font-primary;
-        padding: 15px 35px;
+        color: $font-primary;
+        font-weight: 700;
+        padding: 10px 35px;
+        border-radius: 5px;
+        border: 1px solid $btn-border;
+        transition: all .1s ease-in-out;
+
+        &:hover,
+        &:focus {
+            color: $font-dark;
+            background-color: $font-primary;
+            outline: none;
+        }
     }
 }
