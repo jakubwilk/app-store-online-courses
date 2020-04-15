@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/services/http.service';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-card-opinions',
