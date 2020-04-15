@@ -1,0 +1,56 @@
+@import "share";
+.c-opinions {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  @include responsive(medium-devices) {
+  }
+
+  &__container {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  &__info {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid $border-courses;
+    background-color: $font-primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+
+    &:nth-child(1) {
+      min-width: 35%;
+      margin-right: -5%;
+      padding: 20px 5% 20px 20px;
+    }
+
+    &:nth-child(2) {
+      min-width: 40%;
+      min-height: 220px;
+      z-index: 10;
+      padding: 20px;
+    }
+
+    &:nth-child(3) {
+      margin-left: -5%;
+      min-width: 35%;
+      padding: 20px 20px 20px 5%;
+    }
+  }
+  &__index {
+  }
+  &__description {
+  }
+  &__author {
+  }
+  &__text {
+    padding: 6rem 0;
+  }
+}

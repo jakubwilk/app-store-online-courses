@@ -7,6 +7,7 @@ import { HttpService } from '../../services/http.service';
   styleUrls: ['./card-opinions.component.scss']
 })
 export class CardOpinionsComponent implements OnInit {
+  opinions = [];
 
   constructor(private httpTestimonials: HttpService) { }
 
@@ -14,7 +15,7 @@ export class CardOpinionsComponent implements OnInit {
     this.getTestimonials();
   }
   getTestimonials() {
-    this.httpTestimonials.getTestimonials().subscribe(testimonials => console.log(testimonials));
+    this.httpTestimonials.getTestimonials().subscribe(testimonials => this.opinions = testimonials);
 
   }
 
