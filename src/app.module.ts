@@ -10,6 +10,8 @@ import { CoursesModule } from './courses/courses.module';
 import { Courses } from './courses/courses.entity';
 import { TestimonialsModule } from './testimonials/testimonials.module';
 import { Testimonials } from './testimonials/testimonials.entity';
+import { UsersModule } from './users/users.module';
+import { Users } from './users/users.entity';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { Testimonials } from './testimonials/testimonials.entity';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Categories, Courses, Testimonials],
+      entities: [Categories, Courses, Testimonials, Users],
       migrations: [__dirname + '/migrations/*.ts'],
       synchronize: false,
       logging: false,
@@ -32,6 +34,7 @@ import { Testimonials } from './testimonials/testimonials.entity';
     CategoriesModule,
     CoursesModule,
     TestimonialsModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
