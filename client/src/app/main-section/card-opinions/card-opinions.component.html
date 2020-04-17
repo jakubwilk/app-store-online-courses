@@ -6,18 +6,21 @@
       </h3>
     </div>
 
-    <ul class="c-opinions__list">
-      <li *ngFor="let opinion of opinions" class="c-opinions__item">
+    <div class="c-opinions__list">
+      <div *ngFor="let opinion of opinions" class="c-opinions__item">
         <div class="c-opinions__content">
           <p class="c-opinions__description">
             {{opinion.description}}
           </p>
           <span class="c-opinions__author">
-            {{opinion.created}} by <a class="c-opinions__link" href="#">{{opinion.author}}</a>
+            {{opinion.created}} by
+            <a class="c-opinions__link" href="#">
+              {{opinion.author}}
+            </a>
           </span>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
 
 
   </div>
