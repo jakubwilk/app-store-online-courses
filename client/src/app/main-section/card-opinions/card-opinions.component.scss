@@ -2,77 +2,90 @@
 .c-opinions {
   padding-top: 6rem;
   padding-bottom: 6rem;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  @include responsive(medium-devices) {
-  }
-
-  &__container {
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  &__info {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    border: 1px solid $border-courses;
-    background-color: $font-primary;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 170px;
-    font-size: 0.875rem;
-    line-height: 1.6;
-
-    &:nth-child(1) {
-      min-width: 35%;
-      margin-right: -5%;
-      padding: 20px 5% 20px 20px;
-    }
-
-    &:nth-child(2) {
-      min-width: 40%;
-      min-height: 200px;
-      z-index: 10;
-      padding: 20px;
-    }
-
-    &:nth-child(3) {
-      margin-left: -5%;
-      min-width: 35%;
-      padding: 20px 20px 20px 5%;
-    }
-  }
-  &__index {
-  }
-  &__description {
-    font-style: italic;
-  }
-  &__author {
-    margin-top: 1.5rem;
-    font-size: .785rem;
-
-    & > a {
-      color: rgba(40, 99, 209, 1);
-      text-decoration: none;
-      transition: all .1s ease-in-out;
-
-      &:hover,
-      &:focus {
-        color: $font-secondary;
-        border: 0;
-        outline: none;
-      }
-    }
-  }
 
   &__title {
     font-size: 2.5rem;
     text-align: center;
     line-height: 3rem;
     margin-bottom: 3rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include responsive(extra-large-devices) {
+      align-items: center;
+
+      :nth-child(1) {
+        max-height: 180px;
+        border-right: 0;
+      }
+
+      :nth-child(2) {
+        height: 220px;
+        z-index: 10;
+      }
+
+      :nth-child(3) {
+        max-height: 180px;
+        border-left: 0;
+      }
+    }
+  }
+
+  &__item {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+    min-height: 180px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid $border-courses;
+    background-color: $font-primary;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-align: center;
+
+    @include responsive(medium-devices) {
+      width: 45%;
+    }
+
+    @include responsive(extra-large-devices) {
+      margin: 0;
+      width: 30%;
+    }
+  }
+
+  &__content {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  &__description {
+    font-style: italic;
+    flex: 1 0 auto;
+  }
+
+  &__author {
+    margin-top: 1.5rem;
+    font-size: 0.785rem;
+  }
+
+  &__link {
+    color: rgba(40, 99, 209, 1);
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $font-secondary;
+      border: 0;
+      outline: none;
+    }
   }
 }
