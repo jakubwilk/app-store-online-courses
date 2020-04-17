@@ -1,0 +1,111 @@
+@import "share";
+.c-background{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb($bg-gradient-secondary,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .c-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    @include responsive(medium-devices){
+        width: 70%;
+    }
+    &__leftside{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        height: 100vh;
+        @include responsive(medium-devices){
+            width: 50%;
+            height: 75vh;
+        }
+    }
+    &__title{
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        font-weight: 900;
+    }
+    &-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    &__label{
+        margin-top: 2rem;
+        font-size: 0.875rem;
+        font-weight: 400;
+        display: block;
+        margin-bottom: 0.4rem;
+        
+    }
+    &__input{
+        font-size: 0.875rem;
+        background: inherit;
+        border: 0;
+        border-bottom: 1px solid rgba($bg-gradient-secondary, 0.4);
+        outline:0;
+        height: 30px;
+        width: 100%;
+
+        &:hover,
+        :focus{
+            border-bottom: 1px solid rgba($bg-gradient-secondary, 0.4);
+            border-radius: 2px;
+        }
+    }
+    &__btn{
+        margin-top: 2rem;
+        padding:10px 66px 10px 66px;
+        border: 1px solid rgba($bg-gradient-secondary, 0.4);
+        background: transparent;
+    }
+    }
+    &__link{
+        position: absolute;
+        bottom:15%;
+        text-decoration: none;
+    }
+
+        &__rightside{
+            background-color: rgb($bg-gradient-secondary,0.1);
+            width: 50%;
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &__logo{
+            text-align: center;
+            margin-top: 8rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        &__righttitle{
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+        &__text{
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+    }
+    .c-login__rightside{
+         display: none;
+         @include responsive(medium-devices)
+         {
+             display: block;
+         }
+     }
