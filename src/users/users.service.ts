@@ -13,4 +13,6 @@ export class UsersService {
     async displayAllUsers(): Promise<Users[]> {
         return this.usersRepository.find();
     }
+    
+    
 }
