@@ -87,8 +87,8 @@
   }
 }
 .c-register-content {
-  background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.8), rgba($bg-gradient-secondary, 0.8)),
-    url("../../../assets/images/banner.jpg");
+  background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.7), rgba($bg-gradient-secondary, 0.7)),
+    url("../../../assets/images/back.jpg");
   background-size: cover;
   background-position: center;
   display: none;
@@ -102,13 +102,23 @@
   }
 
   &__info {
-    line-height: 1.4;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: $font-primary;
     padding: 6rem 0;
+  }
+
+  &__heading {
+  }
+
+  &__text {
+    font-size: 0.875rem;
+    padding-top: 3rem;
+    text-align: justify;
+    width: 75%;
+    line-height: 1.6;
   }
 }
