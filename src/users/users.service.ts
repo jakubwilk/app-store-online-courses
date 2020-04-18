@@ -14,5 +14,10 @@ export class UsersService {
         return this.usersRepository.find();
     }
     
-    
+    checkFieldsLength(userData: string, fieldMinLength: number): boolean {
+        if (userData.length >= fieldMinLength) {
+            return true;
+        }
+        return false;
+    }
 }
