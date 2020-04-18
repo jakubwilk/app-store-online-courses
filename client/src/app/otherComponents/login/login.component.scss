@@ -1,111 +1,121 @@
 @import "share";
-.c-background{
-    width: 100%;
-    height: 100vh;
-    background-color: rgb($bg-gradient-secondary,0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.l-container-flex {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include responsive(medium-devices) {
+    background: linear-gradient(to right, rgba($bg-gradient-primaryDark, 0.9), rgba($bg-gradient-secondaryDark, 0.9));
+  }
 }
-    .c-login{
+.c-button {
+  font-size: 1rem;
+  font-weight: 700;
+  background: inherit;
+  outline: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  &--primary {
+    width: 100%;
+    padding: 15px 35px;
+    border: 1px solid black;
+    margin: 1rem auto;
+  }
+}
+.l-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.c-login-form {
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include responsive(small-devices) {
+    width: 65vw;
+  }
+
+  @include responsive(medium-devices) {
+    padding: 3rem 2rem;
+    background-color: $bg-primary;
+    width: 40vw;
+  }
+
+  &__heading {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  &__group {
+    padding: 0.6rem 0;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    font-weight: 400;
+    display: inline-block;
+    margin: 0.4rem 0;
+    opacity: 0.4;
+    color: $font-dark;
+  }
+
+  &__input {
+    font-size: 0.875rem;
+    background: inherit;
+    border: 0;
+    border-bottom: 1px solid rgba($font-dark, 0.6);
+    outline: 0;
+    height: 25px;
+    width: 100%;
+
+    &:hover,
+    :focus {
+      border-bottom: 2px solid $bg-gradient-secondary;
+      border-radius: 2px;
+    }
+  }
+
+  &__type {
     display: flex;
+    flex-direction: column;
+  }
+}
+.c-login-content {
+  background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.7), rgba($bg-gradient-secondary, 0.7)),
+    url("../../../assets/images/back.jpg");
+  background-size: cover;
+  background-position: center;
+  display: none;
+  padding: 3rem 2rem;
+
+  @include responsive(medium-devices) {
+    display: flex;
+    width: 50vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    @include responsive(medium-devices){
-        width: 70%;
-    }
-    &__leftside{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: white;
-        width: 100%;
-        height: 100vh;
-        @include responsive(medium-devices){
-            width: 50%;
-            height: 75vh;
-        }
-    }
-    &__title{
-        margin-bottom: 2rem;
-        font-size: 2rem;
-        font-weight: 900;
-    }
-    &-form{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
-    &__label{
-        margin-top: 2rem;
-        font-size: 0.875rem;
-        font-weight: 400;
-        display: block;
-        margin-bottom: 0.4rem;
-        
-    }
-    &__input{
-        font-size: 0.875rem;
-        background: inherit;
-        border: 0;
-        border-bottom: 1px solid rgba($bg-gradient-secondary, 0.4);
-        outline:0;
-        height: 30px;
-        width: 100%;
+    color: $font-primary;
+    padding: 6rem 0;
+  }
 
-        &:hover,
-        :focus{
-            border-bottom: 1px solid rgba($bg-gradient-secondary, 0.4);
-            border-radius: 2px;
-        }
-    }
-    &__btn{
-        margin-top: 2rem;
-        padding:10px 66px 10px 66px;
-        border: 1px solid rgba($bg-gradient-secondary, 0.4);
-        background: transparent;
-    }
-    }
-    &__link{
-        position: absolute;
-        bottom:15%;
-        text-decoration: none;
-    }
-
-        &__rightside{
-            background-color: rgb($bg-gradient-secondary,0.1);
-            width: 50%;
-            height: 75vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        &__logo{
-            text-align: center;
-            margin-top: 8rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        &__righttitle{
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 1.5rem;
-            font-weight: 900;
-        }
-        &__text{
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            font-weight: 400;
-        }
-    }
-    .c-login__rightside{
-         display: none;
-         @include responsive(medium-devices)
-         {
-             display: block;
-         }
-     }
+  &__text {
+    font-size: 0.875rem;
+    padding-top: 3rem;
+    text-align: justify;
+    width: 75%;
+    line-height: 1.6;
+  }
+}
