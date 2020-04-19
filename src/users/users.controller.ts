@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Request } from 'express';
-import { UsersService } from './users.service';
-import { CreateUserDto } from './CreateUserDto';
+import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
+import { customValidationMessage, UsersService } from './users.service';
+import { CreateUserDto } from './dto/createUserDto';
+import { ValidationErrorMessage } from "../resources/validation.resources";
 
 @Controller('users')
 export class UsersController {
@@ -11,23 +11,16 @@ export class UsersController {
     getUsersList() {
         return this.usersService.displayAllUsers();
     }
-    
+
+    @HttpCode(201)
     @Post('create')
     createNewUser(@Body() newUser: CreateUserDto) {
         const { username, email, password, type } = newUser;
 
-        // if (!this.usersService.checkFieldsLength(username, UserFieldsMinLength.username)) {
-        //     return { status: 200, type: 'error', message: 'Username should contain minimum 3 characters' };
-        // }
-        //
-        // if (!this.usersService.checkFieldsLength(email, UserFieldsMinLength.email)) {
-        //     return { status: 200, type: 'error', message: 'User email is too short. Please enter properly address email' };
-        // }
-        //
-        // if (!this.usersService.checkFieldsLength(password, UserFieldsMinLength.password)) {
-        //     return { status: 200, type: 'error', message: 'Password should contain minimum 8 characters' };
-        // }
+        if (this.usersService.checkIfUsernameAlreadyExist(username)) {
+            customValidationMessage('username', ValidationErrorMessage.UsernameAlreadyExist);
+        }
         
-        return { status: 200, type: 'success', message: 'Account created. Redirecting to login page...' };
+        return { statusCode: 201, success: 'Created', message: 'Account created. Redirecting to login page...' };
     }
 }

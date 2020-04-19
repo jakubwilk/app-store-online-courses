@@ -3,6 +3,22 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from './users.entity';
 
+export const customValidationMessage = (property: string, message: string) => {
+    return {
+        statusCode: 400,
+        error: 'Bad Request',
+        message: [
+            {
+                property: property,
+                children: [],
+                constraints: {
+                    value: message
+                }
+            }
+        ]
+    }
+}
+
 @Injectable()
 export class UsersService {
     constructor(
@@ -13,11 +29,11 @@ export class UsersService {
     async displayAllUsers(): Promise<Users[]> {
         return this.usersRepository.find();
     }
-    
-    checkFieldsLength(userData: string, fieldMinLength: number): boolean {
-        if (userData.length >= fieldMinLength) {
-            return true;
-        }
-        return false;
+
+    async checkIfUsernameAlreadyExist(username: string): Promise<boolean> {
+        const user = await this.usersRepository.findOne({ username: username });
+
+        if (user) return true;
+        else return false;
     }
 }
