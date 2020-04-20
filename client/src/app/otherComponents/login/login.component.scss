@@ -5,20 +5,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   @include responsive(medium-devices) {
-    background: linear-gradient(to right, rgba($bg-gradient-primaryDark, 0.9), rgba($bg-gradient-secondaryDark, 0.9));
+    background: linear-gradient(135deg, rgba($bg-gradient-primaryDark, 0.9), rgba($bg-gradient-secondaryDark, 0.9));
   }
 }
 .c-button {
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 700;
   background: inherit;
   outline: 0;
   border-radius: 5px;
   cursor: pointer;
+
   &--primary {
-    width: 100%;
-    padding: 15px 35px;
+    width: 200px;
+    padding: 1rem 0;
     border: 1px solid black;
     margin: 1rem auto;
   }
@@ -27,57 +29,62 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 70vh;
 }
-
-.c-login-form {
-  width: 85vw;
+.l-left {
+  background-color: $bg-primary;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 2rem;
 
   @include responsive(small-devices) {
     width: 65vw;
   }
 
   @include responsive(medium-devices) {
-    padding: 3rem 2rem;
-    background-color: $bg-primary;
     width: 40vw;
   }
+}
+.c-heading {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  line-height: 1.4;
 
-  &__heading {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    line-height: 1.6;
+  &__text {
+    color: rgba($font-dark, 0.4);
   }
+}
+.c-login-form {
+  width: 70%;
 
   &__group {
-    padding: 0.6rem 0;
+    padding: 0.4rem 0;
+    font-size: 0.875rem;
   }
 
   &__label {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 400;
     display: inline-block;
-    margin: 0.4rem 0;
-    opacity: 0.4;
-    color: $font-dark;
+    color: rgba($font-dark, 0.6);
   }
 
   &__input {
-    font-size: 0.875rem;
     background: inherit;
     border: 0;
-    border-bottom: 1px solid rgba($font-dark, 0.6);
+    border-bottom: 1px solid rgba($font-dark, 0.4);
     outline: 0;
-    height: 25px;
+    font-size: 1rem;
+    padding: 15px 5px 5px 0;
     width: 100%;
+    transition: all 0.1s ease-in-out;
 
     &:hover,
-    :focus {
-      border-bottom: 2px solid $bg-gradient-secondary;
-      border-radius: 2px;
+    &:focus {
+      border-color: $bg-gradient-secondaryDark;
     }
   }
 
@@ -85,37 +92,47 @@
     display: flex;
     flex-direction: column;
   }
+  &__radioLabel {
+    padding: 0.4rem 0;
+
+    &:first-of-type {
+      padding: 0.8rem 0;
+    }
+  }
 }
-.c-login-content {
-  background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.7), rgba($bg-gradient-secondary, 0.7)),
+.l-right {
+  background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.75), rgba($bg-gradient-secondary, 0.75)),
     url("../../../assets/images/back.jpg");
   background-size: cover;
   background-position: center;
   display: none;
-  padding: 3rem 2rem;
+  padding: 2rem;
 
   @include responsive(medium-devices) {
     display: flex;
-    width: 50vw;
-    flex-direction: column;
+    width: 55vw;
     align-items: center;
   }
+}
+.c-login-content {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 
   &__info {
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     color: $font-primary;
-    padding: 6rem 0;
+  }
+
+  &__heading {
+    padding: 3rem 0;
+    font-size: 2rem;
   }
 
   &__text {
     font-size: 0.875rem;
-    padding-top: 3rem;
-    text-align: justify;
-    width: 75%;
     line-height: 1.6;
+    color: rgba($font-primary, 0.8);
   }
 }
