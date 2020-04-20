@@ -6,5 +6,6 @@ export const ValidationErrorMessage = {
     EmailWrongFormat: 'Enter valid email address',
     PasswordRequired: 'Password is required',
     PasswordWrongFormat: 'Password is not correct. Required minimum 8 characters',
+    PasswordIncorrect: 'Password contains illegal characters',
     AccountRequired: 'Account type is required'
 }
