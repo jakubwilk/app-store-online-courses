@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Users } from './users.entity';
 import * as bcrypt from 'bcrypt';
 import { ValidationErrorMessage } from '../resources/validation.resources';
-import { SuccessMessage } from '../resources/base.resources';
+import { ErrorMessage, SuccessMessage } from '../resources/base.resources';
 import { validationMessage } from '../utils/customMessages';
 
 @Injectable()
@@ -18,14 +18,17 @@ export class UsersService {
         return this.usersRepository.find();
     }
 
-    hashPassword(password: string) {
+    async hashPassword(password: string) {
         const rounds = parseInt(process.env.HASH_PASSWORD_ROUND);
+        const hash = await bcrypt.hash(password, rounds)
+        return hash;
 
-        bcrypt.genSalt(rounds, (err, salt) => {
-            bcrypt.hash(password, salt, (err, hash) => {
-                return hash;
-            });
-        });
+        // await bcrypt.genSalt(rounds, (err, salt) => {
+        //     bcrypt.hash(password, salt, (err, hash) => {
+        //         console.log(hash);
+        //         return hash;
+        //     });
+        // });
     }
 
     async checkIfPasswordIsCorrect(password: string): Promise<boolean> {
@@ -75,6 +78,20 @@ export class UsersService {
             return validationMessage(400, 'Bad Request', 'repassword', ValidationErrorMessage.PasswordsAreNotTheSame);
         }
 
-        return { statusCode: 201, success: 'Created', message: SuccessMessage.UserCreated }
+        const newPassword = await this.hashPassword(password);
+
+        const User = new Users();
+        User.username = username;
+        User.password = newPassword;
+        User.email = email;
+        User.accountType = accountType;
+
+        const query = await this.usersRepository.save(User);
+
+        if (query) {
+            return { statusCode: 201, success: 'Created', message: SuccessMessage.UserCreated }
+        } else {
+            return validationMessage(500, 'Internal Server Error', 'none', ErrorMessage.ServerUnableContinue);
+        }
     }
 }
