@@ -1,32 +1,30 @@
-<div class="l-container-flex">
-  <nav class="c-menu">
-    <div class="c-menu__flex">
-      <app-card-logo></app-card-logo>
-      <button href="#" class="c-menu__iconBar" (click)="toogleMenu()">
-        <img src="../../../assets/images/menuBar.svg" alt="toogle menu" class="c-menu__icon">
-      </button>
-      <ul [hidden]="isHidden" class="c-menu__list">
-        <h2 class="c-menu__navHeading">
-          MENU
-        </h2>
+<nav class="l-menu">
+  <div class="c-head">
+    <app-card-logo></app-card-logo>
+    <button href="#" class="c-menu__iconBar" (click)="toogleMenu()">
+      <img src="../../../assets/images/menuBar.svg" alt="menu" class="c-menu__icon">
+    </button>
+  </div>
+  <div class="c-menu">
+    <ul [hidden]="isHidden" class="c-menu__list">
+      <h3 class="c-menu__navHeading">
+        MENU
+      </h3>
+      <div class="c-menu__flex">
         <li *ngFor="let item of itemsOfMenu" class="c-menu__item">
           <a href="#" class="c-menu__link">
             {{item}}
           </a>
         </li>
-      </ul>
-    </div>
-    <div class="c-menu__user">
-      <a href="#" class="c-menu__link h-range">
-        <img src="../../../assets/images/user.svg" alt="user">
-      </a>
-      <div class=" h-mobile">
-        <div *ngFor="let item of itemsUser" class="c-menu__item">
+      </div>
+      <div class="c-menu__flex">
+        <div *ngFor="let item of itemsOfUser" class="c-menu__item">
           <a href="#" class="c-menu__link">
             {{item}}
           </a>
         </div>
       </div>
-    </div>
-  </nav>
-</div>
+    </ul>
+
+  </div>
+</nav>
