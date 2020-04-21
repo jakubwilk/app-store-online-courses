@@ -14,6 +14,9 @@ export class CreateUserDto {
     @IsNotEmpty({ message: ValidationErrorMessage.PasswordRequired })
     password: string;
 
+    @IsNotEmpty({ message: ValidationErrorMessage.PasswordRequired })
+    repassword: string
+
     @IsNotEmpty({ message: ValidationErrorMessage.AccountRequired })
     type: boolean;
 }

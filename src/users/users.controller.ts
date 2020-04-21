@@ -13,8 +13,8 @@ export class UsersController {
 
     @Post('create')
     createNewUser(@Body() newUser: CreateUserDto) {
-        const { username, email, password, type } = newUser;
+        const { username, email, password, repassword, type } = newUser;
 
-        return this.usersService.createNewUser(username, email, password, type);
+        return this.usersService.createNewUser(username, email, password, repassword, type);
     }
 }

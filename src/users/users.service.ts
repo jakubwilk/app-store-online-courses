@@ -5,22 +5,7 @@ import { Users } from './users.entity';
 import * as bcrypt from 'bcrypt';
 import { ValidationErrorMessage } from '../resources/validation.resources';
 import { SuccessMessage } from '../resources/base.resources';
-
-export const customValidationMessage = (status: number, error: string, property: string, message: string) => {
-    return {
-        statusCode: status,
-        error: error,
-        message: [
-            {
-                property: property,
-                children: [],
-                constraints: {
-                    value: message
-                }
-            }
-        ]
-    }
-}
+import { validationMessage } from '../utils/customMessages';
 
 @Injectable()
 export class UsersService {
@@ -29,14 +14,16 @@ export class UsersService {
         private usersRepository: Repository<Users>,
     ) {}
 
+    async displayAllUsers(): Promise<Users[]> {
+        return this.usersRepository.find();
+    }
+
     hashPassword(password: string) {
         const rounds = parseInt(process.env.HASH_PASSWORD_ROUND);
 
         bcrypt.genSalt(rounds, (err, salt) => {
             bcrypt.hash(password, salt, (err, hash) => {
-                const newPassword = hash;
-
-                return newPassword;
+                return hash;
             });
         });
     }
@@ -47,27 +34,45 @@ export class UsersService {
         return PasswordRegex.test(password);
     }
 
-    async displayAllUsers(): Promise<Users[]> {
-        return this.usersRepository.find();
+    async checkIfPasswordsAreTheSame(password: string, repassword: string): Promise<boolean> {
+        return password === repassword;
     }
 
-    async checkIfUsernameAlreadyExist(username: string) {
+    async checkIfUsernameAlreadyExist(username: string): Promise<boolean> {
         const user = await this.usersRepository.findOne({ username: username });
 
         if (!user) return false;
         else return true;
     }
 
-    async createNewUser(username: string, email: string, password: string, accountType: boolean) {
+    async checkIfEmailAlreadyExist(email: string): Promise<boolean> {
+        const userEmail = await this.usersRepository.findOne({ email: email })
+
+        if (!userEmail) return false;
+        else return true;
+    }
+
+    async createNewUser(username: string, email: string, password: string, repassword: string, accountType: boolean) {
         const validUser = await this.checkIfUsernameAlreadyExist(username);
+        const validEmail = await this.checkIfEmailAlreadyExist(email);
         const validPassword = await this.checkIfPasswordIsCorrect(password);
+        const validRepassword = await this.checkIfPasswordIsCorrect(repassword);
+        const validRepeatPassword = await this.checkIfPasswordsAreTheSame(password, repassword);
 
         if (validUser) {
-            return customValidationMessage(400, 'Bad Request','username', ValidationErrorMessage.UsernameAlreadyExist);
+            return validationMessage(400, 'Bad Request', 'username', ValidationErrorMessage.UsernameAlreadyExist);
         }
 
-        if (validPassword) {
-            return customValidationMessage(400, 'Bad Request','password', ValidationErrorMessage.PasswordIncorrect)
+        if (validEmail) {
+            return validationMessage(400, 'Bad Request', 'email', ValidationErrorMessage.EmailAlreadyExist);
+        }
+
+        if (validPassword && validRepassword) {
+            return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordIncorrect);
+        }
+
+        if (!validRepeatPassword) {
+            return validationMessage(400, 'Bad Request', 'repassword', ValidationErrorMessage.PasswordsAreNotTheSame);
         }
 
         return { statusCode: 201, success: 'Created', message: SuccessMessage.UserCreated }
