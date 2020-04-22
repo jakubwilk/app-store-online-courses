@@ -4,4 +4,5 @@ export const ErrorMessage = {
 
 export const SuccessMessage = {
     UserCreated: 'Account created. Redirecting to login page...',
+    UserLogged: 'Success'
 }

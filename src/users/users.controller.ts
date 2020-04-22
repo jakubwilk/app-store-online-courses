@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {Body, Controller, Get, HttpCode, Post} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUserDto';
+import { ExistingUserDto } from './dto/existingUserDto';
 
 @Controller('users')
 export class UsersController {
@@ -16,5 +17,13 @@ export class UsersController {
         const { username, email, password, repassword, type } = newUser;
 
         return this.usersService.createNewUser(username, email, password, repassword, type);
+    }
+
+    @Post('login')
+    @HttpCode(200)
+    loginUser(@Body() existingUser: ExistingUserDto) {
+        const { login, password } = existingUser;
+
+        return this.usersService.loginUser(login, password);
     }
 }

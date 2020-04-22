@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from './users.entity';
-import * as bcrypt from 'bcrypt';
 import { ValidationErrorMessage } from '../resources/validation.resources';
 import { ErrorMessage, SuccessMessage } from '../resources/base.resources';
 import { validationMessage } from '../utils/customMessages';
+import * as argon2 from 'argon2';
 
 @Injectable()
 export class UsersService {
@@ -18,20 +18,13 @@ export class UsersService {
         return this.usersRepository.find();
     }
 
-    async hashPassword(password: string) {
-        const rounds = parseInt(process.env.HASH_PASSWORD_ROUND);
-        const hash = await bcrypt.hash(password, rounds)
-        return hash;
+    async checkWhiteSpaces(field: string) {
+        const whiteSpaceRegex = /\s+/g;
 
-        // await bcrypt.genSalt(rounds, (err, salt) => {
-        //     bcrypt.hash(password, salt, (err, hash) => {
-        //         console.log(hash);
-        //         return hash;
-        //     });
-        // });
+        return whiteSpaceRegex.test(field);
     }
 
-    async checkIfPasswordIsCorrect(password: string): Promise<boolean> {
+    async checkIfFieldIsCorrect(password: string): Promise<boolean> {
         const PasswordRegex = /([ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~])/g;
 
         return PasswordRegex.test(password);
@@ -57,41 +50,64 @@ export class UsersService {
 
     async createNewUser(username: string, email: string, password: string, repassword: string, accountType: boolean) {
         const validUser = await this.checkIfUsernameAlreadyExist(username);
+        const validUsername = await this.checkIfFieldIsCorrect(username);
         const validEmail = await this.checkIfEmailAlreadyExist(email);
-        const validPassword = await this.checkIfPasswordIsCorrect(password);
-        const validRepassword = await this.checkIfPasswordIsCorrect(repassword);
+        const validPassword = await this.checkIfFieldIsCorrect(password);
+        const validRepassword = await this.checkIfFieldIsCorrect(repassword);
         const validRepeatPassword = await this.checkIfPasswordsAreTheSame(password, repassword);
 
         if (validUser) {
             return validationMessage(400, 'Bad Request', 'username', ValidationErrorMessage.UsernameAlreadyExist);
-        }
-
-        if (validEmail) {
+        } else if (validUsername) {
+            return validationMessage(400, 'Bad Request', 'username', ValidationErrorMessage.UsernameIncorrect);
+        }else if (validEmail) {
             return validationMessage(400, 'Bad Request', 'email', ValidationErrorMessage.EmailAlreadyExist);
-        }
-
-        if (validPassword && validRepassword) {
+        } else if (validPassword && validRepassword) {
             return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordIncorrect);
-        }
-
-        if (!validRepeatPassword) {
+        } else if (!validRepeatPassword) {
             return validationMessage(400, 'Bad Request', 'repassword', ValidationErrorMessage.PasswordsAreNotTheSame);
-        }
-
-        const newPassword = await this.hashPassword(password);
-
-        const User = new Users();
-        User.username = username;
-        User.password = newPassword;
-        User.email = email;
-        User.accountType = accountType;
-
-        const query = await this.usersRepository.save(User);
-
-        if (query) {
-            return { statusCode: 201, success: 'Created', message: SuccessMessage.UserCreated }
         } else {
-            return validationMessage(500, 'Internal Server Error', 'none', ErrorMessage.ServerUnableContinue);
+            const User = new Users();
+            User.username = username;
+            User.password = password;
+            User.email = email;
+            User.accountType = accountType;
+
+            const query = await this.usersRepository.save(User);
+
+            if (query) {
+                return { statusCode: 201, success: 'Created', message: SuccessMessage.UserCreated }
+            } else {
+                return validationMessage(500, 'Internal Server Error', 'none', ErrorMessage.ServerUnableContinue);
+            }
         }
+    }
+
+    async loginUser(login: string, password: string) {
+        const user = await this.usersRepository.findOne({ where: { username: login } });
+        const email = await this.usersRepository.findOne({ where: { email: login } });
+        const verifyLogin = await this.checkWhiteSpaces(login);
+
+        if (verifyLogin) {
+            return validationMessage(400, 'Bad Request', 'login', ValidationErrorMessage.UsernameIncorrect);
+        }
+
+        if (user) {
+            if (await argon2.verify(user.password, password)) {
+                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged };
+            } else {
+                return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordWrong);
+            }
+        }
+
+        if (email) {
+            if (await argon2.verify(email.password, password)) {
+                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged };
+            } else {
+                return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordWrong);
+            }
+        }
+
+        return validationMessage(400, 'Bad Request', 'login', ValidationErrorMessage.LoginDoesntExist);
     }
 }
