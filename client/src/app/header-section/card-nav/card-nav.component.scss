@@ -25,10 +25,8 @@
   align-items: center;
 
   &__iconBar {
+    all: unset;
     height: 25px;
-    outline: none;
-    background: inherit;
-    border: none;
 
     @include responsive(medium-devices) {
       display: none;
