@@ -4,11 +4,6 @@
   justify-content: space-between;
   align-items: center;
 }
-.c-menu__flex {
-  @include responsive(medium-devices) {
-    display: flex;
-  }
-}
 
 .l-menu {
   padding: 1rem;
@@ -23,6 +18,12 @@
   justify-content: space-between;
   width: 100%;
   align-items: center;
+
+  &__flex {
+    @include responsive(medium-devices) {
+      display: flex;
+    }
+  }
 
   &__iconBar {
     all: unset;
@@ -50,6 +51,7 @@
       position: inherit;
       height: auto;
       display: flex;
+      align-items: center;
       width: 100%;
       background: inherit;
       overflow-y: inherit;
@@ -70,7 +72,7 @@
 
   &__item {
     position: relative;
-    padding: 1rem;
+    padding: 1.2rem;
     border-bottom: 1px solid rgba($border-menu-primary, 0.2);
 
     @include responsive(medium-devices) {
@@ -104,5 +106,16 @@
       border: 0;
       outline: none;
     }
+  }
+}
+.h-scope {
+  display: none;
+  @include responsive(range-medium-large) {
+    display: flex;
+  }
+}
+.h-scope-links {
+  @include responsive(range-medium-large) {
+    display: none;
   }
 }
