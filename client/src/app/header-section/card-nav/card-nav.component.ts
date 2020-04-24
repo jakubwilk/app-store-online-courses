@@ -7,7 +7,7 @@ import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 })
 export class CardNavComponent implements OnInit {
   itemsOfMenu: string[] = ['Home', 'Courses', 'Events', 'Pages', 'Blog', 'Contact'];
-  itemsUser: string[] = ['Login', 'Register'];
+  itemsOfUser: string[] = ['Login', 'Register'];
   isHidden: boolean = true;
 
 
@@ -21,12 +21,10 @@ export class CardNavComponent implements OnInit {
   }
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (this.eRef.nativeElement.contains(event.target)) {
-      this.isHidden = false;
-    } else {
-      this.isHidden = true;
+    if (this.eRef.nativeElement.contains(event.target)) { return; }
+    else { return this.isHidden = true; }
 
-    }
+
   }
 
 

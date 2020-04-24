@@ -13,8 +13,7 @@ import { CardOpinionsComponent } from './main-section/card-opinions/card-opinion
 import { CardInvitationComponent } from './main-section/card-invitation/card-invitation.component';
 import { FooterComponent } from './footer-section/footer/footer.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
-
-
+import { FrontPageComponent } from './front-page/front-page.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +28,14 @@ import { RegisterComponent } from './otherComponents/register/register.component
     CardInvitationComponent,
     FooterComponent,
     RegisterComponent,
+    FrontPageComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -25,7 +25,7 @@ import { Users } from './users/users.entity';
       database: process.env.DB_NAME,
       entities: [Categories, Courses, Testimonials, Users],
       migrations: [__dirname + '/migrations/*.ts'],
-      synchronize: false,
+      synchronize: true,
       logging: false,
       cli: {
         "migrationsDir": "src/migrations"
