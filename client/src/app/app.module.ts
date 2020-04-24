@@ -13,6 +13,9 @@ import { CardOpinionsComponent } from './main-section/card-opinions/card-opinion
 import { CardInvitationComponent } from './main-section/card-invitation/card-invitation.component';
 import { FooterComponent } from './footer-section/footer/footer.component';
 import { LoginComponent } from './otherComponents/login/login.component';
+import { FrontPageComponent } from './front-page/front-page.component';
+
+
 
 
 
@@ -29,11 +32,14 @@ import { LoginComponent } from './otherComponents/login/login.component';
     CardInvitationComponent,
     FooterComponent,
     LoginComponent,
+    FrontPageComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

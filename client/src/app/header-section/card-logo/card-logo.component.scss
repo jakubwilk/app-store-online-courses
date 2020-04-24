@@ -2,14 +2,14 @@
 .c-logo {
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  margin-right: 20px;
+  font-size: 0.875rem;
+  margin-right: 10px;
 
   &__icon {
   }
   &__title {
     text-decoration: none;
     color: $font-primary;
-    margin-left: 15px;
+    margin-left: 10px;
   }
 }
