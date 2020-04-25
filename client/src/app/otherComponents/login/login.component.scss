@@ -7,7 +7,7 @@
   align-items: center;
 
   @include responsive(medium-devices) {
-    background: linear-gradient(135deg, rgba($bg-gradient-primaryDark, 0.9), rgba($bg-gradient-secondaryDark, 0.9));
+    background: linear-gradient(135deg, rgba($bg-gradient-secondaryDark, 0.9), rgba($bg-gradient-primaryDark, 0.9));
   }
 }
 .c-button {
@@ -21,10 +21,37 @@
   &--primary {
     width: 200px;
     padding: 1rem 0;
-    border: 1px solid black;
-    margin: 1rem auto;
+    border: 2px solid $font-dark;
+    margin-top: 1rem;
+    transition: all .1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: $font-dark;
+      color: $font-primary;
+    }
   }
 }
+
+.c-validation-content {
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 100%;
+
+  &__text {
+    font-size: .85rem;
+    line-height: 1.4;
+    margin: 0;
+    padding: .7rem 1.5rem;
+  }
+}
+
+.c-error-box {
+  background-color: $error-color-primary;
+  color: $font-primary;
+  border-radius: 5px;
+}
+
 .l-form-container {
   width: 100%;
   display: flex;
@@ -49,12 +76,13 @@
 }
 .c-heading {
   font-size: 1.125rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
   line-height: 1.4;
 
   &__text {
-    color: rgba($font-dark, 0.4);
+    color: rgba($font-dark, 0.5);
+    font-size: .9rem;
   }
 }
 .c-login-form {
@@ -78,7 +106,7 @@
     border-bottom: 1px solid rgba($font-dark, 0.4);
     outline: 0;
     font-size: 1rem;
-    padding: 15px 5px 5px 0;
+    padding: 10px 5px 5px 0;
     width: 100%;
     transition: all 0.1s ease-in-out;
 
@@ -88,20 +116,36 @@
     }
   }
 
-  &__type {
-    display: flex;
-    flex-direction: column;
+  &__forgotpassword {
+    margin-top: 2rem;
+    text-align: center;
   }
-  &__radioLabel {
-    padding: 0.4rem 0;
 
-    &:first-of-type {
-      padding: 0.8rem 0;
+  &__text {
+    margin: 0;
+    line-height: 1.4;
+    display: inline-block;
+    font-size: .85rem;
+
+    & > a {
+      text-decoration: none;
+      color: $bg-gradient-secondary;
+      transition: all .1s ease-in-out;
+
+      &:hover,
+      &:focus {
+        color: $font-dark;
+      }
     }
+  }
+
+  &__submit {
+    margin-top: 1rem;
+    text-align: center;
   }
 }
 .l-right {
-  background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.75), rgba($bg-gradient-secondary, 0.75)),
+  background-image: linear-gradient(135deg, rgba($bg-gradient-secondary, 0.85), rgba($bg-gradient-primary, 0.85)),
     url("../../../assets/images/back.jpg");
   background-size: cover;
   background-position: center;
