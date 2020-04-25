@@ -14,8 +14,7 @@ import { CardInvitationComponent } from './main-section/card-invitation/card-inv
 import { FooterComponent } from './footer-section/footer/footer.component';
 import { LoginComponent } from './otherComponents/login/login.component';
 import { FrontPageComponent } from './front-page/front-page.component';
-
-
+import { RegisterComponent } from './otherComponents/register/register.component';
 
 
 
@@ -32,6 +31,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
     CardInvitationComponent,
     FooterComponent,
     LoginComponent,
+    RegisterComponent,
     FrontPageComponent,
 
   ],
