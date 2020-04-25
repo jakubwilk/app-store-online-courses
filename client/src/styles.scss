@@ -35,3 +35,14 @@ body {
     max-width: 1170px;
   }
 }
+
+input,
+select,
+button,
+textarea,
+a {
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}

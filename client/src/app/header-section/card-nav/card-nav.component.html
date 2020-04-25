@@ -12,26 +12,26 @@
       </h3>
       <div class="c-menu__flex">
         <li *ngFor="let item of itemsOfMenu" class="c-menu__item">
-          <a href="#" class="c-menu__link">
-            {{item}}
+          <a routerLink='/{{item}}' class="c-menu__link">
+            {{item |titlecase}}
           </a>
         </li>
       </div>
       <div class="c-menu__flex h-scope-links">
         <div *ngFor="let item of itemsOfUser" class="c-menu__item">
-          <a href="#" class="c-menu__link">
-            {{item}}
+          <a routerLink='/{{item}}' class="c-menu__link">
+            {{item | titlecase}}
           </a>
         </div>
       </div>
       <div class="c-menu__flex h-scope">
         <div class="c-menu__item">
-          <a href="#" class="c-menu__link">
+          <a routerLink="/login" class="c-menu__link">
             <img src="../../../assets/images/signin.svg">
           </a>
         </div>
         <div class="c-menu__item">
-          <a href="#" class="c-menu__link">
+          <a routerLink="/register" class="c-menu__link">
             <img src="../../../assets/images/signup.svg">
           </a>
         </div>
