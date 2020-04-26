@@ -56,7 +56,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 70vh;
+  min-height: 75vh;
 }
 .l-left {
   background-color: $bg-primary;
@@ -64,14 +64,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-
-  @include responsive(small-devices) {
-    width: 65vw;
-  }
+  padding: 2rem 0;
 
   @include responsive(medium-devices) {
-    width: 40vw;
+    width: 40%;
   }
 }
 .c-heading {
