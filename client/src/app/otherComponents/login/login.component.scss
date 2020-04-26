@@ -64,10 +64,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
 
   @include responsive(medium-devices) {
-    width: 40%;
+    padding: 2rem;
+    width: 45%;
   }
 }
 .c-heading {
