@@ -23,7 +23,7 @@
     padding: 1rem 0;
     border: 2px solid $font-dark;
     margin-top: 1rem;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 
     &:hover,
     &:focus {
@@ -39,10 +39,10 @@
   width: 100%;
 
   &__text {
-    font-size: .85rem;
+    font-size: 0.85rem;
     line-height: 1.4;
     margin: 0;
-    padding: .7rem 1.5rem;
+    padding: 0.7rem 1.5rem;
   }
 }
 
@@ -56,7 +56,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 70vh;
+  min-height: 75vh;
 }
 .l-left {
   background-color: $bg-primary;
@@ -64,14 +64,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-
-  @include responsive(small-devices) {
-    width: 65vw;
-  }
 
   @include responsive(medium-devices) {
-    width: 40vw;
+    padding: 2rem;
+    width: 45%;
   }
 }
 .c-heading {
@@ -82,7 +78,7 @@
 
   &__text {
     color: rgba($font-dark, 0.5);
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 .c-login-form {
@@ -125,12 +121,12 @@
     margin: 0;
     line-height: 1.4;
     display: inline-block;
-    font-size: .85rem;
+    font-size: 0.85rem;
 
     & > a {
       text-decoration: none;
       color: $bg-gradient-secondary;
-      transition: all .1s ease-in-out;
+      transition: all 0.1s ease-in-out;
 
       &:hover,
       &:focus {
@@ -142,41 +138,5 @@
   &__submit {
     margin-top: 1rem;
     text-align: center;
-  }
-}
-.l-right {
-  background-image: linear-gradient(135deg, rgba($bg-gradient-secondary, 0.85), rgba($bg-gradient-primary, 0.85)),
-    url("../../../assets/images/back.jpg");
-  background-size: cover;
-  background-position: center;
-  display: none;
-  padding: 2rem;
-
-  @include responsive(medium-devices) {
-    display: flex;
-    width: 55vw;
-    align-items: center;
-  }
-}
-.c-login-content {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    color: $font-primary;
-  }
-
-  &__heading {
-    padding: 3rem 0;
-    font-size: 2rem;
-  }
-
-  &__text {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: rgba($font-primary, 0.8);
   }
 }

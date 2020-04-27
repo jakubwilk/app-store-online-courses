@@ -15,6 +15,7 @@ import { FooterComponent } from './footer-section/footer/footer.component';
 import { LoginComponent } from './otherComponents/login/login.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
+import { CardRightComponent } from './otherComponents/card-right/card-right.component';
 
 
 
@@ -33,6 +34,7 @@ import { RegisterComponent } from './otherComponents/register/register.component
     LoginComponent,
     RegisterComponent,
     FrontPageComponent,
+    CardRightComponent,
 
   ],
   imports: [
