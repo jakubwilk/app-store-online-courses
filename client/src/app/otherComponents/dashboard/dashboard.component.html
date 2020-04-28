@@ -1,1 +1,135 @@
-<p>dashboard works!</p>
+<section class="c-dashboard">
+    <header class="c-dashboard-head">
+        <div class="c-dashboard-head-content">
+            <p class="c-dashboard-head-content-username">
+                Welcome, Admin
+            </p>
+            <p class="c-dashboard-head-content-link">
+                Logout
+            </p>
+        </div>
+    </header>
+
+    <div class="c-dashboard-underhead">
+        <p class="c-dashboard-underhead__item">
+            Users
+        </p>
+        <p class="c-dashboard-underhead__item">
+            Categories
+        </p>
+        <p class="c-dashboard-underhead__item">
+            Courses
+        </p>
+    </div>
+
+    <h1 class="c-dashboard-name">
+        DASHBOARD
+    </h1>
+
+    <div class="c-dashboard-main">
+        <div class="c-dashboard-main-courses">
+            <div class="c-dashboard-main-courses-content" *ngFor="let tab of tablica">
+                <img src="../../../assets/images/invitation-banner.jpg" alt="courses photo"
+                    class="c-dashboard-main-courses-content__image">
+                <div class="c-dashboard-main-courses-content-text">
+                    <h3 class="c-dashboard-main-courses-content-text__title">
+                        {{tab}}
+                    </h3>
+                    <p class="c-dashboard-main-courses-content-text__paragraph">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                </div>
+                <button class="c-dashboard-main-courses-content__btn">
+                    MANAGE
+                </button>
+            </div>
+        </div>
+
+        <div class="c-dashboard-main-users">
+            <div class="c-dashboard-main-users-content" *ngFor="let user of tablicaUser">
+                <img src="../../../assets/images/invitation-banner.jpg" alt="users photo"
+                    class="c-dashboard-main-users-content__image">
+                <div class="c-dashboard-main-users-content-text">
+                    <h3 class="c-dashboard-main-users-content-text__title">
+                        {{user}}
+                    </h3>
+                    <p class="c-dashboard-main-users-content-text__paragraph">
+                        Created 28/04/2020
+                    </p>
+                </div>
+                <button class="c-dashboard-main-users-content__btn">
+                    MANAGE
+                </button>
+            </div>
+        </div>
+
+        <div class="c-dashboard-main-buttons">
+            <div class="c-dashboard-main-buttons-btn">
+                <a href="#"><img src="../../../assets/images/addUser.svg" alt="btn photo"
+                        class="c-dashboard-main-buttons-btn__image"></a>
+                <h3 class="c-dashboard-main-buttons-btn__title">
+                    Add User
+                </h3>
+            </div>
+            <div class="c-dashboard-main-buttons-btn">
+                <a href="#"><img src="../../../assets/images/addCourse.svg" alt="btn photo"
+                        class="c-dashboard-main-buttons-btn__image"></a>
+                <h3 class="c-dashboard-main-buttons-btn__title">
+                    Add Course
+                </h3>
+            </div>
+            <div class="c-dashboard-main-buttons-btn">
+                <a href="#"><img src="../../../assets/images/addCategory.svg" alt="btn photo"
+                        class="c-dashboard-main-buttons-btn__image"></a>
+                <h3 class="c-dashboard-main-buttons-btn__title">
+                    Add Category
+                </h3>
+            </div>
+            <div class="c-dashboard-main-buttons-btn">
+                <a href="#"><img src="../../../assets/images/settings.svg" alt="btn photo"
+                        class="c-dashboard-main-buttons-btn__image"></a>
+                <h3 class="c-dashboard-main-buttons-btn__title">
+                    Setting
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="c-dashboard-statistics">
+        <div class="c-dashboard-statistics-item">
+            <p class="c-dashboard-statistics-item__name">
+                Courses
+            </p>
+            <h1 class="c-dashboard-statistics-item__count">
+                3289
+            </h1>
+        </div>
+        <div class="c-dashboard-statistics-item">
+            <p class="c-dashboard-statistics-item__name">
+                Categories
+            </p>
+            <h1 class="c-dashboard-statistics-item__count">
+                1234
+            </h1>
+        </div>
+
+        <div class="c-dashboard-statistics-item">
+            <p class="c-dashboard-statistics-item__name">
+                Users
+            </p>
+            <h1 class="c-dashboard-statistics-item__count">
+                5678
+            </h1>
+        </div>
+
+    </div>
+
+    <h3 class="c-dashboard-main-courses__name">
+        LATEST COURSES
+    </h3>
+
+    <h3 class="c-dashboard-main-users__name">
+        LATEST USERS
+    </h3>
+
+</section>
