@@ -35,6 +35,11 @@ body {
   }
 }
 
+.wrapper-fluid {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
 input,
 select,
 button,
@@ -44,4 +49,9 @@ a {
   &:focus {
     outline: none;
   }
+}
+
+a {
+  text-decoration: none;
+  transition: all .1s ease-in-out;
 }
