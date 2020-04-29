@@ -1,138 +1,201 @@
-<section class="c-dashboard">
-    <header class="c-dashboard-head">
-        <div class="c-dashboard-head-content">
-            <p class="c-dashboard-head-content-username">
-                Welcome, Admin
-            </p>
-            <p class="c-dashboard-head-content-link">
-                Logout
-            </p>
+<main>
+  <header class="c-dashboard-top">
+    <div class="c-top-bar">
+      <div class="wrapper-fluid">
+        <div class="c-welcomeblock">
+          <div></div>
+          <div class="c-welcomeblock">
+            <p class="c-welcomeblock__text">Welcome, <strong>admin</strong></p>
+            <a class="c-welcomeblock__logout" href="#" title="Return to homepage">Logout</a>
+          </div>
         </div>
-    </header>
-
-    <div class="c-dashboard-underhead">
-        <p class="c-dashboard-underhead__item">
-            Users
-        </p>
-        <p class="c-dashboard-underhead__item">
-            Categories
-        </p>
-        <p class="c-dashboard-underhead__item">
-            Courses
-        </p>
+      </div>
     </div>
+    <nav class="c-dashboard-nav">
+      <div class="wrapper-fluid">
+        <ul class="c-menu">
+          <li class="c-menu__item">
+            <a class="c-menu__link" href="#" title="Go to users management">Users</a>
+          </li>
+          <li class="c-menu__item">
+            <a class="c-menu__link" href="#" title="Go to categories management">Categories</a>
+          </li>
+          <li class="c-menu__item">
+            <a class="c-menu__link" href="#" title="Go to courses management">Courses</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <h1 class="c-dashboard-name">
-        DASHBOARD
-    </h1>
-
-    <div class="c-dashboard-main">
-        <h3 class="c-dashboard-main-courses__name">
-            LATEST COURSES
-        </h3>
-        <div class="c-dashboard-main-courses">
-            <div class="c-dashboard-main-courses-content" *ngFor="let tab of tablica">
-                <img src="../../../assets/images/invitation-banner.jpg" alt="courses photo"
-                    class="c-dashboard-main-courses-content__image">
-                <div class="c-dashboard-main-courses-content-text">
-                    <h3 class="c-dashboard-main-courses-content-text__title">
-                        {{tab}}
-                    </h3>
-                    <p class="c-dashboard-main-courses-content-text__paragraph">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </div>
-                <button class="c-dashboard-main-courses-content__btn">
-                    MANAGE
-                </button>
+  <div class="c-dashboard-body">
+    <div class="wrapper-fluid">
+      <h2 class="c-dashboard-body__title">Dashboard</h2>
+      <div class="c-dashboard-grid">
+        <section class="c-courses-card">
+          <h3>Latest courses</h3>
+          <div class="c-card-list">
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://www.webdevelopersnotes.com/wp-content/uploads/html-form-code-html-forms-part-3-200x200.png" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>HTML for all of us! Everyone can be a superhero with his own laptop</h4>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
             </div>
-        </div>
-
-        <div class="c-dashboard-main-users">
-            <div class="c-dashboard-main-users-content" *ngFor="let user of tablicaUser">
-                <img src="../../../assets/images/invitation-banner.jpg" alt="users photo"
-                    class="c-dashboard-main-users-content__image">
-                <div class="c-dashboard-main-users-content-text">
-                    <h3 class="c-dashboard-main-users-content-text__title">
-                        {{user}}
-                    </h3>
-                    <p class="c-dashboard-main-users-content-text__paragraph">
-                        Created 28/04/2020
-                    </p>
-                </div>
-                <button class="c-dashboard-main-users-content__btn">
-                    MANAGE
-                </button>
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://static.4programmers.net/uploads/attachment/12113419075617ed319763f-image(200x200).png" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>Complete Python Bootcamp: Go from zero to hero in Python 3</h4>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
             </div>
-        </div>
-
-        <div class="c-dashboard-main-buttons">
-            <div class="c-dashboard-main-buttons-btn">
-                <a href="#"><img src="../../../assets/images/addUser.svg" alt="btn photo"
-                        class="c-dashboard-main-buttons-btn__image"></a>
-                <h3 class="c-dashboard-main-buttons-btn__title">
-                    Add User
-                </h3>
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://media.glassdoor.com/sqll/2277197/appsilon-data-science-squarelogo-1580810493100.png" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>The Data Science Course 2020: Complete Data Science Bootcamp</h4>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
             </div>
-            <div class="c-dashboard-main-buttons-btn">
-                <a href="#"><img src="../../../assets/images/addCourse.svg" alt="btn photo"
-                        class="c-dashboard-main-buttons-btn__image"></a>
-                <h3 class="c-dashboard-main-buttons-btn__title">
-                    Add Course
-                </h3>
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://images.macrumors.com/article-new/2018/05/apple-music-note-200x200.jpg" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>Pianoforall - Incredible New Way To Learn Piano & Keyboard</h4>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
             </div>
-            <div class="c-dashboard-main-buttons-btn">
-                <a href="#"><img src="../../../assets/images/addCategory.svg" alt="btn photo"
-                        class="c-dashboard-main-buttons-btn__image"></a>
-                <h3 class="c-dashboard-main-buttons-btn__title">
-                    Add Category
-                </h3>
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://media.cdnandroid.com/item_images/999676/imagen-amazon-relay-0thumb.jpg" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>Ultimate AWS Certified Solutions Architect Associate 2020</h4>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
             </div>
-            <div class="c-dashboard-main-buttons-btn">
-                <a href="#"><img src="../../../assets/images/settings.svg" alt="btn photo"
-                        class="c-dashboard-main-buttons-btn__image"></a>
-                <h3 class="c-dashboard-main-buttons-btn__title">
-                    Setting
-                </h3>
+          </div>
+        </section>
+        <section class="c-users-card">
+          <h3>Latest users</h3>
+          <div class="c-card-list">
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://media.npr.org/programs/wesun/doe/doe200x200-99caf71181e7f5184c94d71d6dbc64f2c9f99b0b-s800-c85.jpg" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>Mark Doe</h4>
+                <p>Joined: 29/04/2020</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
             </div>
-        </div>
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://pbs.twimg.com/profile_images/461589811774517248/FPZahMcE.jpeg" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>Jon Doe</h4>
+                <p>Joined: 29/04/2020</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
+            </div>
+            <div class="c-trow">
+              <div class="c-card-list__image">
+                <img src="https://eapass.net/wp-content/uploads/2019/10/our-team-8-min-200x200.jpg" alt="" />
+              </div>
+              <div class="c-card-list__data">
+                <h4>Elvis Doe</h4>
+                <p>Joined: 28/04/2020</p>
+              </div>
+              <div class="c-card-list__admin">
+                <button class="c-button--manage">Manage</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="c-panel-nav">
+          <button class="c-button--action">
+            <svg viewBox="-42 0 512 512.002" xmlns="http://www.w3.org/2000/svg"><path d="m210.351562 246.632812c33.882813 0 63.222657-12.152343 87.195313-36.128906 23.972656-23.972656 36.125-53.304687 36.125-87.191406 0-33.875-12.152344-63.210938-36.128906-87.191406-23.976563-23.96875-53.3125-36.121094-87.191407-36.121094-33.886718 0-63.21875 12.152344-87.191406 36.125s-36.128906 53.308594-36.128906 87.1875c0 33.886719 12.15625 63.222656 36.132812 87.195312 23.976563 23.96875 53.3125 36.125 87.1875 36.125zm0 0"/><path d="m426.128906 393.703125c-.691406-9.976563-2.089844-20.859375-4.148437-32.351563-2.078125-11.578124-4.753907-22.523437-7.957031-32.527343-3.308594-10.339844-7.808594-20.550781-13.371094-30.335938-5.773438-10.15625-12.554688-19-20.164063-26.277343-7.957031-7.613282-17.699219-13.734376-28.964843-18.199219-11.226563-4.441407-23.667969-6.691407-36.976563-6.691407-5.226563 0-10.28125 2.144532-20.042969 8.5-6.007812 3.917969-13.035156 8.449219-20.878906 13.460938-6.707031 4.273438-15.792969 8.277344-27.015625 11.902344-10.949219 3.542968-22.066406 5.339844-33.039063 5.339844-10.972656 0-22.085937-1.796876-33.046874-5.339844-11.210938-3.621094-20.296876-7.625-26.996094-11.898438-7.769532-4.964844-14.800782-9.496094-20.898438-13.46875-9.75-6.355468-14.808594-8.5-20.035156-8.5-13.3125 0-25.75 2.253906-36.972656 6.699219-11.257813 4.457031-21.003906 10.578125-28.96875 18.199219-7.605469 7.28125-14.390625 16.121094-20.15625 26.273437-5.558594 9.785157-10.058594 19.992188-13.371094 30.339844-3.199219 10.003906-5.875 20.945313-7.953125 32.523437-2.058594 11.476563-3.457031 22.363282-4.148437 32.363282-.679688 9.796875-1.023438 19.964844-1.023438 30.234375 0 26.726562 8.496094 48.363281 25.25 64.320312 16.546875 15.746094 38.441406 23.734375 65.066406 23.734375h246.53125c26.625 0 48.511719-7.984375 65.0625-23.734375 16.757813-15.945312 25.253906-37.585937 25.253906-64.324219-.003906-10.316406-.351562-20.492187-1.035156-30.242187zm0 0"/></svg>
+            <span>Add User</span>
+          </button>
+          <button class="c-button--action">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 415.999 415.999">
+              <g>
+                <g><path d="M335.999,64h-44.423c-5.926-6.583-13.538-11.62-22.284-14.136c-7.368-2.118-13.038-7.788-15.156-15.156
+                    C248.371,14.664,229.898,0,208,0c-21.898,0-40.37,14.664-46.136,34.707c-2.121,7.376-7.805,13.039-15.181,15.164
+                    c-8.738,2.518-16.342,7.55-22.262,14.129H80C62.327,64,48,78.327,48,96v287.999c0,17.673,14.326,32,31.999,32h255.999
+                    c17.674,0,32-14.327,32-32V96C367.999,78.327,353.672,64,335.999,64z M208.205,32c8.837,0,16,7.163,16,16c0,8.836-7.163,16-16,16
+                    s-16-7.164-16-16C192.205,39.163,199.368,32,208.205,32z M335.999,383.999H80V96h32v32h192V96h31.999V383.999z"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <polygon points="268.853,188.627 179.882,277.601 142.752,241.257 120.124,263.9 179.882,322.854 291.481,211.256 		"/>
+                </g>
+              </g>
+            </svg>
+            <span>Add Category</span>
+          </button>
+          <button class="c-button--action">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 422.912 422.912">
+              <g>
+                <g>
+                  <path d="M370.176,67.584h-25.6V15.36c-0.266-8.37-6.99-15.094-15.36-15.36H86.528C59.382,0,37.376,22.006,37.376,49.152V373.76
+                    c0,27.146,22.006,49.152,49.152,49.152h283.648c8.483,0,15.36-6.877,15.36-15.36V82.944
+                    C385.536,74.461,378.659,67.584,370.176,67.584z M215.552,230.912l-36.864-30.208c-5.039-3.037-11.345-3.037-16.384,0
+                    l-36.864,30.208V98.304h90.112V230.912z M313.856,67.584H86.528c-10.18,0-18.432-8.252-18.432-18.432
+                    c0-10.18,8.252-18.432,18.432-18.432h227.328V67.584z"/>
+                </g>
+              </g>
+            </svg>
+            <span>Add Course</span>
+          </button>
+          <button class="c-button--action c-button--disabled">
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m464.866 192.8h-10.87c-3.531-11.05-7.986-21.784-13.323-32.097l7.698-7.698c18.665-18.645 18.165-48.525.006-66.665l-22.711-22.71c-18.129-18.153-48.015-18.679-66.665-.007l-7.704 7.704c-10.313-5.336-21.048-9.792-32.097-13.323v-10.871c0-25.989-21.144-47.133-47.134-47.133h-32.133c-25.989 0-47.133 21.144-47.133 47.133v10.871c-11.049 3.53-21.784 7.986-32.097 13.323l-7.697-7.697c-18.613-18.635-48.498-18.198-66.664-.006l-22.713 22.711c-18.152 18.132-18.677 48.014-.006 66.665l7.704 7.704c-5.337 10.313-9.792 21.046-13.323 32.097h-10.87c-25.989-.001-47.134 21.143-47.134 47.132v32.134c0 25.989 21.145 47.133 47.134 47.133h10.87c3.531 11.05 7.986 21.784 13.323 32.097l-7.698 7.698c-18.665 18.645-18.165 48.525-.006 66.665l22.711 22.71c18.129 18.153 48.015 18.679 66.665.007l7.704-7.704c10.313 5.336 21.048 9.792 32.097 13.323v10.871c0 25.989 21.145 47.133 47.134 47.133h32.133c25.989 0 47.134-21.144 47.134-47.133v-10.871c11.049-3.53 21.784-7.986 32.097-13.323l7.697 7.697c18.613 18.635 48.497 18.198 66.664.006l22.713-22.712c18.152-18.132 18.677-48.014.006-66.665l-7.704-7.704c5.337-10.313 9.792-21.046 13.323-32.097h10.87c25.989 0 47.134-21.144 47.134-47.133v-32.134c-.001-25.987-21.146-47.131-47.135-47.131zm-208.866 174.6c-61.427 0-111.4-49.974-111.4-111.4s49.973-111.4 111.4-111.4 111.4 49.974 111.4 111.4-49.973 111.4-111.4 111.4z"/></svg>
+            <span>Settings</span>
+          </button>
+        </section>
+        <section class="c-statistics-grid">
+          <div class="c-statistics-card">
+            <h3>Courses</h3>
+            <span>21343</span>
+          </div>
+          <div class="c-statistics-card">
+            <h3>Categories</h3>
+            <span>34</span>
+          </div>
+          <div class="c-statistics-card">
+            <h3>Users</h3>
+            <span>134</span>
+          </div>
+        </section>
+      </div>
     </div>
-
-    <div class="c-dashboard-statistics">
-        <div class="c-dashboard-statistics-item">
-            <p class="c-dashboard-statistics-item__name">
-                Courses
-            </p>
-            <h1 class="c-dashboard-statistics-item__count">
-                3289
-            </h1>
-        </div>
-        <div class="c-dashboard-statistics-item">
-            <p class="c-dashboard-statistics-item__name">
-                Categories
-            </p>
-            <h1 class="c-dashboard-statistics-item__count">
-                1234
-            </h1>
-        </div>
-
-        <div class="c-dashboard-statistics-item">
-            <p class="c-dashboard-statistics-item__name">
-                Users
-            </p>
-            <h1 class="c-dashboard-statistics-item__count">
-                5678
-            </h1>
-        </div>
-
-    </div>
-
-    <h3 class="c-dashboard-main-courses__name">
-        LATEST COURSES
-    </h3>
-
-    <h3 class="c-dashboard-main-users__name">
-        LATEST USERS
-    </h3>
-
-</section>
+  </div>
+</main>
