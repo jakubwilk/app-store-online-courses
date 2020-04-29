@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register.service';
-import { Subscriber } from 'rxjs';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,8 +13,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onSubmit() {
+    this.registerUser();
+  }
   registerUser() {
-    // console.log(this, this.registerUserData);
+    console.log(this.registerUserData);
     this.register.registerUser(this.registerUserData)
       .subscribe(
         response => {
