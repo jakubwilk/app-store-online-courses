@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       type: ''
 
     });
-    //this.registerForm.valueChanges.subscribe(console.log);
+    this.registerForm.valueChanges.subscribe(console.log);
   }
   onSubmit() {
     this.register.registerUser(this.registerForm.value)
