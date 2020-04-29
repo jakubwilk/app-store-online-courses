@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register.service';
+import { Register } from '../../interfaces/register';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +8,8 @@ import { RegisterService } from '../../services/register.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registerUserData = {};
+  registerUserData: Register = {};
+  tryThis: true;
 
   constructor(private register: RegisterService) { }
 

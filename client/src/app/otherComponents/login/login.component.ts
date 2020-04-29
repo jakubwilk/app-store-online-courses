@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { Login } from '../../interfaces/login';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,7 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginUserData = {};
+  loginUserData: Login = {};
 
   constructor(private login: LoginService) { }
 
