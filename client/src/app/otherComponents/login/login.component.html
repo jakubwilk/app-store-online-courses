@@ -17,7 +17,7 @@
             </p>
           </div>
         </div>
-        <form class="c-login-form">
+        <form class="c-login-form" (onSubmit)="onSubmit()">
           <div class="c-login-form__group">
             <label class="c-login-form__label" for="login">
               Email or Username
@@ -40,7 +40,7 @@
           </div>
 
           <div class="c-login-form__submit">
-            <button (click)="loginUser()" type="button" class="c-button c-button--primary">
+            <button (click)="loginUser()" type="submit" class="c-button c-button--primary">
               Login
             </button>
           </div>
