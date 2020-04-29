@@ -22,37 +22,37 @@
             </p>
           </div>
         </div>
-        <form (ngSubmit)="onSubmit()" class="c-register-form">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="c-register-form">
           <div class="c-register-form__group">
             <label class="c-register-form__label" for="username">
               Username
             </label>
-            <input [(ngModel)]="registerUserData.username" class="c-register-form__input" type="text" name="username"
-              id="username" autocomplete="off">
+            <input formControlName="username" class="c-register-form__input" type="text" name="username" id="username"
+              autocomplete="off">
           </div>
 
           <div class="c-register-form__group">
             <label class="c-register-form__label" for="email">
               E-mail
             </label>
-            <input [(ngModel)]="registerUserData.email" class="c-register-form__input" type="email" name="email"
-              id="email" autocomplete="off">
+            <input formControlName="email" class="c-register-form__input" type="email" name="email" id="email"
+              autocomplete="off">
           </div>
 
           <div class="c-register-form__group">
             <label class="c-register-form__label" for="password">
               Password
             </label>
-            <input [(ngModel)]="registerUserData.password" class="c-register-form__input" type="password"
-              name="password" id="password" autocomplete="off">
+            <input formControlName="password" class="c-register-form__input" type="password" name="password"
+              id="password" autocomplete="off">
           </div>
 
           <div class="c-register-form__group">
             <label class="c-register-form__label" for="repassword">
               Enter password again
             </label>
-            <input [(ngModel)]="registerUserData.repassword" class="c-register-form__input" type="password"
-              name="repassword" id="repassword" autocomplete="off">
+            <input formControlName="repassword" class="c-register-form__input" type="password" name="repassword"
+              id="repassword" autocomplete="off">
           </div>
 
           <div class="c-register-form__group">
@@ -60,13 +60,13 @@
               Account type:
             </label>
             <div class="c-register-form__radioGroup">
-              <input [(ngModel)]="registerUserData.type" id="type_1" [value]="true" type="radio" name="type">
+              <input formControlName="type" id="type_1" [value]="true" type="radio" name="type">
               <label class="c-register-form__radioLabel" for="type_1">
                 Lite User
               </label>
             </div>
             <div class="c-register-form__radioGroup">
-              <input [(ngModel)]="registerUserData.type" id="type_2" type="radio" name="type" [value]="false">
+              <input formControlName="type" id="type_2" type="radio" name="type" [value]="false">
               <label class="c-register-form__radioLabel" for="type_2">
                 Bussines User
               </label>
