@@ -20,7 +20,7 @@ export class UsersController {
     }
 
     @Post('login')
-    @HttpCode(200)
+    // @HttpCode(200)
     loginUser(@Body() existingUser: ExistingUserDto) {
         const { login, password } = existingUser;
 
