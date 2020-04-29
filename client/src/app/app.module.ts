@@ -16,6 +16,9 @@ import { LoginComponent } from './otherComponents/login/login.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
 import { CardRightComponent } from './otherComponents/card-right/card-right.component';
+import { FormsModule } from '@angular/forms';
+
+
 
 
 
@@ -41,7 +44,8 @@ import { CardRightComponent } from './otherComponents/card-right/card-right.comp
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

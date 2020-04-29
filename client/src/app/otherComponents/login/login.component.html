@@ -22,14 +22,16 @@
             <label class="c-login-form__label" for="login">
               Email or Username
             </label>
-            <input class="c-login-form__input" type="text" name="login" id="login" autocomplete="off">
+            <input [(ngModel)]="loginUserData.login" class="c-login-form__input" type="text" name="login" id="login"
+              autocomplete="off">
           </div>
 
           <div class="c-login-form__group">
             <label class="c-login-form__label" for="password">
               Password
             </label>
-            <input class="c-login-form__input" type="password" name="password" id="password" autocomplete="off">
+            <input [(ngModel)]="loginUserData.password" class="c-login-form__input" type="password" name="password"
+              id="password" autocomplete="off">
           </div>
 
           <div class="c-login-form__forgotpassword">
@@ -38,7 +40,7 @@
           </div>
 
           <div class="c-login-form__submit">
-            <button type="submit" class="c-button c-button--primary">
+            <button (click)="loginUser()" type="button" class="c-button c-button--primary">
               Login
             </button>
           </div>
