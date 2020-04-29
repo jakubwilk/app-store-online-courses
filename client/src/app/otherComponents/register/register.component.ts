@@ -8,8 +8,9 @@ import { Register } from '../../interfaces/register';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
   registerUserData: Register = {};
-  tryThis: true;
+
 
   constructor(private register: RegisterService) { }
 
@@ -17,9 +18,11 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit() {
     this.registerUser();
+
   }
   registerUser() {
     console.log(this.registerUserData);
+    console.log(this.registerUserData.type);
     this.register.registerUser(this.registerUserData)
       .subscribe(
         response => {

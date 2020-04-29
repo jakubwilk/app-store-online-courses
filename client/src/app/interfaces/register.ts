@@ -4,7 +4,7 @@ export interface Register {
     email?: string;
     password?: string;
     repassword?: string;
-    accountType?: boolean;
+    type?: boolean;
     created?: Date;
     updated?: Date;
 

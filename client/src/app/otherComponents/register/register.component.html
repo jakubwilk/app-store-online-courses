@@ -60,13 +60,13 @@
               Account type:
             </label>
             <div class="c-register-form__radioGroup">
-              <input [(ngModel)]="registerUserData.accountType" id="type_1" type="radio" name="type" checked>
+              <input [(ngModel)]="registerUserData.type" id="type_1" [value]="true" type="radio" name="type">
               <label class="c-register-form__radioLabel" for="type_1">
                 Lite User
               </label>
             </div>
             <div class="c-register-form__radioGroup">
-              <input id="type_2" type="radio" name="type">
+              <input [(ngModel)]="registerUserData.type" id="type_2" type="radio" name="type" [value]="false">
               <label class="c-register-form__radioLabel" for="type_2">
                 Bussines User
               </label>
