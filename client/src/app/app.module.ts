@@ -17,6 +17,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
 import { CardRightComponent } from './otherComponents/card-right/card-right.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -45,7 +46,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
