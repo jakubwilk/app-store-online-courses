@@ -6,6 +6,7 @@ import { ValidationErrorMessage } from '../resources/validation.resources';
 import { ErrorMessage, SuccessMessage } from '../resources/base.resources';
 import { validationMessage } from '../utils/customMessages';
 import * as argon2 from 'argon2';
+import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UsersService {
@@ -60,7 +61,7 @@ export class UsersService {
             return validationMessage(400, 'Bad Request', 'username', ValidationErrorMessage.UsernameAlreadyExist);
         } else if (validUsername) {
             return validationMessage(400, 'Bad Request', 'username', ValidationErrorMessage.UsernameIncorrect);
-        }else if (validEmail) {
+        } else if (validEmail) {
             return validationMessage(400, 'Bad Request', 'email', ValidationErrorMessage.EmailAlreadyExist);
         } else if (validPassword && validRepassword) {
             return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordIncorrect);
@@ -93,16 +94,18 @@ export class UsersService {
         }
 
         if (user) {
+            const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
             if (await argon2.verify(user.password, password)) {
-                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged };
+                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged, authToken: token };
             } else {
                 return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordWrong);
             }
         }
 
         if (email) {
+            const token = jwt.sign({ userId: email.id }, process.env.JWT_SECRET);
             if (await argon2.verify(email.password, password)) {
-                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged };
+                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged, authToken: token };
             } else {
                 return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordWrong);
             }
