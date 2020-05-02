@@ -48,7 +48,7 @@ export class UsersService {
         else return true;
     }
 
-    async createNewUser(username: string, email: string, password: string, repassword: string, accountType: boolean) {
+    async createNewUser(username: string, email: string, password: string, repassword: string, accountType: number) {
         const validUser = await this.checkIfUsernameAlreadyExist(username);
         const validUsername = await this.checkIfFieldIsCorrect(username);
         const validEmail = await this.checkIfEmailAlreadyExist(email);

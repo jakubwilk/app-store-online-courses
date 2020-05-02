@@ -18,5 +18,5 @@ export class CreateUserDto {
     repassword: string
 
     @IsNotEmpty({ message: ValidationErrorMessage.AccountRequired })
-    type: boolean;
+    type: number;
 }
