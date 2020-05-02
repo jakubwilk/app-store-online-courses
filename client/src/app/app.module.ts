@@ -12,8 +12,11 @@ import { CardCoursesComponent } from './main-section/card-courses/card-courses.c
 import { CardOpinionsComponent } from './main-section/card-opinions/card-opinions.component';
 import { CardInvitationComponent } from './main-section/card-invitation/card-invitation.component';
 import { FooterComponent } from './footer-section/footer/footer.component';
+import { LoginComponent } from './otherComponents/login/login.component';
 import { FrontPageComponent } from './front-page/front-page.component';
-
+import { RegisterComponent } from './otherComponents/register/register.component';
+import { CardRightComponent } from './otherComponents/card-right/card-right.component';
+import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
 
 
 
@@ -29,7 +32,12 @@ import { FrontPageComponent } from './front-page/front-page.component';
     CardOpinionsComponent,
     CardInvitationComponent,
     FooterComponent,
+    LoginComponent,
+    RegisterComponent,
     FrontPageComponent,
+    CardRightComponent,
+    DashboardComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
 @import "share";
-
 * {
   //outline: 1px solid red;
   margin: 0;
@@ -34,4 +33,25 @@ body {
   @include responsive(extra-large-devices) {
     max-width: 1170px;
   }
+}
+
+.wrapper-fluid {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+input,
+select,
+button,
+textarea,
+a {
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  transition: all .1s ease-in-out;
 }

@@ -8,18 +8,16 @@
   background-position: center;
 }
 .c-header-content {
-  margin: 20px;
   text-align: center;
   color: $font-primary;
-  //like this or diffrent way
+
   &__banner {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
   &__text {
-    line-height: 20px;
     font-size: 1rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin: 2rem;
+    opacity: 0.8;
   }
   &__btn {
     font-size: 1rem;

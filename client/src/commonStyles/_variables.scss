@@ -4,11 +4,27 @@ $font-primary: #ffffff;
 $font-secondary: #000000;
 $font-dark: #2b2b2b;
 
+$bg-primary: #ffffff;
 $bg-list: #0f1815;
 $bg-menu-heading: #172521;
 $bg-gradient-primary: #09c018cc;
 $bg-gradient-secondary: #2863d1cc;
 
+$bg-gradient-primaryDark: #3ec300;
+$bg-gradient-secondaryDark: #192bc2;
+
 $border-menu-primary: #ffffff33;
 $border-courses: #eeeeee;
+
 $btn-border: #ffffff;
+
+$error-color-primary: #e74c3c;
+$success-color-primary: #27ae60;
+
+@mixin card-style() {
+  & {
+    background-color: $font-primary;
+    box-shadow: 0 0 10px 0 rgba($font-dark, .1);
+    border-radius: 10px;
+  }
+}

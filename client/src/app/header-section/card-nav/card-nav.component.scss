@@ -1,45 +1,41 @@
 @import "share";
-.l-container-flex {
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 80px;
+.c-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.h-mobile {
-  display: none;
-  @include responsive(extra-large-devices) {
+
+.l-menu {
+  padding: 1rem;
+  margin-bottom: 6rem;
+  @include responsive(medium-devices) {
     display: flex;
   }
 }
-.h-range {
-  display: none;
-  @include responsive(range-medium-large) {
-    display: block;
-  }
-}
+
 .c-menu {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
+
   &__flex {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
     @include responsive(medium-devices) {
-      justify-content: flex-start;
+      display: flex;
     }
   }
+
   &__iconBar {
+    all: unset;
     height: 25px;
-    outline: none;
-    background: inherit;
-    border: none;
+
     @include responsive(medium-devices) {
       display: none;
     }
   }
+
   &__list {
+    margin-left: 15px;
     position: fixed;
     top: 0;
     right: 0;
@@ -51,38 +47,42 @@
     text-align: right;
     overflow-y: scroll;
     z-index: 10;
+
     @include responsive(medium-devices) {
       position: inherit;
       height: auto;
       display: flex;
-      width: auto;
+      width: 100%;
       background: inherit;
       overflow-y: inherit;
+      justify-content: space-between;
     }
   }
+
   &__navHeading {
+    text-transform: uppercase;
     background-color: $bg-menu-heading;
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid rgba($border-menu-primary, 0.2);
+
     @include responsive(medium-devices) {
       display: none;
     }
   }
+
   &__item {
     position: relative;
-    padding: 20px;
+    padding: 1.2rem;
     border-bottom: 1px solid rgba($border-menu-primary, 0.2);
-    @include responsive(less-medium-devices) {
-      &:not(:last-child):before {
-        position: absolute;
-        left: 40px;
-        content: "♥";
-        font-size: 1rem;
-      }
-    }
+
     @include responsive(medium-devices) {
-      border: 0;
+      border: none;
+
+      &:last-of-type {
+        padding-right: 0;
+      }
+
       &:not(:first-child):before {
         position: absolute;
         left: 0;
@@ -93,18 +93,30 @@
       }
     }
   }
+
   &__link {
     font-size: 0.875rem;
     opacity: 0.85;
     text-decoration: none;
     color: $font-primary;
-    //display: block;
     transition: all 0.1s ease-in-out;
+
     &:hover,
     &:focus {
       opacity: 1;
       border: 0;
       outline: none;
     }
+  }
+}
+.h-scope {
+  display: none;
+  @include responsive(range-medium-large) {
+    display: flex;
+  }
+}
+.h-scope-links {
+  @include responsive(range-medium-large) {
+    display: none;
   }
 }
