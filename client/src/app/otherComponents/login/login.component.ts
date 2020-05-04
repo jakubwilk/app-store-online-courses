@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           response => {
             if (response.statusCode !== 200) {
-              this.errorMassage = response.message[0].constraints.value;
+              this.errorMessage = response.message[0].constraints.value;
               this.isHidden = false;
             } else {
               this.isHidden = true;
