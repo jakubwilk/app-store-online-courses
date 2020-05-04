@@ -50,6 +50,13 @@ export class UsersService {
         else return true;
     }
 
+    async verifyToken(token: string): Promise<boolean> {
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+
+        if (decoded) return true;
+        else return false;
+    }
+
     async createNewUser(username: string, email: string, password: string, repassword: string, accountType: number) {
         const validUser = await this.checkIfUsernameAlreadyExist(username);
         const validUsername = await this.checkIfFieldIsCorrect(username);

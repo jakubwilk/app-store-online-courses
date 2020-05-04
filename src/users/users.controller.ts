@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { ExistingUserDto } from './dto/existingUserDto';
@@ -25,5 +25,11 @@ export class UsersController {
         const { login, password } = existingUser;
 
         return this.usersService.loginUser(login, password);
+    }
+
+    @Get('verify')
+    checkUserToken(@Req() req) {
+        const { token } = req;
+        return this.usersService.verifyToken(token)
     }
 }
