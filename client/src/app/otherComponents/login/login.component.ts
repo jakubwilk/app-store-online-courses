@@ -10,33 +10,54 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  isHidden = true;
+  validationMessage: string;
+  errorMassage: string;
 
-  constructor(private login: LoginService, private fb: FormBuilder) { }
+  constructor(private loginService: LoginService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      login: ['', [
+      login: [null, [
         Validators.required,
-
       ]],
-      password: ['', [
+      password: [null, [
         Validators.required,
-        // Validators.pattern('')
       ]]
 
     });
-
-    //this.loginForm.valueChanges.subscribe(console.log);
+    // this.loginForm.valueChanges.subscribe(console.log);
   }
   onSubmit() {
-    this.login.loginUser(this.loginForm.value)
-      .subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    if (this.loginForm.valid) {
+      this.loginService.loginUser(this.loginForm.value)
+        .subscribe(
+          response => {
+            if (response.statusCode !== 200) {
+              this.errorMassage = response.message[0].constraints.value;
+              this.isHidden = false;
+            } else {
+              this.isHidden = true;
+              console.log('Success');
+            }
+          },
+          error => {
+            console.log(error);
+
+          }
+        );
+
+    } else {
+      this.isHidden = false;
+      this.validationMessage = 'First fill out the fields correctly';
+    }
+
   }
+  get login() {
+    return this.loginForm.get('login');
+  }
+  get password() {
+    return this.loginForm.get('password');
+  }
+
 }

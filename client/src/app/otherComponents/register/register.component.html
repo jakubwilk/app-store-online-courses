@@ -10,13 +10,16 @@
             Create an account
           </p>
         </div>
-        <div class="c-validation-content">
+        <div class="c-validation-content" [hidden]="isHidden">
           <div class="c-error-box">
-            <p class="c-validation-content__text">
-              An error occurred while processing the query
+            <p class="c-validation-content__text" *ngIf="!registerForm.valid">
+              {{validationMessage}}
+            </p>
+            <p class="c-validation-content__text" *ngIf="errorMessage!=null">
+              {{errorMessage}}
             </p>
           </div>
-          <div class="c-success-box">
+          <div class="c-success-box" [hidden]="success">
             <p class="c-validation-content__text">
               Account created. Redirecting to login page...
             </p>
@@ -29,6 +32,12 @@
             </label>
             <input formControlName="username" class="c-register-form__input" type="text" name="username" id="username"
               autocomplete="off">
+            <div class="c-validBox__info" class="c-validBox"
+              *ngIf="username.invalid && (username.dirty || username.touched)">
+              <p class="c-validBox__info" *ngIf="username.errors.required">
+                Username is required
+              </p>
+            </div>
           </div>
 
           <div class="c-register-form__group">
@@ -37,6 +46,15 @@
             </label>
             <input formControlName="email" class="c-register-form__input" type="email" name="email" id="email"
               autocomplete="off">
+            <div class="c-validBox" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <p class="c-validBox__info" *ngIf="email.errors.required">
+                Email is required
+              </p>
+              <p class="c-validBox__info" *ngIf="email.errors.email">
+                the email is provided in the wrong format
+              </p>
+
+            </div>
           </div>
 
           <div class="c-register-form__group">
@@ -45,6 +63,14 @@
             </label>
             <input formControlName="password" class="c-register-form__input" type="password" name="password"
               id="password" autocomplete="off">
+            <div class="c-validBox" *ngIf="password.invalid && (password.dirty ||password.touched)">
+              <p class="c-validBox__info" *ngIf="password.errors.required">
+                Password is required
+              </p>
+              <p class="c-validBox__info" *ngIf="password.errors.pattern">
+                example password Ikea4554
+              </p>
+            </div>
           </div>
 
           <div class="c-register-form__group">
@@ -53,6 +79,14 @@
             </label>
             <input formControlName="repassword" class="c-register-form__input" type="password" name="repassword"
               id="repassword" autocomplete="off">
+            <div class="c-validBox" *ngIf="repassword.invalid && (repassword.dirty || repassword.touched)">
+              <p class="c-validBox__info" *ngIf="repassword.errors.required">
+                Password is required.
+              </p>
+              <p class="c-validBox__info" *ngIf="repassword.errors.pattern">
+                example password Ikea4554
+              </p>
+            </div>
           </div>
 
           <div class="c-register-form__group">
@@ -60,13 +94,13 @@
               Account type:
             </label>
             <div class="c-register-form__radioGroup">
-              <input formControlName="type" id="type_1" [value]="true" type="radio" name="type">
+              <input formControlName="type" id="type_1" [value]="false" type="radio" name="type">
               <label class="c-register-form__radioLabel" for="type_1">
                 Lite User
               </label>
             </div>
             <div class="c-register-form__radioGroup">
-              <input formControlName="type" id="type_2" type="radio" name="type" [value]="false">
+              <input formControlName="type" id="type_2" type="radio" name="type" [value]="true">
               <label class="c-register-form__radioLabel" for="type_2">
                 Bussines User
               </label>
@@ -76,6 +110,7 @@
             <button type="submit" class="c-button c-button--primary">
               Register
             </button>
+
           </div>
         </form>
       </div>
