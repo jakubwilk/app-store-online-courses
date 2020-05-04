@@ -10,8 +10,8 @@
             Create an account
           </p>
         </div>
-        <div class="c-validation-content" [hidden]="isHidden">
-          <div class="c-error-box">
+        <div class="c-validation-content">
+          <div class="c-error-box" [hidden]="isHidden">
             <p class="c-validation-content__text" *ngIf="!registerForm.valid">
               {{validationMessage}}
             </p>

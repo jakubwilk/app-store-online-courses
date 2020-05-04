@@ -10,13 +10,13 @@
             Log in to your account
           </p>
         </div>
-        <div class="c-validation-content" [hidden]="isHidden">
-          <div class="c-error-box">
+        <div class="c-validation-content">
+          <div class="c-error-box" [hidden]="isHidden">
             <p class="c-validation-content__text" *ngIf="!loginForm.valid">
               {{validationMessage}}
             </p>
-            <p class="c-validation-content__text" *ngIf="errorMassage!=null">
-              {{errorMassage}}
+            <p class="c-validation-content__text" *ngIf="errorMessage!=null">
+              {{errorMessage}}
             </p>
           </div>
         </div>

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isHidden = true;
   validationMessage: string;
-  errorMassage: string;
+  errorMessage: string;
 
   constructor(private loginService: LoginService, private fb: FormBuilder) { }
 
