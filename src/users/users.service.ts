@@ -4,8 +4,10 @@ import { Repository } from 'typeorm';
 import { Users } from './users.entity';
 import { ValidationErrorMessage } from '../resources/validation.resources';
 import { ErrorMessage, SuccessMessage } from '../resources/base.resources';
+import { HttpStatusMessage } from '../resources/http.resources';
 import { validationMessage } from '../utils/customMessages';
 import * as argon2 from 'argon2';
+import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UsersService {
@@ -48,7 +50,14 @@ export class UsersService {
         else return true;
     }
 
-    async createNewUser(username: string, email: string, password: string, repassword: string, accountType: boolean) {
+    async verifyToken(token: string): Promise<boolean> {
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+
+        if (decoded) return true;
+        else return false;
+    }
+
+    async createNewUser(username: string, email: string, password: string, repassword: string, accountType: number) {
         const validUser = await this.checkIfUsernameAlreadyExist(username);
         const validUsername = await this.checkIfFieldIsCorrect(username);
         const validEmail = await this.checkIfEmailAlreadyExist(email);
@@ -57,15 +66,15 @@ export class UsersService {
         const validRepeatPassword = await this.checkIfPasswordsAreTheSame(password, repassword);
 
         if (validUser) {
-            return validationMessage(400, 'Bad Request', 'username', ValidationErrorMessage.UsernameAlreadyExist);
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'username', ValidationErrorMessage.UsernameAlreadyExist);
         } else if (validUsername) {
-            return validationMessage(400, 'Bad Request', 'username', ValidationErrorMessage.UsernameIncorrect);
-        }else if (validEmail) {
-            return validationMessage(400, 'Bad Request', 'email', ValidationErrorMessage.EmailAlreadyExist);
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'username', ValidationErrorMessage.UsernameIncorrect);
+        } else if (validEmail) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'email', ValidationErrorMessage.EmailAlreadyExist);
         } else if (validPassword && validRepassword) {
-            return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordIncorrect);
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'password', ValidationErrorMessage.PasswordIncorrect);
         } else if (!validRepeatPassword) {
-            return validationMessage(400, 'Bad Request', 'repassword', ValidationErrorMessage.PasswordsAreNotTheSame);
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'repassword', ValidationErrorMessage.PasswordsAreNotTheSame);
         } else {
             const User = new Users();
             User.username = username;
@@ -76,9 +85,9 @@ export class UsersService {
             const query = await this.usersRepository.save(User);
 
             if (query) {
-                return { statusCode: 201, success: 'Created', message: SuccessMessage.UserCreated }
+                return { statusCode: 201, success: HttpStatusMessage.Created, message: SuccessMessage.UserCreated }
             } else {
-                return validationMessage(500, 'Internal Server Error', 'none', ErrorMessage.ServerUnableContinue);
+                return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
             }
         }
     }
@@ -89,25 +98,27 @@ export class UsersService {
         const verifyLogin = await this.checkWhiteSpaces(login);
 
         if (verifyLogin) {
-            return validationMessage(400, 'Bad Request', 'login', ValidationErrorMessage.UsernameIncorrect);
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'login', ValidationErrorMessage.UsernameIncorrect);
         }
 
         if (user) {
+            const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
             if (await argon2.verify(user.password, password)) {
-                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged };
+                return { statusCode: 200, success: HttpStatusMessage.Logged, message: SuccessMessage.UserLogged, authToken: token };
             } else {
-                return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordWrong);
+                return validationMessage(400, HttpStatusMessage.BadRequest, 'password', ValidationErrorMessage.PasswordWrong);
             }
         }
 
         if (email) {
+            const token = jwt.sign({ userId: email.id }, process.env.JWT_SECRET);
             if (await argon2.verify(email.password, password)) {
-                return { statusCode: 200, success: 'Logged', message: SuccessMessage.UserLogged };
+                return { statusCode: 200, success: HttpStatusMessage.Logged, message: SuccessMessage.UserLogged, authToken: token };
             } else {
-                return validationMessage(400, 'Bad Request', 'password', ValidationErrorMessage.PasswordWrong);
+                return validationMessage(400, HttpStatusMessage.BadRequest, 'password', ValidationErrorMessage.PasswordWrong);
             }
         }
 
-        return validationMessage(400, 'Bad Request', 'login', ValidationErrorMessage.LoginDoesntExist);
+        return validationMessage(400, HttpStatusMessage.BadRequest, 'login', ValidationErrorMessage.LoginDoesntExist);
     }
 }
