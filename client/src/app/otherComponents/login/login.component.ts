@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.loginService.loginUser(this.loginForm.value)
         .subscribe(
           response => {
-            if (response.statusCode !== 200) {
+            if (response.statusCode === 400) {
               this.errorMessage = response.message[0].constraints.value;
               this.isHidden = false;
             } else {

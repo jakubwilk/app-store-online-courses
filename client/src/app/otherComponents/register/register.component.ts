@@ -23,7 +23,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       username: [null, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(new RegExp(/(?=.*[a-z])^[a-zA-Z0-9]{3,64}$/))
       ]],
       email: [null, [
         Validators.required,
@@ -31,18 +32,18 @@ export class RegisterComponent implements OnInit {
       ]],
       password: [null, [
         Validators.required,
-        Validators.pattern(new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/))
+        Validators.pattern(new RegExp(/(?=.*\d)(?=.*[A-Z])(?=.*[a-z])^[a-zA-Z0-9]{8,}$/))
       ]],
       repassword: [null, [
         Validators.required,
-        Validators.pattern(new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/))
+        Validators.pattern(new RegExp(/(?=.*\d)(?=.*[A-Z])(?=.*[a-z])^[a-zA-Z0-9]{8,}$/))
       ]],
-      type: [false, [
+      type: [1, [
         Validators.required
       ]]
 
     });
-    // this.registerForm.valueChanges.subscribe(console.log);
+    this.registerForm.valueChanges.subscribe(console.log);
   }
   onSubmit() {
     if (this.registerForm.valid) {

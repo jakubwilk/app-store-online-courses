@@ -37,6 +37,9 @@
               <p class="c-validBox__info" *ngIf="username.errors.required">
                 Username is required
               </p>
+              <p class="c-validBox__info" *ngIf="username.errors.pattern">
+                Username is provided in the wrong format
+              </p>
             </div>
           </div>
 
@@ -51,7 +54,7 @@
                 Email is required
               </p>
               <p class="c-validBox__info" *ngIf="email.errors.email">
-                the email is provided in the wrong format
+                Email is provided in the wrong format
               </p>
 
             </div>
@@ -81,7 +84,7 @@
               id="repassword" autocomplete="off">
             <div class="c-validBox" *ngIf="repassword.invalid && (repassword.dirty || repassword.touched)">
               <p class="c-validBox__info" *ngIf="repassword.errors.required">
-                Password is required.
+                Password is required
               </p>
               <p class="c-validBox__info" *ngIf="repassword.errors.pattern">
                 example password Ikea4554
@@ -94,13 +97,13 @@
               Account type:
             </label>
             <div class="c-register-form__radioGroup">
-              <input formControlName="type" id="type_1" [value]="false" type="radio" name="type">
+              <input formControlName="type" id="type_1" [value]="1" type="radio" name="type">
               <label class="c-register-form__radioLabel" for="type_1">
                 Lite User
               </label>
             </div>
             <div class="c-register-form__radioGroup">
-              <input formControlName="type" id="type_2" type="radio" name="type" [value]="true">
+              <input formControlName="type" id="type_2" type="radio" name="type" [value]="2">
               <label class="c-register-form__radioLabel" for="type_2">
                 Bussines User
               </label>
@@ -113,6 +116,11 @@
 
           </div>
         </form>
+        <div class="c-back">
+          <a class="c-back__link" routerLink="/Home">
+            back to home
+          </a>
+        </div>
       </div>
       <app-card-right></app-card-right>
     </div>

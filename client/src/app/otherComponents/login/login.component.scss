@@ -64,6 +64,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   @include responsive(medium-devices) {
     padding: 2rem;
@@ -138,5 +139,22 @@
   &__submit {
     margin-top: 1rem;
     text-align: center;
+  }
+}
+.c-back {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+  &__link {
+    font-size: 0.875rem;
+    color: #2863d1cc;
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $font-dark;
+    }
   }
 }
