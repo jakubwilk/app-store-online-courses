@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isHidden = true;
-  validationMessage: string;
+  validationMessage = 'First fill out the fields correctly';
   errorMessage: string;
   success = true;
 
@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       ]]
 
     });
-    this.registerForm.valueChanges.subscribe(console.log);
+    // this.registerForm.valueChanges.subscribe(console.log);
   }
   onSubmit() {
     if (this.registerForm.valid) {
@@ -60,14 +60,9 @@ export class RegisterComponent implements OnInit {
               console.log(response);
             }
           },
-          error => {
-            console.log(error);
-          }
+          error => console.log(error)
         );
-    } else {
-      this.isHidden = false;
-      this.validationMessage = 'First fill out the fields correctly';
-    }
+    } else { this.isHidden = false; }
   }
 
   get username() {

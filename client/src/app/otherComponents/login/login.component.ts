@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isHidden = true;
-  validationMessage: string;
+  validationMessage = 'First fill out the fields correctly';
   errorMessage: string;
 
   constructor(private loginService: LoginService, private fb: FormBuilder) { }
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
             } else {
               this.isHidden = true;
               console.log('Success');
+              console.log(response);
             }
           },
           error => {
@@ -49,7 +50,6 @@ export class LoginComponent implements OnInit {
 
     } else {
       this.isHidden = false;
-      this.validationMessage = 'First fill out the fields correctly';
     }
 
   }

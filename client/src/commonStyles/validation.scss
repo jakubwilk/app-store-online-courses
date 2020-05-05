@@ -1,4 +1,9 @@
 .c-validBox {
-    color: red;
-    font-size: 0.75rem;
+    min-height: 15px;
+    &__content {
+    }
+    &__info {
+        color: #dc3545;
+        font-size: 0.75rem;
+    }
 }

@@ -27,10 +27,13 @@
             </label>
             <input formControlName="login" class="c-login-form__input" type="text" name="login" id="login"
               autocomplete="off">
-            <div class="c-validBox" *ngIf="login.invalid && (login.dirty || login.touched)">
-              <p class="c-validBox__info" *ngIf="login.errors.required">
-                Login is required
-              </p>
+
+            <div class="c-validBox">
+              <div class="c-validBox__content" *ngIf="login.invalid && (login.dirty || login.touched)">
+                <p class="c-validBox__info" *ngIf="login.errors.required">
+                  Login is required
+                </p>
+              </div>
             </div>
           </div>
 
@@ -40,16 +43,21 @@
             </label>
             <input formControlName="password" class="c-login-form__input" type="password" name="password" id="password"
               autocomplete="off">
-            <div class="c-validBox" *ngIf="password.invalid && (password.dirty || password.touched)">
-              <p class="c-validBox__info" *ngIf="password.errors.required">
-                Password is required
-              </p>
+
+            <div class="c-validBox">
+              <div class="c-validBox__content" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <p class="c-validBox__info" *ngIf="password.errors.required">
+                  Password is required
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="c-login-form__forgotpassword">
-            <p class="c-login-form__text">Forgot your password? <a href="#" title="Reset password">You can reset your
-                password here</a>!</p>
+            <p class="c-login-form__text">Forgot your password? <a href="#" title="Reset password">
+                You can reset your password here!
+              </a>
+            </p>
           </div>
 
           <div class="c-login-form__submit">
@@ -60,7 +68,7 @@
         </form>
         <div class="c-back">
           <a class="c-back__link" routerLink="/Home">
-            back to home
+            Back to home page
           </a>
         </div>
       </div>
