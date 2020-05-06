@@ -18,7 +18,7 @@ import { RegisterComponent } from './otherComponents/register/register.component
 import { CardRightComponent } from './otherComponents/card-right/card-right.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
 
 
 
@@ -39,6 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     FrontPageComponent,
     CardRightComponent,
+    DashboardComponent,
 
   ],
   imports: [
