@@ -1,241 +1,247 @@
-@import "share";
+//@import "share";
+//
+//main {
+//  background-color: #f4f4f4;
+//  min-height: 100vh;
+//}
+//
+//.c-dashboard-top {
+//}
+//
+//.c-top-bar {
+//  background-color: $bg-gradient-secondary;
+//  height: 70px;
+//
+//  & .c-welcomeblock {
+//    display: flex;
+//    align-items: center;
+//    justify-content: space-between;
+//    height: 70px;
+//
+//    &__text {
+//      color: #f8f8f8;
+//    }
+//
+//    &__logout {
+//      margin-left: 2rem;
+//      color: #f8f8f8;
+//
+//      &:hover,
+//      &:focus {
+//        color: #fff;
+//      }
+//    }
+//  }
+//}
+//
+//.c-dashboard-nav {
+//  background-color: #fff;
+//  box-shadow: 0 0 15px 0 rgba($font-dark, .1);
+//
+//  & .c-menu {
+//    display: flex;
+//    justify-content: flex-end;
+//    align-items: center;
+//    height: 60px;
+//    width: 100%;
+//    list-style: none;
+//    margin: 0;
+//    padding: 0;
+//
+//    &__item {
+//      margin-left: 2rem;
+//
+//      &:first-child {
+//        margin-left: 0;
+//      }
+//    }
+//
+//    &__link {
+//      color: $font-dark;
+//
+//      &:hover,
+//      &:focus {
+//        color: $bg-gradient-secondary;
+//      }
+//    }
+//  }
+//}
+//
+//.c-dashboard-body {
+//  height: calc(100vh - 130px);
+//  padding-top: 1.5rem;
+//  padding-bottom: 1.5rem;
+//
+//  &__title {
+//    text-transform: uppercase;
+//    font-size: 2.5rem;
+//    color: $bg-gradient-secondary;
+//  }
+//
+//  & .c-dashboard-grid {
+//    display: grid;
+//    grid-template-columns: 45% 25% 1fr;
+//    grid-template-rows: auto 1fr;
+//    grid-gap: 3rem;
+//    margin-top: 1.5rem;
+//    height: 100%;
+//
+//    & h3 {
+//      text-transform: uppercase;
+//      color: $font-dark;
+//      font-size: .9rem;
+//      margin-bottom: 1.5rem;
+//      padding: 0 1.5rem;
+//    }
+//  }
+//
+//  & .c-courses-card {
+//    @include card-style();
+//    padding: 1.5rem 0;
+//  }
+//
+//  & .c-users-card {
+//    @include card-style();
+//    padding: 1.5rem 0;
+//  }
+//
+//  & .c-card-list {
+//    overflow-y: auto;
+//    padding-left: 1.5rem;
+//    max-height: 375px;
+//
+//    & .c-trow {
+//      display: grid;
+//      grid-template-columns: 75px 1fr 150px;
+//      grid-gap: 1.5rem;
+//      margin-bottom: 1.5rem;
+//
+//      &:last-child {
+//        margin-bottom: 0;
+//      }
+//    }
+//
+//    &__image {
+//      width: 75px;
+//      height: 75px;
+//      overflow: hidden;
+//
+//      & img {
+//        width: 100%;
+//        border-radius: 50%;
+//      }
+//    }
+//
+//    &__data {
+//      & h4 {
+//        margin-bottom: 1rem;
+//      }
+//
+//      & p {
+//        white-space: nowrap;
+//        overflow: hidden;
+//        text-overflow: ellipsis;
+//        max-width: 25vw;
+//      }
+//    }
+//
+//    &__admin {
+//      padding-right: 1.5rem;
+//      display: flex;
+//      height: 100%;
+//      align-items: center;
+//      justify-content: flex-end;
+//
+//      & .c-button--manage {
+//        border: 0;
+//        background-color: $bg-gradient-secondary;
+//        color: #f4f4f4;
+//        font-family: 'Montserrat', sans-serif;
+//        font-weight: 600;
+//        padding: 8px 20px;
+//        cursor: pointer;
+//        border-radius: 5px;
+//        transition: all .1s ease-in-out;
+//
+//        &:hover,
+//        &:focus {
+//          background-color: rgba(0, 58, 187, 0.8);
+//        }
+//      }
+//    }
+//  }
+//
+//  .c-panel-nav {
+//    display: grid;
+//    grid-template-columns: repeat(2, 1fr);
+//    grid-template-rows: repeat(2, 1fr);
+//    grid-gap: 3rem;
+//
+//    & .c-button--action {
+//      border: 0;
+//      cursor: pointer;
+//      @include card-style();
+//      display: flex;
+//      align-items: center;
+//      justify-content: center;
+//      flex-direction: column;
+//
+//      & svg {
+//        height: 100px;
+//        width: 100px;
+//        fill: rgba(0, 58, 187, 0.8);
+//        opacity: .7;
+//        transition: all .1s ease-in-out;
+//      }
+//
+//      & span {
+//        display: block;
+//        margin-top: 1.5rem;
+//        font-weight: 600;
+//        font-family: 'Montserrat', sans-serif;
+//      }
+//
+//      &:hover,
+//      &:focus {
+//       & > svg {
+//         opacity: 1;
+//       }
+//      }
+//    }
+//  }
+//
+//  .c-statistics-grid {
+//    grid-row: 2;
+//    grid-column: 1 / span 2;
+//    display: grid;
+//    grid-template-columns: repeat(3, 1fr);
+//    grid-gap: 2rem;
+//
+//    & .c-statistics-card {
+//      @include card-style();
+//      padding: 1.5rem;
+//
+//      & h3 {
+//        margin: 0;
+//        padding: 0;
+//        text-transform: capitalize;
+//        font-size: 1rem;
+//        text-align: left;
+//        color: $bg-gradient-secondary;
+//      }
+//
+//      & span {
+//        font-weight: 600;
+//        font-size: 2.5rem;
+//        display: block;
+//        text-align: right;
+//      }
+//    }
+//  }
+//}
 
-main {
-  background-color: #f4f4f4;
-  min-height: 100vh;
-}
-
-.c-dashboard-top {
-}
-
-.c-top-bar {
-  background-color: $bg-gradient-secondary;
-  height: 70px;
-
-  & .c-welcomeblock {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-
-    &__text {
-      color: #f8f8f8;
-    }
-
-    &__logout {
-      margin-left: 2rem;
-      color: #f8f8f8;
-
-      &:hover,
-      &:focus {
-        color: #fff;
-      }
-    }
-  }
-}
-
-.c-dashboard-nav {
-  background-color: #fff;
-  box-shadow: 0 0 15px 0 rgba($font-dark, .1);
-
-  & .c-menu {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    &__item {
-      margin-left: 2rem;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
-    &__link {
-      color: $font-dark;
-
-      &:hover,
-      &:focus {
-        color: $bg-gradient-secondary;
-      }
-    }
-  }
-}
-
-.c-dashboard-body {
-  height: calc(100vh - 130px);
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-
-  &__title {
-    text-transform: uppercase;
-    font-size: 2.5rem;
-    color: $bg-gradient-secondary;
-  }
-
-  & .c-dashboard-grid {
-    display: grid;
-    grid-template-columns: 45% 25% 1fr;
-    grid-template-rows: auto 1fr;
-    grid-gap: 3rem;
-    margin-top: 1.5rem;
-    height: 100%;
-
-    & h3 {
-      text-transform: uppercase;
-      color: $font-dark;
-      font-size: .9rem;
-      margin-bottom: 1.5rem;
-      padding: 0 1.5rem;
-    }
-  }
-
-  & .c-courses-card {
-    @include card-style();
-    padding: 1.5rem 0;
-  }
-
-  & .c-users-card {
-    @include card-style();
-    padding: 1.5rem 0;
-  }
-
-  & .c-card-list {
-    overflow-y: auto;
-    padding-left: 1.5rem;
-    max-height: 375px;
-
-    & .c-trow {
-      display: grid;
-      grid-template-columns: 75px 1fr 150px;
-      grid-gap: 1.5rem;
-      margin-bottom: 1.5rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    &__image {
-      width: 75px;
-      height: 75px;
-      overflow: hidden;
-
-      & img {
-        width: 100%;
-        border-radius: 50%;
-      }
-    }
-
-    &__data {
-      & h4 {
-        margin-bottom: 1rem;
-      }
-
-      & p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 25vw;
-      }
-    }
-
-    &__admin {
-      padding-right: 1.5rem;
-      display: flex;
-      height: 100%;
-      align-items: center;
-      justify-content: flex-end;
-
-      & .c-button--manage {
-        border: 0;
-        background-color: $bg-gradient-secondary;
-        color: #f4f4f4;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        padding: 8px 20px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: all .1s ease-in-out;
-
-        &:hover,
-        &:focus {
-          background-color: rgba(0, 58, 187, 0.8);
-        }
-      }
-    }
-  }
-
-  .c-panel-nav {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 3rem;
-
-    & .c-button--action {
-      border: 0;
-      cursor: pointer;
-      @include card-style();
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-      & svg {
-        height: 100px;
-        width: 100px;
-        fill: rgba(0, 58, 187, 0.8);
-        opacity: .7;
-        transition: all .1s ease-in-out;
-      }
-
-      & span {
-        display: block;
-        margin-top: 1.5rem;
-        font-weight: 600;
-        font-family: 'Montserrat', sans-serif;
-      }
-
-      &:hover,
-      &:focus {
-       & > svg {
-         opacity: 1;
-       }
-      }
-    }
-  }
-
-  .c-statistics-grid {
-    grid-row: 2;
-    grid-column: 1 / span 2;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-
-    & .c-statistics-card {
-      @include card-style();
-      padding: 1.5rem;
-
-      & h3 {
-        margin: 0;
-        padding: 0;
-        text-transform: capitalize;
-        font-size: 1rem;
-        text-align: left;
-        color: $bg-gradient-secondary;
-      }
-
-      & span {
-        font-weight: 600;
-        font-size: 2.5rem;
-        display: block;
-        text-align: right;
-      }
-    }
-  }
+.c-dashboard {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
 }
