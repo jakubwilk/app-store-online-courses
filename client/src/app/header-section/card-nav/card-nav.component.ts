@@ -8,7 +8,6 @@ import { LoginService } from '../../services/login.service';
 })
 export class CardNavComponent implements OnInit {
   itemsOfMenu: string[] = ['home', 'courses', 'events', 'pages', 'blog', 'contact'];
-  itemsOfUser: string[] = ['login', 'register'];
   isHidden: boolean = true;
 
 
