@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Login } from '../../interfaces/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   validationMessage = 'First fill out the fields correctly';
   errorMessage: string;
 
-  constructor(private loginService: LoginService, private fb: FormBuilder) { }
+  constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -29,6 +30,11 @@ export class LoginComponent implements OnInit {
     // this.loginForm.valueChanges.subscribe(console.log);
   }
   onSubmit() {
+    this.loginUser();
+
+
+  }
+  loginUser() {
     if (this.loginForm.valid) {
       this.loginService.loginUser(this.loginForm.value)
         .subscribe(
@@ -40,6 +46,9 @@ export class LoginComponent implements OnInit {
               this.isHidden = true;
               console.log('Success');
               console.log(response);
+              localStorage.setItem('token', response.authToken);
+
+              this.router.navigate(['/home']);
             }
           },
           error => {

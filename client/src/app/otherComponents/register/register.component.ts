@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register.service';
 import { Register } from '../../interfaces/register';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor(private register: RegisterService, private fb: FormBuilder) { }
+  constructor(private register: RegisterService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -46,6 +47,10 @@ export class RegisterComponent implements OnInit {
     // this.registerForm.valueChanges.subscribe(console.log);
   }
   onSubmit() {
+    this.registerUser();
+  }
+
+  registerUser() {
     if (this.registerForm.valid) {
       this.register.registerUser(this.registerForm.value)
         .subscribe(
@@ -58,13 +63,17 @@ export class RegisterComponent implements OnInit {
               this.success = false;
               this.isHidden = true;
               console.log(response);
+
+              setTimeout(() => {
+                this.router.navigate(['/login']);
+              }, 1000);
+
             }
           },
           error => console.log(error)
         );
     } else { this.isHidden = false; }
   }
-
   get username() {
     return this.registerForm.get('username');
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-card-nav',
@@ -11,7 +12,7 @@ export class CardNavComponent implements OnInit {
   isHidden: boolean = true;
 
 
-  constructor(private eRef: ElementRef) {
+  constructor(private eRef: ElementRef, public loginService: LoginService) {
   }
 
   ngOnInit(): void {

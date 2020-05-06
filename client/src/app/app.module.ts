@@ -7,7 +7,7 @@ import { CardNavComponent } from './header-section/card-nav/card-nav.component';
 import { HeaderComponent } from './header-section/header/header.component';
 import { MainComponent } from './main-section/main/main.component';
 import { CardCategoriesComponent } from './main-section/card-categories/card-categories.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CardCoursesComponent } from './main-section/card-courses/card-courses.component';
 import { CardOpinionsComponent } from './main-section/card-opinions/card-opinions.component';
 import { CardInvitationComponent } from './main-section/card-invitation/card-invitation.component';
@@ -19,6 +19,7 @@ import { CardRightComponent } from './otherComponents/card-right/card-right.comp
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 
@@ -50,7 +51,13 @@ import { DashboardComponent } from './otherComponents/dashboard/dashboard.compon
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
