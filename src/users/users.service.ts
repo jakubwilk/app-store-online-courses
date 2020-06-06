@@ -131,4 +131,8 @@ export class UsersService {
 
         return { statusCode: 200, type: 'success', message: user };
     }
+
+    async editUserData() {
+        return 'user';
+    }
 }
