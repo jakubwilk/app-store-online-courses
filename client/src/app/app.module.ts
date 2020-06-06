@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { DashboardIndexComponent } from './otherComponents/dashboard/dashboard-index/dashboard-index.component';
+import { DashboardNavigationComponent } from './otherComponents/dashboard/dashboard-navigation/dashboard-navigation.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -41,6 +44,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     FrontPageComponent,
     CardRightComponent,
     DashboardComponent,
+    DashboardIndexComponent,
+    DashboardNavigationComponent,
 
   ],
   imports: [
@@ -56,7 +61,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

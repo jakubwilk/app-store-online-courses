@@ -4,6 +4,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { LoginComponent } from './otherComponents/login/login.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
 import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
