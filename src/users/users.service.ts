@@ -121,4 +121,14 @@ export class UsersService {
 
         return validationMessage(400, HttpStatusMessage.BadRequest, 'login', ValidationErrorMessage.LoginDoesntExist);
     }
+
+    async getUserData(id: number) {
+        const user = await this.usersRepository.findOne({ id: id });
+
+        if (!user) {
+            return { statusCode: 200, type: 'error', message: 'User not found' };
+        }
+
+        return { statusCode: 200, type: 'success', message: user };
+    }
 }
