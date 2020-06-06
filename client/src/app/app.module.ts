@@ -17,6 +17,8 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
 import { CardRightComponent } from './otherComponents/card-right/card-right.component';
 import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
+import { DashboardIndexComponent } from './otherComponents/dashboard/dashboard-index/dashboard-index.component';
+import { DashboardNavigationComponent } from './otherComponents/dashboard/dashboard-navigation/dashboard-navigation.component';
 
 
 
@@ -37,6 +39,8 @@ import { DashboardComponent } from './otherComponents/dashboard/dashboard.compon
     FrontPageComponent,
     CardRightComponent,
     DashboardComponent,
+    DashboardIndexComponent,
+    DashboardNavigationComponent,
 
   ],
   imports: [

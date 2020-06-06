@@ -1,0 +1,26 @@
+<aside class="c-dashboard-panel">
+  <div class="wrapper-fluid">
+    <div class="c-top-bar">
+      <div class="c-user-avatar">
+        <img src="https://i.imgur.com/btjRBVI.jpg" alt="" />
+      </div>
+      <ul class="c-nav">
+        <li class="c-nav__item">admin</li>
+        <li class="c-nav__item">
+          <a class="c-nav__link" href="#">Profile</a>
+        </li>
+        <li class="c-nav__item">
+          <a class="c-nav__link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div class="c-main-bar">
+      <ul class="c-nav">
+        <li class="c-nav__item">Dashboard</li>
+        <li class="c-nav__item" *ngFor="let link of links">
+          <a class="c-nav__link" [href]="link.href">{{ link.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</aside>
