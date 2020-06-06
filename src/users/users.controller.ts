@@ -27,9 +27,9 @@ export class UsersController {
         return this.usersService.loginUser(login, password);
     }
 
-    @Get('verify')
+    @Get('verify/:token')
     checkUserToken(@Req() req) {
-        const { token } = req;
+        const { token } = req.params;
         return this.usersService.verifyToken(token)
     }
 }
