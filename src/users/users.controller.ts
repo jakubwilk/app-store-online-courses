@@ -20,7 +20,6 @@ export class UsersController {
     }
 
     @Post('login')
-    @HttpCode(200)
     loginUser(@Body() existingUser: ExistingUserDto) {
         const { login, password } = existingUser;
 
@@ -30,6 +29,20 @@ export class UsersController {
     @Get('verify')
     checkUserToken(@Req() req) {
         const { token } = req;
-        return this.usersService.verifyToken(token)
+        return this.usersService.verifyToken(token);
+    }
+
+    @Get('user/:id')
+    getUser(@Req() req) {
+        const { id } = req.params;
+        
+        return this.usersService.getUserData(id);
+    }
+
+    @Post('edit')
+    editUser(@Req() req) {
+        const { username } = req.params;
+
+        return username;
     }
 }
