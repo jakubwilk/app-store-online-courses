@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { ValidationErrorMessage } from '../resources/validation.resources';
+import { ErrorMessage, SuccessMessage } from '../resources/base.resources';
+import { HttpStatusMessage } from '../resources/http.resources';
 import { Categories } from './categories.entity';
+import { CategoriesDto } from './categoriesDto';
+import { validationMessage } from '../utils/customMessages';
 
 @Injectable()
 export class CategoriesService {
@@ -65,5 +70,28 @@ export class CategoriesService {
                 coverPhoto: 'https://i.imgur.com/cjli7SU.jpg'
             }
         ]
+    }
+
+    async addCategory(category: CategoriesDto) {
+        const { name, description, coverPhoto, isVisible } = category;
+
+        const categoryName = await this.categoriesRepository.findOne({ name: name });
+        if (categoryName) {
+            return { statusCode: 200, type: 'error', message: 'Category with this name actually exists' };
+        }
+
+        const Category = new Categories();
+        Category.name = name;
+        Category.description = description;
+        Category.coverPhoto = '';
+        Category.isVisible =  isVisible;
+
+        const query = await this.categoriesRepository.save(Category);
+
+        if (query) {
+            return { statusCode: 201, success: HttpStatusMessage.Created, messages: SuccessMessage.CategoryCrated };
+        } else {
+            return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
+        }
     }
 }

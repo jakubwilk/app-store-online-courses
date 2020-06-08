@@ -126,7 +126,7 @@ export class UsersService {
         const user = await this.usersRepository.findOne({ id: id });
 
         if (!user) {
-            return { statusCode: 200, type: 'error', message: 'User not found' };
+            return { statusCode: 400, type: 'error', message: 'User not found' };
         }
 
         return { statusCode: 200, type: 'success', message: user };
