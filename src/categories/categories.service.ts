@@ -94,4 +94,37 @@ export class CategoriesService {
             return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
         }
     }
+
+    async editCategory(category: CategoriesDto, id: number) {
+        const { name, description, isVisible } = category;
+
+        const _category = await this.categoriesRepository.findOne({ id: id });
+
+        if (!_category) {
+            return { statusCode: 400, type: 'error', message: 'Category not found' };
+        }
+
+        _category.name = name;
+        _category.description = description;
+        _category.coverPhoto = '';
+        _category.isVisible = isVisible;
+
+        const query = await this.categoriesRepository.save(_category);
+
+        if (!query) {
+            return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
+        }
+
+        return { statusCode: 200, type: 'success', message: 'Category updated' };
+    }
+
+    async getCategory(id: number) {
+        const category = await this.categoriesRepository.findOne({ id: id });
+
+        if (!category) {
+            return { statusCode: 400, type: 'error', message: 'Category not found' };
+        }
+
+        return { statusCode: 200, type: 'success', message: category };
+    }
 }
