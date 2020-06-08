@@ -118,6 +118,22 @@ export class CategoriesService {
         return { statusCode: 200, type: 'success', message: 'Category updated' };
     }
 
+    async deleteCategory(id: number) {
+        const category = await this.categoriesRepository.findOne({ id: id });
+
+        if (!category) {
+            return { statusCode: 400, type: 'error', message: 'Category not found' };
+        }
+
+        const query = await this.categoriesRepository.delete({ id: id });
+
+        if (!query) {
+            return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
+        }
+
+        return { statusCode: 200, type: 'success', message: 'Category removed' };
+    }
+
     async getCategory(id: number) {
         const category = await this.categoriesRepository.findOne({ id: id });
 

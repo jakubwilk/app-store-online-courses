@@ -28,6 +28,14 @@ export class CategoriesController {
         return this.categoriesService.editCategory(category, id);
     }
 
+    @Post('delete')
+    deleteCategory(@Req() req) {
+        const { id } = req.body;
+
+        return this.categoriesService.deleteCategory(id);
+    }
+
+
     @Get('category/:id')
     getCategory(@Req() req) {
         const { id } = req.params;
