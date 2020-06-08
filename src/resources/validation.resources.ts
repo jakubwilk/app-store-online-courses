@@ -13,5 +13,9 @@ export const ValidationErrorMessage = {
     PasswordIncorrect: 'Password contains illegal characters',
     PasswordsAreNotTheSame: 'Passwords must be the same',
     PasswordWrong: 'Password is wrong',
-    AccountRequired: 'Account type is required'
+    AccountRequired: 'Account type is required',
+    CategoryTitleRequired: 'Category title is required',
+    CategoryTitleWrongFormat: 'Category title contains illegal characters',
+    CategoryTitleTooShort: 'Category title is too short. Required minimum 3 characters',
+    CategoryDescriptionWrongFormat: 'Category description contains illegal characters',
 }
