@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Login } from '../../interfaces/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
+import { filter, pairwise } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -27,34 +28,48 @@ export class LoginComponent implements OnInit {
       ]]
 
     });
-    // this.loginForm.valueChanges.subscribe(console.log);
+    // this.router.events
+    //   .pipe(filter((e: any) => e instanceof RoutesRecognized),
+    //     pairwise()
+    //   ).subscribe((e: any) => {
+    //     if (localStorage.getItem('token')) {
+    //       //this.router.navigateByUrl(e[0].urlAfterRedirects); // previous url
+    //     }
+    //   });
   }
   onSubmit() {
     this.loginUser();
 
 
   }
+  verifyUser() {
+    this.loginService.verifyUser()
+      .subscribe(response => {
+        if (response === true) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/home']);
+        }
+      });
+
+  }
   loginUser() {
     if (this.loginForm.valid) {
       this.loginService.loginUser(this.loginForm.value)
-        .subscribe(
-          response => {
-            if (response.statusCode === 400) {
-              this.errorMessage = response.message[0].constraints.value;
-              this.isHidden = false;
-            } else {
-              this.isHidden = true;
-              console.log('Success');
-              console.log(response);
-              localStorage.setItem('token', response.authToken);
-
-              this.router.navigate(['/home']);
-            }
-          },
-          error => {
-            console.log(error);
+        .subscribe(response => {
+          if (response.statusCode === 400) {
+            this.errorMessage = response.message[0].constraints.value;
+            this.isHidden = false;
+          } else {
+            this.isHidden = true;
+            localStorage.setItem('token', response.authToken);
+            this.verifyUser();
 
           }
+        }, error => {
+          console.log(error);
+
+        }
         );
 
     } else {

@@ -13,12 +13,18 @@ import { Router } from '@angular/router';
 export class LoginService {
 
   private loginUrl = 'http://localhost:44125/users/login';
+  private verifyTokenUrl = 'http://localhost:44125/users/verify';
 
   constructor(private http: HttpClient, private router: Router) { }
 
   public loginUser(user): Observable<any> {
     return this.http.post<any>(this.loginUrl, user)
       .pipe(catchError(this.errorHandler));
+  }
+
+  public verifyUser(): Observable<any> {
+    return this.http.get<any>(`${this.verifyTokenUrl}/${localStorage.getItem('token')}`);
+
   }
 
   errorHandler(error: HttpErrorResponse) {
