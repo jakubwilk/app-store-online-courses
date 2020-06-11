@@ -35,7 +35,6 @@ export class CategoriesController {
         return this.categoriesService.deleteCategory(id);
     }
 
-
     @Get('category/:id')
     getCategory(@Req() req) {
         const { id } = req.params;
