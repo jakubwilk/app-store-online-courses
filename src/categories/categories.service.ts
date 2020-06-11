@@ -1,24 +1,26 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { ValidationErrorMessage } from '../resources/validation.resources';
-import { ErrorMessage, SuccessMessage } from '../resources/base.resources';
-import { HttpStatusMessage } from '../resources/http.resources';
-import { Categories } from './categories.entity';
-import { CategoriesDto } from './categoriesDto';
-import { validationMessage } from '../utils/customMessages';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+import {ValidationErrorMessage} from '../resources/validation.resources';
+import {ErrorMessage, SuccessMessage} from '../resources/base.resources';
+import {HttpStatusMessage} from '../resources/http.resources';
+import {Categories} from './categories.entity';
+import {CategoriesDto} from './categoriesDto';
+import {validationMessage} from '../utils/customMessages';
+import {imageFileFilter} from "../utils/upload-file";
 
 @Injectable()
 export class CategoriesService {
     constructor(
         @InjectRepository(Categories)
         private categoriesRepository: Repository<Categories>,
-    ) {}
-    
+    ) {
+    }
+
     async displayAllCategories(): Promise<Categories[]> {
         return this.categoriesRepository.find();
     }
-    
+
     async displayPopularCategories() {
         return [
             {
@@ -72,36 +74,41 @@ export class CategoriesService {
         ]
     }
 
-    async addCategory(category: CategoriesDto) {
-        const { name, description, coverPhoto, isVisible } = category;
+    async addCategory(category: CategoriesDto, file) {
+        const {name, description, isVisible} = category;
 
-        const categoryName = await this.categoriesRepository.findOne({ name: name });
+        const imageError = imageFileFilter(file.originalname);
+        if (!imageError) {
+            return {statusCode: 400, type: 'error', message: imageError}
+        }
+
+        const categoryName = await this.categoriesRepository.findOne({name: name});
         if (categoryName) {
-            return { statusCode: 200, type: 'error', message: 'Category with this name actually exists' };
+            return {statusCode: 400, type: 'error', message: 'Category with this name actually exists'};
         }
 
         const Category = new Categories();
         Category.name = name;
         Category.description = description;
         Category.coverPhoto = '';
-        Category.isVisible =  isVisible;
+        Category.isVisible = isVisible;
 
         const query = await this.categoriesRepository.save(Category);
 
         if (query) {
-            return { statusCode: 201, success: HttpStatusMessage.Created, messages: SuccessMessage.CategoryCrated };
+            return {statusCode: 201, success: HttpStatusMessage.Created, messages: SuccessMessage.CategoryCrated};
         } else {
             return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
         }
     }
 
     async editCategory(category: CategoriesDto, id: number) {
-        const { name, description, isVisible } = category;
+        const {name, description, isVisible} = category;
 
-        const _category = await this.categoriesRepository.findOne({ id: id });
+        const _category = await this.categoriesRepository.findOne({id: id});
 
         if (!_category) {
-            return { statusCode: 400, type: 'error', message: 'Category not found' };
+            return {statusCode: 400, type: 'error', message: 'Category not found'};
         }
 
         _category.name = name;
@@ -115,32 +122,32 @@ export class CategoriesService {
             return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
         }
 
-        return { statusCode: 200, type: 'success', message: 'Category updated' };
+        return {statusCode: 200, type: 'success', message: 'Category updated'};
     }
 
     async deleteCategory(id: number) {
-        const category = await this.categoriesRepository.findOne({ id: id });
+        const category = await this.categoriesRepository.findOne({id: id});
 
         if (!category) {
-            return { statusCode: 400, type: 'error', message: 'Category not found' };
+            return {statusCode: 400, type: 'error', message: 'Category not found'};
         }
 
-        const query = await this.categoriesRepository.delete({ id: id });
+        const query = await this.categoriesRepository.delete({id: id});
 
         if (!query) {
             return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
         }
 
-        return { statusCode: 200, type: 'success', message: 'Category removed' };
+        return {statusCode: 200, type: 'success', message: 'Category removed'};
     }
 
     async getCategory(id: number) {
-        const category = await this.categoriesRepository.findOne({ id: id });
+        const category = await this.categoriesRepository.findOne({id: id});
 
         if (!category) {
-            return { statusCode: 400, type: 'error', message: 'Category not found' };
+            return {statusCode: 400, type: 'error', message: 'Category not found'};
         }
 
-        return { statusCode: 200, type: 'success', message: category };
+        return {statusCode: 200, type: 'success', message: category};
     }
 }
