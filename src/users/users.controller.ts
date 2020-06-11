@@ -20,16 +20,15 @@ export class UsersController {
     }
 
     @Post('login')
-    // @HttpCode(200)
     loginUser(@Body() existingUser: ExistingUserDto) {
         const { login, password } = existingUser;
 
         return this.usersService.loginUser(login, password);
     }
 
-    @Get('verify/:token')
+    @Get('auth/:token')
     checkUserToken(@Req() req) {
         const { token } = req.params;
-        return this.usersService.verifyToken(token)
+        return this.usersService.checkToken(token)
     }
 }
