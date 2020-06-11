@@ -31,4 +31,18 @@ export class UsersController {
         const { token } = req.params;
         return this.usersService.checkToken(token)
     }
+
+    @Get('user/:id')
+    getUser(@Req() req) {
+        const { id } = req.params;
+        
+        return this.usersService.getUserData(id);
+    }
+
+    @Post('edit')
+    editUser(@Req() req) {
+        const { username } = req.params;
+
+        return username;
+    }
 }
