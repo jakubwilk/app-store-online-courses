@@ -21,8 +21,14 @@
           <li class="l-footer-link">
             <a href="#">Twitter</a>
           </li>
+
         </ul>
       </div>
     </div>
   </div>
 </footer>
+<div class="c-dashboard" *ngIf="idOfUser===1">
+  <a class="c-dashboard__link" routerLink="/dashboard">
+    Dashboard
+  </a>
+</div>

@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   isHidden = true;
   validationMessage = 'First fill out the fields correctly';
   errorMessage: string;
+  idOfUser: number;
 
   constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) { }
 
@@ -39,20 +40,8 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.loginUser();
-
-
   }
-  verifyUser() {
-    this.loginService.verifyUser()
-      .subscribe(response => {
-        if (response === true) {
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.router.navigate(['/home']);
-        }
-      });
 
-  }
   loginUser() {
     if (this.loginForm.valid) {
       this.loginService.loginUser(this.loginForm.value)
@@ -63,12 +52,12 @@ export class LoginComponent implements OnInit {
           } else {
             this.isHidden = true;
             localStorage.setItem('token', response.authToken);
-            this.verifyUser();
+            this.router.navigate(['home']);
+
 
           }
         }, error => {
           console.log(error);
-
         }
         );
 

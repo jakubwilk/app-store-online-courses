@@ -5,13 +5,15 @@ import { LoginComponent } from './otherComponents/login/login.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
 import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
+import { RoleGuard } from './guard/role.guard';
 
 
 
 const routes: Routes = [
   {
     path: 'home',
-    component: FrontPageComponent
+    component: FrontPageComponent,
+
   },
   {
     path: 'register',
@@ -30,7 +32,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [RoleGuard]
   }
 ];
 

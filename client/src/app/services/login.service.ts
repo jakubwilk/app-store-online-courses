@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Subscriber } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Login } from '../interfaces/login';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginService {
 
   private loginUrl = 'http://localhost:44125/users/login';
-  private verifyTokenUrl = 'http://localhost:44125/users/verify';
+  private verifyTokenUrl = 'http://localhost:44125/users/auth';
 
   constructor(private http: HttpClient, private router: Router) { }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  idOfUser: number;
 
-  constructor() { }
+
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
+    this.verifyUser();
   }
-
+  verifyUser() {
+    this.loginService.verifyUser()
+      .subscribe(response => {
+        this.idOfUser = response.userId;
+      });
+  }
 }
+

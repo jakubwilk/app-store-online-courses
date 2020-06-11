@@ -23,6 +23,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { DashboardIndexComponent } from './otherComponents/dashboard/dashboard-index/dashboard-index.component';
 import { DashboardNavigationComponent } from './otherComponents/dashboard/dashboard-navigation/dashboard-navigation.component';
 import { AuthGuard } from './guard/auth.guard';
+import { RoleGuard } from './guard/role.guard';
 
 
 
@@ -62,7 +63,8 @@ import { AuthGuard } from './guard/auth.guard';
       useClass: TokenInterceptorService,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    RoleGuard
   ],
   bootstrap: [AppComponent]
 })

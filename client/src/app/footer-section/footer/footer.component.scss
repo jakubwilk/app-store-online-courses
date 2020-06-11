@@ -1,4 +1,4 @@
-@import 'share';
+@import "share";
 
 .l-footer {
   background-color: $font-dark;
@@ -47,13 +47,13 @@
       }
 
       & p {
-        font-size: .9rem;
+        font-size: 0.9rem;
         color: #808080;
 
         & a {
           color: #808080;
           text-decoration: none;
-          transition: all .1s ease-in-out;
+          transition: all 0.1s ease-in-out;
 
           &:hover,
           &:focus {
@@ -82,10 +82,10 @@
           }
 
           & a {
-            font-size: .9rem;
+            font-size: 0.9rem;
             color: #808080;
             text-decoration: none;
-            transition: all .1s ease-in-out;
+            transition: all 0.1s ease-in-out;
 
             &:focus,
             &:hover {
@@ -96,6 +96,24 @@
           }
         }
       }
+    }
+  }
+}
+.c-dashboard {
+  width: 100%;
+  padding: 2.5rem;
+  display: flex;
+  justify-content: center;
+
+  &__link {
+    text-decoration: none;
+    color: $font-dark;
+    font-size: 0.875rem;
+    transition: all 0.1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: #2863d1cc;
     }
   }
 }
