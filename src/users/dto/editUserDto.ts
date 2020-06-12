@@ -1,5 +1,5 @@
-import { Length, IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import { ValidationErrorMessage } from "../../resources/validation.resources";
+import {Length, IsEmail, IsNotEmpty, MinLength} from 'class-validator';
+import {ValidationErrorMessage} from "../../resources/validation.resources";
 
 export class EditUserDto {
     username: string;

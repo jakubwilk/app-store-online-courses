@@ -75,6 +75,7 @@
     position: relative;
     padding: 1.2rem;
     border-bottom: 1px solid rgba($border-menu-primary, 0.2);
+    text-transform: capitalize;
 
     @include responsive(medium-devices) {
       border: none;

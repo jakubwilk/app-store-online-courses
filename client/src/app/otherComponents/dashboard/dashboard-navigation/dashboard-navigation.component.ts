@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoginService } from '../../../services/login.service';
 @Component({
   selector: 'app-dashboard-navigation',
   templateUrl: './dashboard-navigation.component.html',
@@ -23,7 +23,7 @@ export class DashboardNavigationComponent implements OnInit {
       href: '#'
     }
   ];
-  constructor() { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
   }

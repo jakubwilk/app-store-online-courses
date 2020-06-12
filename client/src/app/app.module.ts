@@ -7,7 +7,7 @@ import { CardNavComponent } from './header-section/card-nav/card-nav.component';
 import { HeaderComponent } from './header-section/header/header.component';
 import { MainComponent } from './main-section/main/main.component';
 import { CardCategoriesComponent } from './main-section/card-categories/card-categories.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CardCoursesComponent } from './main-section/card-courses/card-courses.component';
 import { CardOpinionsComponent } from './main-section/card-opinions/card-opinions.component';
 import { CardInvitationComponent } from './main-section/card-invitation/card-invitation.component';
@@ -16,9 +16,15 @@ import { LoginComponent } from './otherComponents/login/login.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { RegisterComponent } from './otherComponents/register/register.component';
 import { CardRightComponent } from './otherComponents/card-right/card-right.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './otherComponents/dashboard/dashboard.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 import { DashboardIndexComponent } from './otherComponents/dashboard/dashboard-index/dashboard-index.component';
 import { DashboardNavigationComponent } from './otherComponents/dashboard/dashboard-navigation/dashboard-navigation.component';
+import { AuthGuard } from './guard/auth.guard';
+import { RoleGuard } from './guard/role.guard';
+
 
 
 
@@ -47,9 +53,19 @@ import { DashboardNavigationComponent } from './otherComponents/dashboard/dashbo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    AuthGuard,
+    RoleGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

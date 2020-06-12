@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-card-nav',
@@ -7,11 +8,10 @@ import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 })
 export class CardNavComponent implements OnInit {
   itemsOfMenu: string[] = ['home', 'courses', 'events', 'pages', 'blog', 'contact'];
-  itemsOfUser: string[] = ['login', 'register'];
   isHidden: boolean = true;
 
 
-  constructor(private eRef: ElementRef) {
+  constructor(private eRef: ElementRef, public loginService: LoginService) {
   }
 
   ngOnInit(): void {
