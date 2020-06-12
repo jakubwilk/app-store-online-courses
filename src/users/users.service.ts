@@ -55,7 +55,7 @@ export class UsersService {
         try {
             return await jwt.verify(token, process.env.JWT_SECRET);
         } catch(err) {
-            return { userId: 0, username: null, message: "Invalid token" }
+            return { userId: 0, username: null, message: ValidationErrorMessage.InvalidToken }
         }
     }
 
@@ -138,7 +138,7 @@ export class UsersService {
         const user = await this.usersRepository.findOne({id: id});
 
         if (!user) {
-            return {statusCode: 400, type: 'error', message: 'User not found'};
+            return {statusCode: 400, type: 'error', message: ValidationErrorMessage.UserNotFound};
         }
 
         return {statusCode: 200, type: 'success', message: user};

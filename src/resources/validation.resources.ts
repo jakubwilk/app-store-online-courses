@@ -18,4 +18,11 @@ export const ValidationErrorMessage = {
     CategoryTitleWrongFormat: 'Category title contains illegal characters',
     CategoryTitleTooShort: 'Category title is too short. Required minimum 3 characters',
     CategoryDescriptionWrongFormat: 'Category description contains illegal characters',
+    UserNotFound: 'User not found',
+    InvalidToken: 'Invalid token',
+    CategoryNotFound: 'Category not found',
+    CategoryExist: 'Category with this name actually exists',
+    CategoryUpdated: 'Category updated',
+    CategoryRemoved: 'Category removed',
+    CategoryRemovedWithoutItems: 'Category removed and all related courses change category to Not Set',
 }

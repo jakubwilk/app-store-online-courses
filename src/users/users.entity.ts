@@ -24,6 +24,21 @@ export class Users {
     @UpdateDateColumn({type: 'timestamp'})
     updated: Date;
 
+    @Column()
+    first_name: string;
+
+    @Column()
+    last_name: string;
+
+    @Column()
+    phone_number: string;
+
+    @Column()
+    website: string;
+
+    @Column()
+    description: string;
+
     @BeforeInsert()
     async hashPassword() {
         this.password = await argon2.hash(this.password);
