@@ -7,7 +7,6 @@ import {HttpStatusMessage} from '../resources/http.resources';
 import {Categories} from './categories.entity';
 import {CategoriesDto} from './categoriesDto';
 import {validationMessage} from '../utils/customMessages';
-import {imageFileFilter} from "../utils/upload-file";
 
 @Injectable()
 export class CategoriesService {
@@ -76,11 +75,8 @@ export class CategoriesService {
 
     async addCategory(category: CategoriesDto, file) {
         const {name, description, isVisible} = category;
-
-        const imageError = imageFileFilter(file.originalname);
-        if (!imageError) {
-            return {statusCode: 400, type: 'error', message: imageError}
-        }
+        const path = 'http://localhost:44125/src/uploads/';
+        const filename = file === undefined ? null : file.originalFileName;
 
         const categoryName = await this.categoriesRepository.findOne({name: name});
         if (categoryName) {
@@ -90,7 +86,7 @@ export class CategoriesService {
         const Category = new Categories();
         Category.name = name;
         Category.description = description;
-        Category.coverPhoto = '';
+        Category.coverPhoto = path + filename;
         Category.isVisible = isVisible;
 
         const query = await this.categoriesRepository.save(Category);

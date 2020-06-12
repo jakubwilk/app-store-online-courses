@@ -12,6 +12,7 @@ import {TestimonialsModule} from './testimonials/testimonials.module';
 import {Testimonials} from './testimonials/testimonials.entity';
 import {UsersModule} from './users/users.module';
 import {Users} from './users/users.entity';
+import {MulterModule} from "@nestjs/platform-express";
 
 @Module({
     imports: [
@@ -30,6 +31,9 @@ import {Users} from './users/users.entity';
             cli: {
                 "migrationsDir": "src/migrations"
             }
+        }),
+        MulterModule.register({
+            dest: '/uploads'
         }),
         CategoriesModule,
         CoursesModule,

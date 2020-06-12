@@ -1,7 +1,19 @@
-import {Controller, Get, Post, Body, Req, UseInterceptors, UploadedFile} from '@nestjs/common';
+import {Controller, Get, Post, Body, Req, UseInterceptors, UploadedFile, Res, Param} from '@nestjs/common';
 import {CategoriesService} from './categories.service';
 import {CategoriesDto} from "./categoriesDto";
 import {FileInterceptor} from "@nestjs/platform-express";
+import { diskStorage } from "multer";
+import { extname } from 'path';
+
+export const editFileName = (req, file, callback) => {
+    const name = file.originalname.split('.')[0];
+    const fileExtName = extname(file.originalname);
+    const randomName = Array(4)
+        .fill(null)
+        .map(() => Math.round(Math.random() * 16).toString(16))
+        .join('');
+    callback(null, `${name}-${randomName}${fileExtName}`);
+};
 
 @Controller('categories')
 export class CategoriesController {
@@ -19,7 +31,12 @@ export class CategoriesController {
     }
 
     @Post('create')
-    @UseInterceptors(FileInterceptor('file'))
+    @UseInterceptors(FileInterceptor('file', {
+        storage: diskStorage({
+            destination: './uploads',
+            filename: editFileName
+        })
+    }))
     createCategory(@Body() category, @UploadedFile() file) {
         return this.categoriesService.addCategory(category, file);
     }
@@ -43,5 +60,10 @@ export class CategoriesController {
         const {id} = req.params;
 
         return this.categoriesService.getCategory(id);
+    }
+
+    @Get(':path')
+    seeUploadedFile(@Param('path') image, @Res() res) {
+        return res.sendFile(image, { root: './uploads' });
     }
 }
