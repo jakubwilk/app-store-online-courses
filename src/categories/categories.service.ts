@@ -84,7 +84,7 @@ export class CategoriesService {
 
         const categoryName = await this.categoriesRepository.findOne({name: name});
         if (categoryName) {
-            return {statusCode: 400, type: 'error', message: 'Category with this name actually exists'};
+            return {statusCode: 400, type: 'error', message: ValidationErrorMessage.CategoryExist};
         }
 
         const Category = new Categories();
@@ -110,7 +110,7 @@ export class CategoriesService {
         const _category = await this.categoriesRepository.findOne({id: id});
 
         if (!_category) {
-            return {statusCode: 400, type: 'error', message: 'Category not found'};
+            return {statusCode: 400, type: 'error', message: ValidationErrorMessage.CategoryNotFound};
         }
 
         _category.name = name;
@@ -127,14 +127,14 @@ export class CategoriesService {
             return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
         }
 
-        return {statusCode: 200, type: 'success', message: 'Category updated'};
+        return {statusCode: 200, type: 'success', message: ValidationErrorMessage.CategoryUpdated};
     }
 
     async deleteCategory(id: number) {
         const category = await this.categoriesRepository.findOne({id: id});
 
         if (!category) {
-            return {statusCode: 400, type: 'error', message: 'Category not found'};
+            return {statusCode: 400, type: 'error', message: ValidationErrorMessage.CategoryNotFound};
         }
 
         const query = await this.categoriesRepository.delete({id: id});
@@ -154,17 +154,17 @@ export class CategoriesService {
                 return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
             }
 
-            return {statusCode: 200, type: 'success', message: 'Category removed and all related courses change category to Not Set'};
+            return {statusCode: 200, type: 'success', message: ValidationErrorMessage.CategoryRemovedWithoutItems};
         }
 
-        return {statusCode: 200, type: 'success', message: 'Category removed'};
+        return {statusCode: 200, type: 'success', message: ValidationErrorMessage.CategoryRemoved};
     }
 
     async getCategory(id: number) {
         const category = await this.categoriesRepository.findOne({id: id});
 
         if (!category) {
-            return {statusCode: 400, type: 'error', message: 'Category not found'};
+            return {statusCode: 400, type: 'error', message: ValidationErrorMessage.CategoryNotFound};
         }
 
         return {statusCode: 200, type: 'success', message: category};
