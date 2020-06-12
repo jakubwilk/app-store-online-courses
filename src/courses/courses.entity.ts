@@ -24,7 +24,7 @@ export class Courses {
     coverPhoto: string;
 
     @Column()
-    category: string;
+    categoryId: number;
 
     @Column()
     episodes: number;

@@ -7,12 +7,16 @@ import {HttpStatusMessage} from '../resources/http.resources';
 import {Categories} from './categories.entity';
 import {CategoriesDto} from './categoriesDto';
 import {validationMessage} from '../utils/customMessages';
+import {Courses} from "../courses/courses.entity";
 
 @Injectable()
 export class CategoriesService {
     constructor(
         @InjectRepository(Categories)
         private categoriesRepository: Repository<Categories>,
+
+        @InjectRepository(Courses)
+        private coursesRepository: Repository<Courses>,
     ) {
     }
 
@@ -75,8 +79,8 @@ export class CategoriesService {
 
     async addCategory(category: CategoriesDto, file) {
         const {name, description, isVisible} = category;
-        const path = 'http://localhost:44125/src/uploads/';
-        const filename = file === undefined ? null : file.originalFileName;
+        const path = 'http://localhost:44125/categories/';
+        const filename = file === undefined ? 'default-category.jpg' : file.filename;
 
         const categoryName = await this.categoriesRepository.findOne({name: name});
         if (categoryName) {
@@ -98,8 +102,10 @@ export class CategoriesService {
         }
     }
 
-    async editCategory(category: CategoriesDto, id: number) {
+    async editCategory(category: CategoriesDto, id: number, file) {
         const {name, description, isVisible} = category;
+        const path = 'http://localhost:44125/categories/';
+        const filename = file === undefined ? 'default-category.jpg' : file.filename;
 
         const _category = await this.categoriesRepository.findOne({id: id});
 
@@ -109,8 +115,11 @@ export class CategoriesService {
 
         _category.name = name;
         _category.description = description;
-        _category.coverPhoto = '';
         _category.isVisible = isVisible;
+
+        if (file !== undefined) {
+            _category.coverPhoto = path + filename;
+        }
 
         const query = await this.categoriesRepository.save(_category);
 
@@ -132,6 +141,20 @@ export class CategoriesService {
 
         if (!query) {
             return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
+        }
+
+        const courses = await this.coursesRepository.find({ categoryId: id })
+
+        if (courses.length > 0) {
+            courses.forEach(item => item.categoryId = 0);
+
+            const updateCourses = await this.coursesRepository.save(courses);
+
+            if (!updateCourses) {
+                return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
+            }
+
+            return {statusCode: 200, type: 'success', message: 'Category removed and all related courses change category to Not Set'};
         }
 
         return {statusCode: 200, type: 'success', message: 'Category removed'};

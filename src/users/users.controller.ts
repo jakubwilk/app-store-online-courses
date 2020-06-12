@@ -8,7 +8,7 @@ export class UsersController {
     constructor(private usersService: UsersService) {
     }
 
-    @Get('list')
+    @Get()
     getUsersList() {
         return this.usersService.displayAllUsers();
     }

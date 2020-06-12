@@ -42,10 +42,16 @@ export class CategoriesController {
     }
 
     @Post('edit')
-    editCategory(@Body() category: CategoriesDto, @Req() req) {
+    @UseInterceptors(FileInterceptor('file', {
+        storage: diskStorage({
+            destination: './uploads',
+            filename: editFileName
+        })
+    }))
+    editCategory(@Body() category: CategoriesDto, @UploadedFile() file, @Req() req) {
         const {id} = req.body;
 
-        return this.categoriesService.editCategory(category, id);
+        return this.categoriesService.editCategory(category, id, file);
     }
 
     @Post('delete')

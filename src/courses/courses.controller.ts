@@ -6,6 +6,11 @@ export class CoursesController {
     constructor(private coursesService: CoursesService) {
     }
 
+    @Get()
+    getAllCourses() {
+        return this.coursesService.displayAllCourses();
+    }
+
     @Get('popular')
     getPopularCourses() {
         return this.coursesService.displayPopularCourses();
