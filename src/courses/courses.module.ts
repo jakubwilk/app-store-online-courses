@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { CoursesController } from './courses.controller';
-import { CoursesService } from './courses.service';
-import { Courses } from './courses.entity';
+import {Module} from '@nestjs/common';
+import {TypeOrmModule} from '@nestjs/typeorm';
+import {CoursesController} from './courses.controller';
+import {CoursesService} from './courses.service';
+import {Courses} from './courses.entity';
 
 @Module({
     imports: [TypeOrmModule.forFeature([Courses])],
@@ -10,4 +10,5 @@ import { Courses } from './courses.entity';
     providers: [CoursesService],
     exports: [TypeOrmModule]
 })
-export class CoursesModule {}
+export class CoursesModule {
+}

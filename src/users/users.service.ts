@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Users } from './users.entity';
-import { ValidationErrorMessage } from '../resources/validation.resources';
-import { ErrorMessage, SuccessMessage } from '../resources/base.resources';
-import { HttpStatusMessage } from '../resources/http.resources';
-import { validationMessage } from '../utils/customMessages';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+import {Users} from './users.entity';
+import {ValidationErrorMessage} from '../resources/validation.resources';
+import {ErrorMessage, SuccessMessage} from '../resources/base.resources';
+import {HttpStatusMessage} from '../resources/http.resources';
+import {validationMessage} from '../utils/customMessages';
 import * as argon2 from 'argon2';
 import * as jwt from 'jsonwebtoken';
 
@@ -14,7 +14,8 @@ export class UsersService {
     constructor(
         @InjectRepository(Users)
         private usersRepository: Repository<Users>,
-    ) {}
+    ) {
+    }
 
     async displayAllUsers(): Promise<Users[]> {
         return this.usersRepository.find();
@@ -37,14 +38,14 @@ export class UsersService {
     }
 
     async checkIfUsernameAlreadyExist(username: string): Promise<boolean> {
-        const user = await this.usersRepository.findOne({ username: username });
+        const user = await this.usersRepository.findOne({username: username});
 
         if (!user) return false;
         else return true;
     }
 
     async checkIfEmailAlreadyExist(email: string): Promise<boolean> {
-        const userEmail = await this.usersRepository.findOne({ email: email })
+        const userEmail = await this.usersRepository.findOne({email: email})
 
         if (!userEmail) return false;
         else return true;
@@ -86,7 +87,7 @@ export class UsersService {
             const query = await this.usersRepository.save(User);
 
             if (query) {
-                return { statusCode: 201, success: HttpStatusMessage.Created, message: SuccessMessage.UserCreated }
+                return {statusCode: 201, success: HttpStatusMessage.Created, message: SuccessMessage.UserCreated}
             } else {
                 return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
             }
@@ -94,8 +95,8 @@ export class UsersService {
     }
 
     async loginUser(login: string, password: string) {
-        const user = await this.usersRepository.findOne({ where: { username: login } });
-        const email = await this.usersRepository.findOne({ where: { email: login } });
+        const user = await this.usersRepository.findOne({where: {username: login}});
+        const email = await this.usersRepository.findOne({where: {email: login}});
         const verifyLogin = await this.checkWhiteSpaces(login);
 
         if (verifyLogin) {
@@ -105,7 +106,12 @@ export class UsersService {
         if (user) {
             const token = jwt.sign({ userId: user.id, username: user.username }, process.env.JWT_SECRET);
             if (await argon2.verify(user.password, password)) {
-                return { statusCode: 200, success: HttpStatusMessage.Logged, message: SuccessMessage.UserLogged, authToken: token };
+                return {
+                    statusCode: 200,
+                    success: HttpStatusMessage.Logged,
+                    message: SuccessMessage.UserLogged,
+                    authToken: token
+                };
             } else {
                 return validationMessage(400, HttpStatusMessage.BadRequest, 'password', ValidationErrorMessage.PasswordWrong);
             }
@@ -114,7 +120,12 @@ export class UsersService {
         if (email) {
             const token = jwt.sign({ userId: email.id, username: email.username }, process.env.JWT_SECRET);
             if (await argon2.verify(email.password, password)) {
-                return { statusCode: 200, success: HttpStatusMessage.Logged, message: SuccessMessage.UserLogged, authToken: token };
+                return {
+                    statusCode: 200,
+                    success: HttpStatusMessage.Logged,
+                    message: SuccessMessage.UserLogged,
+                    authToken: token
+                };
             } else {
                 return validationMessage(400, HttpStatusMessage.BadRequest, 'password', ValidationErrorMessage.PasswordWrong);
             }
@@ -124,13 +135,13 @@ export class UsersService {
     }
 
     async getUserData(id: number) {
-        const user = await this.usersRepository.findOne({ id: id });
+        const user = await this.usersRepository.findOne({id: id});
 
         if (!user) {
-            return { statusCode: 400, type: 'error', message: 'User not found' };
+            return {statusCode: 400, type: 'error', message: 'User not found'};
         }
 
-        return { statusCode: 200, type: 'success', message: user };
+        return {statusCode: 200, type: 'success', message: user};
     }
 
     async editUserData() {

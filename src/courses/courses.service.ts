@@ -1,19 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Courses } from './courses.entity';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+import {Courses} from './courses.entity';
 
 @Injectable()
 export class CoursesService {
     constructor(
         @InjectRepository(Courses)
         private coursesRepository: Repository<Courses>,
-    ) {}
-    
+    ) {
+    }
+
     async displayAllCourses(): Promise<Courses[]> {
         return this.coursesRepository.find();
     }
-    
+
     async displayPopularCourses() {
         return [
             {
