@@ -1,15 +1,16 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Testimonials } from './testimonials.entity';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+import {Testimonials} from './testimonials.entity';
 
 @Injectable()
 export class TestimonialsService {
     constructor(
         @InjectRepository(Testimonials)
         private testimonialsRepository: Repository<Testimonials>,
-    ) {}
-    
+    ) {
+    }
+
     async displayIndexOpinions() {
         return [
             {
