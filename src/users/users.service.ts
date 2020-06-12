@@ -51,11 +51,12 @@ export class UsersService {
         else return true;
     }
 
-    async verifyToken(token: string): Promise<boolean> {
-        const decoded = await jwt.verify(token, process.env.JWT_SECRET);
-
-        if (decoded) return true;
-        else return false;
+    async checkToken(token: string): Promise<any> {
+        try {
+            return await jwt.verify(token, process.env.JWT_SECRET);
+        } catch(err) {
+            return { userId: 0, username: null, message: "Invalid token" }
+        }
     }
 
     async createNewUser(username: string, email: string, password: string, repassword: string, accountType: number) {
@@ -103,7 +104,7 @@ export class UsersService {
         }
 
         if (user) {
-            const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET);
+            const token = jwt.sign({ userId: user.id, username: user.username }, process.env.JWT_SECRET);
             if (await argon2.verify(user.password, password)) {
                 return {
                     statusCode: 200,
@@ -117,7 +118,7 @@ export class UsersService {
         }
 
         if (email) {
-            const token = jwt.sign({userId: email.id}, process.env.JWT_SECRET);
+            const token = jwt.sign({ userId: email.id, username: email.username }, process.env.JWT_SECRET);
             if (await argon2.verify(email.password, password)) {
                 return {
                     statusCode: 200,

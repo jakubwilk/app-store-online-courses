@@ -37,7 +37,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  min-height: 75vh;
+  min-height: 80vh;
+  position: relative;
 }
 .l-left {
   background-color: $bg-primary;
@@ -157,5 +158,23 @@
 
   &__submit {
     text-align: center;
+  }
+}
+
+.c-back {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+  &__link {
+    font-size: 0.875rem;
+    color: #2863d1cc;
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $font-dark;
+    }
   }
 }
