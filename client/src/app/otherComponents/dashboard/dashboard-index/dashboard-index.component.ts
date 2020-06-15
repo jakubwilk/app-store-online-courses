@@ -20,12 +20,12 @@ export class DashboardIndexComponent implements OnInit {
     this.getUsers();
   }
   getCourses() {
-    this.httpCourses.getCourses().subscribe(courses => this.courses = courses.length);
+    this.httpCourses.getAllCourses().subscribe(courses => this.courses = courses.length);
   }
   getCategories() {
-    this.httpCourses.getCategories().subscribe(categories => this.categories = categories.length);
+    this.httpCourses.getAllCategories().subscribe(categories => this.categories = categories.length);
   }
   getUsers() {
-    this.httpCourses.getUsers().subscribe(users => this.users = users.length);
+    this.httpCourses.getAllUsers().subscribe(users => this.users = users.length);
   }
 }

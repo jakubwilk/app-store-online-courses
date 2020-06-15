@@ -22,7 +22,13 @@ export class HttpService {
   public getTestimonials(): Observable<Array<Testimonials>> {
     return this.http.get<Array<Testimonials>>('http://localhost:44125/testimonials/homepage');
   }
-  public getUsers(): Observable<Array<any>> {
+  public getAllUsers(): Observable<Array<any>> {
     return this.http.get<Array<any>>('http://localhost:44125/users');
+  }
+  public getAllCategories(): Observable<Array<any>> {
+    return this.http.get<Array<any>>('http://localhost:44125/categories');
+  }
+  public getAllCourses(): Observable<Array<any>> {
+    return this.http.get<Array<any>>('http://localhost:44125/courses');
   }
 }
