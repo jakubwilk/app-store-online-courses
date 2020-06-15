@@ -1,9 +1,18 @@
 <main class="c-dashboard-body">
   <header class="c-dashboard-header">
     <h1>Categories</h1>
-    <button class="">Add Category</button>
+    <button (click)="showModal()" class="">Add Category</button>
   </header>
   <section class="c-dashboard-list">
     lista kategorii
+    <p>
+      {{message}}
+    </p>
   </section>
 </main>
+
+
+
+
+
+<app-categories-form (hiddenEmmiter)="hideModal($event)" *ngIf="isVisible"></app-categories-form>

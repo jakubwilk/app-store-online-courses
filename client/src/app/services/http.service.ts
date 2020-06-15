@@ -25,9 +25,14 @@ export class HttpService {
   public getAllUsers(): Observable<Array<any>> {
     return this.http.get<Array<any>>('http://localhost:44125/users');
   }
+
   public getAllCategories(): Observable<Array<any>> {
     return this.http.get<Array<any>>('http://localhost:44125/categories');
   }
+  public postCategories(data, file): Observable<any> {
+    return this.http.post<any>('http://localhost:44125/categories/create', { data, file });
+  }
+
   public getAllCourses(): Observable<Array<any>> {
     return this.http.get<Array<any>>('http://localhost:44125/courses');
   }

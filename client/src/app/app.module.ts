@@ -27,6 +27,7 @@ import { RoleGuard } from './guard/role.guard';
 import { DashboardCategoriesComponent } from './otherComponents/dashboard/dashboard-categories/dashboard-categories.component';
 import { DashboardUsersComponent } from './otherComponents/dashboard/dashboard-users/dashboard-users.component';
 import { DashboardCoursesComponent } from './otherComponents/dashboard/dashboard-courses/dashboard-courses.component';
+import { CategoriesFormComponent } from './otherComponents/dashboard/dashboard-categories/categories-form/categories-form.component';
 
 
 
@@ -53,6 +54,7 @@ import { DashboardCoursesComponent } from './otherComponents/dashboard/dashboard
     DashboardCategoriesComponent,
     DashboardUsersComponent,
     DashboardCoursesComponent,
+    CategoriesFormComponent,
 
   ],
   imports: [
