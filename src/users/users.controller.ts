@@ -1,7 +1,21 @@
-import {Body, Controller, Get, HttpCode, Post, Req} from '@nestjs/common';
+import {Body, Controller, Get, HttpCode, Param, Post, Req, Res, UploadedFile, UseInterceptors} from '@nestjs/common';
 import {UsersService} from './users.service';
 import {CreateUserDto} from './dto/createUserDto';
 import {ExistingUserDto} from './dto/existingUserDto';
+import { diskStorage } from "multer";
+import { extname } from 'path';
+import {FileInterceptor} from "@nestjs/platform-express";
+import {EditUserDto} from "./dto/editUserDto";
+
+export const editFileName = (req, file, callback) => {
+    const name = file.originalname.split('.')[0];
+    const fileExtName = extname(file.originalname);
+    const randomName = Array(4)
+        .fill(null)
+        .map(() => Math.round(Math.random() * 16).toString(16))
+        .join('');
+    callback(null, `${name}-${randomName}${fileExtName}`);
+};
 
 @Controller('users')
 export class UsersController {
@@ -40,10 +54,30 @@ export class UsersController {
         return this.usersService.getUserData(id);
     }
 
-    @Post('edit')
-    editUser(@Req() req) {
-        const {username} = req.params;
+    @Post('newUser')
+    @UseInterceptors(FileInterceptor('file', {
+        storage: diskStorage({
+            destination: './uploads',
+            filename: editFileName
+        })
+    }))
+    addNewUser(@Body() data: EditUserDto, @UploadedFile() file) {
+        return this.usersService.addNewUser(data, file);
+    }
 
-        return username;
+    @Post('edit')
+    @UseInterceptors(FileInterceptor('file', {
+        storage: diskStorage({
+            destination: './uploads',
+            filename: editFileName
+        })
+    }))
+    editUser(@Body() data, @UploadedFile() file) {
+        return this.usersService.editUserData(data, file);
+    }
+
+    @Get(':path')
+    seeUploadedFile(@Param('path') image, @Res() res) {
+        return res.sendFile(image, { root: './uploads' });
     }
 }
