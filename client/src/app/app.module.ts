@@ -24,6 +24,7 @@ import { DashboardIndexComponent } from './otherComponents/dashboard/dashboard-i
 import { DashboardNavigationComponent } from './otherComponents/dashboard/dashboard-navigation/dashboard-navigation.component';
 import { AuthGuard } from './guard/auth.guard';
 import { RoleGuard } from './guard/role.guard';
+import { DashboardCategoriesComponent } from './otherComponents/dashboard/dashboard-categories/dashboard-categories.component';
 
 
 
@@ -47,6 +48,7 @@ import { RoleGuard } from './guard/role.guard';
     DashboardComponent,
     DashboardIndexComponent,
     DashboardNavigationComponent,
+    DashboardCategoriesComponent,
 
   ],
   imports: [
