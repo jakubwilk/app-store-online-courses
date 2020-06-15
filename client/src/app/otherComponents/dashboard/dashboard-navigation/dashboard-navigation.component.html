@@ -18,7 +18,7 @@
       <ul class="c-nav">
         <li class="c-nav__item">Dashboard</li>
         <li class="c-nav__item" *ngFor="let link of links">
-          <a class="c-nav__link" [href]="link.href">{{ link.name }}</a>
+          <a class="c-nav__link" [routerLink]="link.href">{{ link.name }}</a>
         </li>
       </ul>
     </div>
