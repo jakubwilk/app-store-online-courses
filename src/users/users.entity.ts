@@ -39,6 +39,9 @@ export class Users {
     @Column()
     description: string;
 
+    @Column()
+    avatar: string;
+
     @BeforeInsert()
     async hashPassword() {
         this.password = await argon2.hash(this.password);
