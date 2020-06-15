@@ -72,10 +72,8 @@ export class UsersController {
             filename: editFileName
         })
     }))
-    editUser(@Req() req, @UploadedFile() file) {
-        const {username} = req.params;
-
-        return username;
+    editUser(@Body() data, @UploadedFile() file) {
+        return this.usersService.editUserData(data, file);
     }
 
     @Get(':path')

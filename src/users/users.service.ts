@@ -195,7 +195,51 @@ export class UsersService {
         }
     }
 
-    async editUserData() {
-        return 'user';
+    async editUserData(user: EditUserDto, file) {
+        const { username, email, password, type, first_name, last_name, description, phone_number, website } = user;
+        const path = 'http://localhost:44125/users/';
+        const filename = file === file.filename;
+
+        const validUser = await this.checkIfUsernameAlreadyExist(username);
+        const validUsername = await this.checkIfFieldIsCorrect(username);
+        const validEmail = await this.checkIfEmailAlreadyExist(email);
+        const validPassword = await this.checkIfFieldIsCorrect(password);
+
+        if (validUser) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'username', ValidationErrorMessage.UsernameAlreadyExist);
+        }
+
+        if (validUsername) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'username', ValidationErrorMessage.UsernameIncorrect);
+        }
+
+        if (validEmail) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'email', ValidationErrorMessage.EmailAlreadyExist);
+        }
+
+        if (validPassword) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'password', ValidationErrorMessage.PasswordIncorrect);
+        }
+
+        const User = new Users();
+        User.username = username;
+        User.email = email;
+        User.password = password;
+        User.accountType = type;
+        User.first_name = first_name;
+        User.last_name = last_name;
+        User.description = description;
+        User.phone_number = phone_number;
+        User.website = website;
+        User.avatar = path + filename;
+
+        const query = await this.usersRepository.save(User);
+
+        if (query) {
+            return {statusCode: 201, success: HttpStatusMessage.Created, message: SuccessMessage.UserUpdated}
+        } else {
+            return validationMessage(500, HttpStatusMessage.ServerError, 'none', ErrorMessage.ServerUnableContinue);
+        }
+
     }
 }
