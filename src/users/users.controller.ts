@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, Post, Req, UploadedFile, UseInterceptors} from '@nestjs/common';
+import {Body, Controller, Get, HttpCode, Param, Post, Req, Res, UploadedFile, UseInterceptors} from '@nestjs/common';
 import {UsersService} from './users.service';
 import {CreateUserDto} from './dto/createUserDto';
 import {ExistingUserDto} from './dto/existingUserDto';
@@ -76,5 +76,10 @@ export class UsersController {
         const {username} = req.params;
 
         return username;
+    }
+
+    @Get(':path')
+    seeUploadedFile(@Param('path') image, @Res() res) {
+        return res.sendFile(image, { root: './uploads' });
     }
 }
