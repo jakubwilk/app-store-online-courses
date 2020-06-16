@@ -1,0 +1,32 @@
+<section class="c-courses">
+  <div class="wrapper">
+    <h3 class="c-courses__title">
+      Top rated courses
+    </h3>
+    <div class="c-courses__list">
+      <div class="c-courses__item" *ngFor="let course of courses;">
+        <div class="c-courses__locked">
+          <img [src]=" course.coverPhoto " alt="space" class="c-courses__image">
+        </div>
+        <div class="c-courses__info">
+          <div>
+            <span class="c-courses__date">
+              Updated 11-02-2020
+            </span>
+            <a class="c-courses__name" href="#" [title]=" course.name ">
+              {{course.name}}
+            </a>
+          </div>
+          <div>
+            <p class="c-courses__rating">
+              Score: {{course.rate}}/10
+            </p>
+            <span class="c-courses__author">
+              <a href="#">{{ course.category }}</a> by <a href="#">{{course.author}}</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,67 @@
+@import 'share';
+
+.c-dashboard-body {
+  padding: 3.5rem 1.5rem 1.5rem;
+}
+
+.c-dashboard-header {
+  margin-bottom: 3.5rem;
+
+  & h1 {
+    color: $font-dark;
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+}
+
+.c-dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+}
+
+.c-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+
+  &:first-child {
+    background-color: #ff6b6b;
+  }
+
+  &:nth-child(2) {
+    background-color: #feca57;
+  }
+
+  &:last-child {
+    background-color: #5f27cd;
+  }
+
+  &-icon {
+    overflow: hidden;
+    margin-right: 1.5rem;
+
+    & svg {
+      height: 75px;
+      width: auto;
+      fill: rgba($font-primary, .35);
+    }
+  }
+
+  &-body {
+    text-align: right;
+
+    & h2 {
+      color: $font-primary;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    & span {
+      color: $font-primary;
+      font-weight: 600;
+      font-size: 2.4rem;
+    }
+  }
+}

@@ -1,0 +1,138 @@
+<div class="l-container-flex">
+  <div class="wrapper">
+    <div class="l-form-container">
+      <div class="l-left">
+        <div class="c-heading">
+          <h3 class="c-heading__title">
+            Sign Up
+          </h3>
+          <p class="c-heading__text">
+            Create an account
+          </p>
+        </div>
+        <div class="c-validation-content">
+          <div class="c-error-box" [hidden]="isHidden">
+            <p class="c-validation-content__text" *ngIf="!registerForm.valid">
+              {{validationMessage}}
+            </p>
+            <p class="c-validation-content__text" *ngIf="errorMessage!=null">
+              {{errorMessage}}
+            </p>
+          </div>
+          <div class="c-success-box" [hidden]="success">
+            <p class="c-validation-content__text">
+              Account created. Redirecting to login page...
+            </p>
+          </div>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="c-register-form">
+          <div class="c-register-form__group">
+            <label class="c-register-form__label" for="username">
+              Username
+            </label>
+            <input formControlName="username" class="c-register-form__input" type="text" name="username" id="username"
+              autocomplete="off">
+
+            <div class="c-validBox">
+              <div class="c-validBox__content" *ngIf="username.invalid && (username.dirty || username.touched)">
+                <p class="c-validBox__info" *ngIf="username.errors.required">
+                  Username is required
+                </p>
+                <p class="c-validBox__info" *ngIf="username.errors.pattern">
+                  Username is provided in the wrong format
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-register-form__group">
+            <label class="c-register-form__label" for="email">
+              E-mail
+            </label>
+            <input formControlName="email" class="c-register-form__input" type="email" name="email" id="email"
+              autocomplete="off">
+
+            <div class="c-validBox">
+              <div class="c-validBox__content" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <p class="c-validBox__info" *ngIf="email.errors.required">
+                  Email is required
+                </p>
+                <p class="c-validBox__info" *ngIf="email.errors.email">
+                  Email is provided in the wrong format
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-register-form__group">
+            <label class="c-register-form__label" for="password">
+              Password
+            </label>
+            <input formControlName="password" class="c-register-form__input" type="password" name="password"
+              id="password" autocomplete="off">
+
+            <div class="c-validBox">
+              <div class="c-validBox__content" *ngIf="password.invalid && (password.dirty ||password.touched)">
+                <p class="c-validBox__info" *ngIf="password.errors.required">
+                  Password is required
+                </p>
+                <p class="c-validBox__info" *ngIf="password.errors.pattern">
+                  example password Ikea4554
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-register-form__group">
+            <label class="c-register-form__label" for="repassword">
+              Enter password again
+            </label>
+            <input formControlName="repassword" class="c-register-form__input" type="password" name="repassword"
+              id="repassword" autocomplete="off">
+
+            <div class="c-validBox">
+              <div class="c-validBox__content" *ngIf="repassword.invalid && (repassword.dirty || repassword.touched)">
+                <p class="c-validBox__info" *ngIf="repassword.errors.required">
+                  Password is required
+                </p>
+                <p class="c-validBox__info" *ngIf="repassword.errors.pattern">
+                  example password Ikea4554
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-register-form__group">
+            <label class="c-register-form__label">
+              Account type:
+            </label>
+            <div class="c-register-form__radioGroup">
+              <input formControlName="type" id="type_1" [value]="1" type="radio" name="type">
+              <label class="c-register-form__radioLabel" for="type_1">
+                Lite User
+              </label>
+            </div>
+            <div class="c-register-form__radioGroup">
+              <input formControlName="type" id="type_2" type="radio" name="type" [value]="2">
+              <label class="c-register-form__radioLabel" for="type_2">
+                Bussines User
+              </label>
+            </div>
+          </div>
+
+          <div class="c-register-form__submit">
+            <button type="submit" class="c-button c-button--primary">
+              Register
+            </button>
+          </div>
+        </form>
+        <div class="c-back">
+          <a class="c-back__link" routerLink="/home">
+            back to home
+          </a>
+        </div>
+      </div>
+      <app-card-right></app-card-right>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+@import "share";
+.c-opinions {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+
+  &__title {
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include responsive(extra-large-devices) {
+      align-items: center;
+
+      :nth-child(1) {
+        border-right: none;
+      }
+
+      :nth-child(2) {
+        height: 240px;
+        z-index: 10;
+      }
+
+      :nth-child(3) {
+        border-left: none;
+      }
+    }
+  }
+
+  &__item {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+    height: 220px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid $border-courses;
+    background-color: $font-primary;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-align: center;
+
+    @include responsive(medium-devices) {
+      height: 180px;
+      width: 45%;
+    }
+
+    @include responsive(extra-large-devices) {
+      margin: 0;
+      width: 30%;
+    }
+  }
+
+  &__content {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  &__description {
+    font-style: italic;
+    flex: 1 0 auto;
+  }
+
+  &__author {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 1.5rem;
+    font-size: 0.785rem;
+  }
+
+  &__link {
+    color: rgba(40, 99, 209, 1);
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+    margin-left: 5px;
+
+    &:hover,
+    &:focus {
+      color: $font-secondary;
+      border: 0;
+      outline: none;
+    }
+  }
+}

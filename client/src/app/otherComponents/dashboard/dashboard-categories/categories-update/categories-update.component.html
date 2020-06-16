@@ -1,0 +1,26 @@
+<div class="overlay">
+    <div class="c-form-content">
+        <h3>Edit Category</h3>
+        <span class="c-error-box">{{message}}</span>
+        <form [formGroup]="editCategoriesForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="title">Title</label>
+                <input formControlName="title" type="text" id="title" name="title">
+                <div *ngIf="title.invalid && (title.dirty || title.touched)">
+                    <p *ngIf="title.errors.required">
+                        it's required
+                    </p>
+                </div>
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <input formControlName="description" type="text" id="description" name="description">
+            </div>
+
+            <div class="buttons">
+                <button [disabled]="!editCategoriesForm.valid" class="save">save</button>
+                <button type="button" (click)="hideModalEdit()" class="cancel">cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

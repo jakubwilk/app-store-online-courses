@@ -1,0 +1,61 @@
+<nav class="l-menu">
+  <div class="c-head">
+    <app-card-logo></app-card-logo>
+    <button class="c-menu__iconBar" (click)="toogleMenu()">
+      <img src="../../../assets/images/menuBar.svg" alt="menu" class="c-menu__icon">
+    </button>
+  </div>
+  <div class="c-menu">
+    <ul [hidden]="isHidden" class="c-menu__list">
+      <h3 class="c-menu__navHeading">
+        Menu
+      </h3>
+      <div class="c-menu__flex">
+        <li *ngFor="let item of itemsOfMenu" class="c-menu__item">
+          <a routerLink="/{{item}}" class="c-menu__link">
+            {{item | titlecase}}
+          </a>
+        </li>
+      </div>
+      <div class="c-menu__flex h-scope-links">
+        <div class="c-menu__item" *ngIf="!loginService.loggedIn()">
+          <a routerLink="/login" class="c-menu__link">
+            login
+          </a>
+        </div>
+        <div class="c-menu__item" *ngIf="!loginService.loggedIn()">
+          <a routerLink="/register" class="c-menu__link">
+            register
+          </a>
+        </div>
+        <div class="c-menu__item" *ngIf="loginService.loggedIn()">
+          <a routerLink="/register" (click)="loginService.logoutUser()" class="c-menu__link">
+            <span>
+              logout
+            </span>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="c-menu__flex h-scope">
+        <div class="c-menu__item" *ngIf="!loginService.loggedIn()">
+          <a routerLink="/login" class="c-menu__link">
+            <img src="../../../assets/images/signin.svg">
+          </a>
+        </div>
+        <div class="c-menu__item" *ngIf="!loginService.loggedIn()">
+          <a routerLink="/register" class="c-menu__link">
+            <img src="../../../assets/images/signup.svg">
+          </a>
+        </div>
+        <div class="c-menu__item" *ngIf="loginService.loggedIn()">
+          <a routerLink="/register" (click)="loginService.logoutUser()" class="c-menu__link">
+            <img src="../../../assets/images/logout.svg">
+          </a>
+        </div>
+      </div>
+    </ul>
+
+  </div>
+</nav>

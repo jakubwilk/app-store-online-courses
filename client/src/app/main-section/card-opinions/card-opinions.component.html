@@ -1,0 +1,28 @@
+<section class="c-opinions">
+  <div class="wrapper">
+    <div class="c-opinions__text">
+      <h3 class="c-opinions__title">
+        What people say
+      </h3>
+    </div>
+
+    <div class="c-opinions__list">
+      <div *ngFor="let opinion of opinions" class="c-opinions__item">
+        <div class="c-opinions__content">
+          <p class="c-opinions__description">
+            {{opinion.description}}
+          </p>
+          <span class="c-opinions__author">
+            {{opinion.created}} by
+            <a class="c-opinions__link" href="#">
+              {{opinion.author}}
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</section>

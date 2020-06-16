@@ -1,0 +1,45 @@
+@import "share";
+:host {
+    width: 60%;
+    display: none;
+    @include responsive(medium-devices) {
+        display: block;
+    }
+}
+.l-right {
+    background-image: linear-gradient(135deg, rgba($bg-gradient-primary, 0.85), rgba($bg-gradient-secondary, 0.85)),
+        url("../../../assets/images/back.jpg");
+    background-size: cover;
+    background-position: center;
+    display: none;
+    padding: 2rem;
+    height: 100%;
+
+    @include responsive(medium-devices) {
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+}
+.c-register-content {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        color: $font-primary;
+    }
+
+    &__heading {
+        padding: 4rem 0;
+        font-size: 2rem;
+    }
+
+    &__text {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: rgba($font-primary, 0.8);
+    }
+}
