@@ -1,0 +1,104 @@
+@import "share";
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-form-content {
+    background-color: $font-primary;
+    padding: 1.5rem;
+    width: 40vw;
+
+    & h3 {
+        font-weight: 300;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    & form {
+        & > div {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        & label {
+            font-size: 0.785rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        & input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+
+            &:focus {
+                box-shadow: 0 0 0 3px #2863d13b;
+            }
+        }
+
+        & p {
+            margin-top: 5px;
+            color: #dc3545;
+            font-size: 0.785rem;
+        }
+    }
+
+    & .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 0 !important;
+
+        & button {
+            font-family: "Montserrat", sans-serif;
+            margin-left: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 300;
+            background: inherit;
+            border: 0;
+            outline: 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+            width: 100px;
+            padding: 0.45rem 0;
+
+            &.save {
+                color: $font-primary;
+                background-color: $bg-gradient-secondary;
+
+                &:hover,
+                &:focus {
+                    background-color: $bg-gradient-secondaryDark;
+                }
+
+                &[disabled] {
+                    opacity: 0.5;
+                    user-select: none;
+                    pointer-events: none;
+                }
+            }
+
+            &.cancel {
+                color: $font-dark;
+                background-color: #dcdcdc;
+
+                &:hover,
+                &:focus {
+                    background-color: #c1c1c1;
+                }
+            }
+        }
+    }
+}

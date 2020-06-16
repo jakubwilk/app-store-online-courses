@@ -16,7 +16,7 @@
       </div>
       <div>
         <button class="c-button c-button--delete" (click)="deleteCategories(categories.id)">delete</button>
-        <button class="c-button c-button--edit" (click)="showModal()">edit</button>
+        <button class="c-button c-button--edit" (click)="showModalEdit(categories.id)">edit</button>
       </div>
     </div>
 
@@ -28,3 +28,5 @@
 
 
 <app-categories-form (hiddenEmmiter)="hideModal($event)" *ngIf="isVisible"></app-categories-form>
+<app-categories-update [categoriesId]="categoriesId" (hiddenEmmiterEdit)="hideModalEdit($event)" *ngIf="isVisibleEdit">
+</app-categories-update>

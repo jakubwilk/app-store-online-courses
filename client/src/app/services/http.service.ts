@@ -32,9 +32,10 @@ export class HttpService {
     return this.http.post<any>(`http://localhost:44125/categories/delete`, { id });
   }
 
-  public updateCategories(id: number): Observable<any> {
+  public updateCategories(data): Observable<any> {
+    console.log(data);
 
-    return this.http.post<any>('http://localhost:44125/categories/edit', { id });
+    return this.http.post<any>('http://localhost:44125/categories/edit', { data });
   }
 
 

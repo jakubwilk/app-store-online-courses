@@ -28,6 +28,7 @@ import { DashboardCategoriesComponent } from './otherComponents/dashboard/dashbo
 import { DashboardUsersComponent } from './otherComponents/dashboard/dashboard-users/dashboard-users.component';
 import { DashboardCoursesComponent } from './otherComponents/dashboard/dashboard-courses/dashboard-courses.component';
 import { CategoriesFormComponent } from './otherComponents/dashboard/dashboard-categories/categories-form/categories-form.component';
+import { CategoriesUpdateComponent } from './otherComponents/dashboard/dashboard-categories/categories-update/categories-update.component';
 
 
 
@@ -55,6 +56,7 @@ import { CategoriesFormComponent } from './otherComponents/dashboard/dashboard-c
     DashboardUsersComponent,
     DashboardCoursesComponent,
     CategoriesFormComponent,
+    CategoriesUpdateComponent,
 
   ],
   imports: [

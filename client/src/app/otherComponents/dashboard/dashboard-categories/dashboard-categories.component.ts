@@ -10,6 +10,8 @@ export class DashboardCategoriesComponent implements OnInit {
   message: string;
   listOfCategories = [];
   isVisible: boolean = false;
+  isVisibleEdit: boolean = false;
+  categoriesId: number;
 
   constructor(private categories: HttpService) { }
 
@@ -33,19 +35,22 @@ export class DashboardCategoriesComponent implements OnInit {
       console.log(response));
   }
 
-  updateCategories(id: number) {
-    console.log(id);
-    this.categories.updateCategories(id).subscribe(response => {
-      console.log(response);
-    });
-
-  }
 
   showModal() {
     this.isVisible = true;
   }
+
+  showModalEdit(id) {
+    this.isVisibleEdit = true;
+    this.categoriesId = id;
+  }
+
   hideModal($event) {
     this.isVisible = $event;
+  }
+
+  hideModalEdit($event) {
+    this.isVisibleEdit = $event;
 
   }
 }
