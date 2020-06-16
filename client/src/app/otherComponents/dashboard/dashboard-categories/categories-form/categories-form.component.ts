@@ -44,6 +44,7 @@ export class CategoriesFormComponent implements OnInit {
         this.isHidden = false;
         console.log(response);
         this.hideModal();
+        this.categories.subjectCategories.next(true);
       }
 
 

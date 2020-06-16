@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Categories } from '../interfaces/categories';
 import { Courses } from '../interfaces/courses';
 import { Testimonials } from '../interfaces/testimonials';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
@@ -15,6 +15,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
+  subjectCategories = new Subject();
   public getCategories(): Observable<Array<Categories>> {
     return this.http.get<Array<Categories>>('http://localhost:44125/categories/popular');
   }

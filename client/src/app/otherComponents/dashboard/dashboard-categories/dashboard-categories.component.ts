@@ -17,6 +17,9 @@ export class DashboardCategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
+    this.categories.subjectCategories.subscribe(() => {
+      this.getCategories();
+    });
   }
 
   getCategories() {
@@ -25,7 +28,9 @@ export class DashboardCategoriesComponent implements OnInit {
         this.message = 'There is no categories. Please create one';
       } else {
         this.listOfCategories = categories;
+
       }
+
     });
   }
 
