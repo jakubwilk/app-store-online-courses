@@ -21,9 +21,6 @@ export class CategoriesFormComponent implements OnInit {
       ]],
       description: [null, [
         Validators.required
-      ]],
-      file: [null, [
-        Validators.required
       ]]
 
 
@@ -41,16 +38,8 @@ export class CategoriesFormComponent implements OnInit {
       title: this.addCategoriesForm.get(['title']).value,
       description: this.addCategoriesForm.get(['description']).value
     };
-
-    const file = {
-      file: this.addCategoriesForm.get(['file']).value
-    };
-
-    console.log(data, file);
-    this.categories.postCategories(data, file).subscribe(response => console.log(response));
+    this.categories.postCategories(data).subscribe(response => console.log(response));
   }
-
-
   hideModal() {
     this.hiddenEmmiter.emit(this.isHidden);
   }
@@ -62,10 +51,4 @@ export class CategoriesFormComponent implements OnInit {
   get description() {
     return this.addCategoriesForm.get('description');
   }
-
-  get file() {
-    return this.addCategoriesForm.get('file');
-  }
-
-
 }

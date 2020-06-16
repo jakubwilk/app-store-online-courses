@@ -1,33 +1,31 @@
-<form [formGroup]="addCategoriesForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="title">title</label>
+<div class="overlay">
+  <div class="c-form-content">
+    <h3>Add Category</h3>
+    <form [formGroup]="addCategoriesForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="title">Title</label>
         <input formControlName="title" type="text" id="title" name="title">
         <div *ngIf="title.invalid && (title.dirty || title.touched)">
-            <p *ngIf="title.errors.required">
-                it's required
-            </p>
+          <p *ngIf="title.errors.required">
+            it's required
+          </p>
         </div>
-    </div>
-    <div>
-        <label for="description">description</label>
+      </div>
+      <div>
+        <label for="description">Description</label>
         <input formControlName="description" type="text" id="description" name="description">
         <div *ngIf="description.invalid && (description.dirty || description.touched)">
-            <p *ngIf="description.errors.required">
-                it's required
-            </p>
+          <p *ngIf="description.errors.required">
+            it's required
+          </p>
         </div>
 
-    </div>
-    <div>
-        <label for="file">Add file...</label>
-        <input formControlName="file" type="file" id="file" name="file">
-        <div *ngIf="file.invalid && (file.dirty || file.touched)">
-            <p *ngIf="file.errors.required">
-                it's required
-            </p>
-        </div>
-    </div>
+      </div>
 
-    <button [disabled]="!addCategoriesForm.valid">save</button>
-    <button (click)="hideModal()">cancel</button>
-</form>
+      <div class="buttons">
+        <button [disabled]="!addCategoriesForm.valid" class="save">save</button>
+        <button (click)="hideModal()" class="cancel">cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

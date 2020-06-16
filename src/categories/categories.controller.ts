@@ -31,27 +31,15 @@ export class CategoriesController {
     }
 
     @Post('create')
-    @UseInterceptors(FileInterceptor('file', {
-        storage: diskStorage({
-            destination: './uploads',
-            filename: editFileName
-        })
-    }))
-    createCategory(@Body() category, @UploadedFile() file) {
-        return this.categoriesService.addCategory(category, file);
+    createCategory(@Body() category) {
+        return this.categoriesService.addCategory(category.data);
     }
 
     @Post('edit')
-    @UseInterceptors(FileInterceptor('file', {
-        storage: diskStorage({
-            destination: './uploads',
-            filename: editFileName
-        })
-    }))
-    editCategory(@Body() category: CategoriesDto, @UploadedFile() file, @Req() req) {
+    editCategory(@Body() category: CategoriesDto, @Req() req) {
         const {id} = req.body;
 
-        return this.categoriesService.editCategory(category, id, file);
+        return this.categoriesService.editCategory(category, id);
     }
 
     @Post('delete')

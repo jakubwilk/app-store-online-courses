@@ -15,7 +15,27 @@
     font-weight: 400;
   }
 
-  & button {
+  & .c-button {
     margin-left: 2.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    background: inherit;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &--management {
+      width: 150px;
+      padding: .65rem 0;
+      color: $font-primary;
+      background-color: $bg-gradient-secondary;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $bg-gradient-secondaryDark;
+    }
   }
 }
