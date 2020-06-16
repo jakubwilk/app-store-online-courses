@@ -9,6 +9,19 @@
       {{message}}
     </p>
   </section>
+  <section *ngFor="let categories of listOfCategories">
+    <div>
+      <div>
+        <h5>{{categories.name}}</h5>
+        <p>{{categories.description}}</p>
+      </div>
+      <div>
+        <button (click)="deleteCategories(categories.id)">delete</button>
+        <button (click)="showModal()">edit</button>
+      </div>
+    </div>
+
+  </section>
 </main>
 
 

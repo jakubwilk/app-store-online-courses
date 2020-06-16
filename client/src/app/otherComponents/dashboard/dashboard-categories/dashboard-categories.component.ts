@@ -18,13 +18,27 @@ export class DashboardCategoriesComponent implements OnInit {
   }
 
   getCategories() {
-    this.categories.getAllCategories().subscribe(response => {
-      if (response.length === 0) {
+    this.categories.getAllCategories().subscribe(categories => {
+      if (categories.length === 0) {
         this.message = 'There is no categories. Please create one';
-        this.listOfCategories = response;
-        console.log(this.message);
-      } else { return; }
+      } else {
+        this.listOfCategories = categories;
+      }
     });
+  }
+
+  deleteCategories(id: number) {
+    console.log(id);
+    this.categories.deleteCategories(id).subscribe(response =>
+      console.log(response));
+  }
+
+  updateCategories(id: number) {
+    console.log(id);
+    this.categories.updateCategories(id).subscribe(response => {
+      console.log(response);
+    });
+
   }
 
   showModal() {
