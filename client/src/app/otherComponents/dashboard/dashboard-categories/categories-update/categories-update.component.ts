@@ -48,6 +48,7 @@ export class CategoriesUpdateComponent implements OnInit {
         this.isHiddenEdit = false;
         console.log(response);
         this.hideModalEdit();
+        this.categories.subjectCategories.next(true);
       }
     });
 

@@ -35,9 +35,9 @@ export class DashboardCategoriesComponent implements OnInit {
   }
 
   deleteCategories(id: number) {
-    console.log(id);
     this.categories.deleteCategories(id).subscribe(response =>
       console.log(response));
+    this.categories.subjectCategories.next(true);
   }
 
 
