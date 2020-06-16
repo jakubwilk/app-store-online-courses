@@ -12,6 +12,7 @@ export class CategoriesFormComponent implements OnInit {
   isHidden: boolean = false;
   isDisabled: boolean = true;
   addCategoriesForm: FormGroup;
+  message: string;
   constructor(private fb: FormBuilder, private categories: HttpService) { }
 
   ngOnInit(): void {
@@ -19,9 +20,7 @@ export class CategoriesFormComponent implements OnInit {
       title: [null, [
         Validators.required
       ]],
-      description: [null, [
-        Validators.required
-      ]]
+      description: ['']
 
 
     });
@@ -38,7 +37,18 @@ export class CategoriesFormComponent implements OnInit {
       title: this.addCategoriesForm.get(['title']).value,
       description: this.addCategoriesForm.get(['description']).value
     };
-    this.categories.postCategories(data).subscribe(response => console.log(response));
+    this.categories.postCategories(data).subscribe(response => {
+      if (response.statusCode === 400) {
+        this.message = response.message;
+      } else {
+        this.isHidden = false;
+        console.log(response);
+        this.hideModal();
+      }
+
+
+
+    });
   }
   hideModal() {
     this.hiddenEmmiter.emit(this.isHidden);
@@ -48,7 +58,5 @@ export class CategoriesFormComponent implements OnInit {
     return this.addCategoriesForm.get('title');
   }
 
-  get description() {
-    return this.addCategoriesForm.get('description');
-  }
+
 }

@@ -1,6 +1,7 @@
 <div class="overlay">
   <div class="c-form-content">
     <h3>Add Category</h3>
+    <span>{{message}}</span>
     <form [formGroup]="addCategoriesForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="title">Title</label>
@@ -14,17 +15,13 @@
       <div>
         <label for="description">Description</label>
         <input formControlName="description" type="text" id="description" name="description">
-        <div *ngIf="description.invalid && (description.dirty || description.touched)">
-          <p *ngIf="description.errors.required">
-            it's required
-          </p>
-        </div>
-
       </div>
+
+
 
       <div class="buttons">
         <button [disabled]="!addCategoriesForm.valid" class="save">save</button>
-        <button (click)="hideModal()" class="cancel">cancel</button>
+        <button type="button" (click)="hideModal()" class="cancel">cancel</button>
       </div>
     </form>
   </div>
