@@ -39,7 +39,7 @@ export class CategoriesFormComponent implements OnInit {
     };
     this.categories.postCategories(data).subscribe(response => {
       if (response.statusCode === 400) {
-        this.message = response.message;
+        this.message = response.message[0].constraints.value;
       } else {
         this.isHidden = false;
         console.log(response);

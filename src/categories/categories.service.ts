@@ -20,6 +20,12 @@ export class CategoriesService {
     ) {
     }
 
+    async checkIfFieldIsCorrect(password: string): Promise<boolean> {
+        const PasswordRegex = /([ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~])/g;
+
+        return PasswordRegex.test(password);
+    }
+
     async displayAllCategories(): Promise<Categories[]> {
         return this.categoriesRepository.find();
     }
@@ -79,6 +85,12 @@ export class CategoriesService {
 
     async addCategory(category: CategoriesDto) {
         const {title, description} = category;
+
+        const validTitle = await this.checkIfFieldIsCorrect(title);
+
+        if (validTitle) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'username', ValidationErrorMessage.CategoryTitleWrongFormat);
+        }
 
         const categoryName = await this.categoriesRepository.findOne({name: title});
         if (categoryName) {

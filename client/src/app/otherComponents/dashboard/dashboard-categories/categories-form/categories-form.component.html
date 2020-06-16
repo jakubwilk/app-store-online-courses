@@ -1,7 +1,7 @@
 <div class="overlay">
   <div class="c-form-content">
     <h3>Add Category</h3>
-    <span>{{message}}</span>
+    <span class="c-error-box">{{message}}</span>
     <form [formGroup]="addCategoriesForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="title">Title</label>
