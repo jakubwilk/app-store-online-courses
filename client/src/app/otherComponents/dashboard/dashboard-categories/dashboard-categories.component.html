@@ -1,0 +1,32 @@
+<main class="c-dashboard-body">
+  <header class="c-dashboard-header">
+    <h1>Categories</h1>
+    <button (click)="showModal()" class="c-button c-button--management">Add Category</button>
+  </header>
+  <section class="c-dashboard-list">
+    <p>
+      {{message}}
+    </p>
+  </section>
+  <section *ngFor="let categories of listOfCategories" class="c-dashboard-category-list">
+    <div class="c-category-list-content">
+      <div>
+        <h5>{{categories.name}}</h5>
+        <p>{{categories.description}}</p>
+      </div>
+      <div>
+        <button class="c-button c-button--delete" (click)="deleteCategories(categories.id)">delete</button>
+        <button class="c-button c-button--edit" (click)="showModalEdit(categories.id)">edit</button>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+
+
+
+
+<app-categories-form (hiddenEmmiter)="hideModal($event)" *ngIf="isVisible"></app-categories-form>
+<app-categories-update [categoriesId]="categoriesId" (hiddenEmmiterEdit)="hideModalEdit($event)" *ngIf="isVisibleEdit">
+</app-categories-update>

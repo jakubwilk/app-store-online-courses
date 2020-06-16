@@ -1,0 +1,95 @@
+@import 'share';
+
+.c-dashboard-body {
+  padding: 3.5rem 1.5rem 1.5rem;
+}
+
+.c-dashboard-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3.5rem;
+
+  & h1 {
+    color: $font-dark;
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+
+  & .c-button {
+    margin-left: 2.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    background: inherit;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &--management {
+      width: 150px;
+      padding: .65rem 0;
+      color: $font-primary;
+      background-color: $bg-gradient-secondary;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $bg-gradient-secondaryDark;
+    }
+  }
+}
+
+.c-category-list-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid $border-color-primary;
+
+  & .c-button {
+    margin-left: 1rem;
+    font-size: 0.875rem;
+    font-weight: 300;
+    background: inherit;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &--edit {
+      min-width: 70px;
+      padding: .35rem 0;
+      color: $font-primary;
+      background-color: $bg-gradient-secondary;
+
+      &:hover,
+      &:focus {
+        background-color: $bg-gradient-secondaryDark;
+      }
+    }
+
+    &--delete {
+      min-width: 70px;
+      padding: .35rem 0;
+      color: $font-primary;
+      background-color: $error-color-primary;
+
+      &:hover,
+      &:focus {
+        background-color: $error-color-secondary;
+      }
+    }
+  }
+
+  & h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: .5rem;
+  }
+
+  & p {
+    font-size: .785rem;
+  }
+}

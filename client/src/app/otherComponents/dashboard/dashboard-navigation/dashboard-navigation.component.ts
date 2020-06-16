@@ -10,17 +10,17 @@ export class DashboardNavigationComponent implements OnInit {
     {
       id: 1,
       name: 'Categories',
-      href: '#'
+      href: 'categories'
     },
     {
       id: 2,
       name: 'Courses',
-      href: '#',
+      href: 'courses',
     },
     {
       id: 3,
       name: 'Users',
-      href: '#'
+      href: 'users'
     }
   ];
   constructor(public loginService: LoginService) { }

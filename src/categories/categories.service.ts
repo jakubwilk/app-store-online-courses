@@ -20,6 +20,12 @@ export class CategoriesService {
     ) {
     }
 
+    async checkIfFieldIsCorrect(password: string): Promise<boolean> {
+        const PasswordRegex = /([ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~])/g;
+
+        return PasswordRegex.test(password);
+    }
+
     async displayAllCategories(): Promise<Categories[]> {
         return this.categoriesRepository.find();
     }
@@ -77,21 +83,23 @@ export class CategoriesService {
         ]
     }
 
-    async addCategory(category: CategoriesDto, file) {
-        const {name, description, isVisible} = category;
-        const path = 'http://localhost:44125/categories/';
-        const filename = file === undefined ? 'default-category.jpg' : file.filename;
+    async addCategory(category: CategoriesDto) {
+        const {title, description} = category;
 
-        const categoryName = await this.categoriesRepository.findOne({name: name});
+        const validTitle = await this.checkIfFieldIsCorrect(title);
+
+        if (validTitle) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'title', ValidationErrorMessage.CategoryTitleWrongFormat);
+        }
+
+        const categoryName = await this.categoriesRepository.findOne({name: title});
         if (categoryName) {
             return {statusCode: 400, type: 'error', message: ValidationErrorMessage.CategoryExist};
         }
 
         const Category = new Categories();
-        Category.name = name;
+        Category.name = title;
         Category.description = description;
-        Category.coverPhoto = path + filename;
-        Category.isVisible = isVisible;
 
         const query = await this.categoriesRepository.save(Category);
 
@@ -102,10 +110,14 @@ export class CategoriesService {
         }
     }
 
-    async editCategory(category: CategoriesDto, id: number, file) {
-        const {name, description, isVisible} = category;
-        const path = 'http://localhost:44125/categories/';
-        const filename = file === undefined ? 'default-category.jpg' : file.filename;
+    async editCategory(category: CategoriesDto, id: number) {
+        const {title, description} = category;
+
+        const validTitle = await this.checkIfFieldIsCorrect(title);
+
+        if (validTitle) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'title', ValidationErrorMessage.CategoryTitleWrongFormat);
+        }
 
         const _category = await this.categoriesRepository.findOne({id: id});
 
@@ -113,13 +125,8 @@ export class CategoriesService {
             return {statusCode: 400, type: 'error', message: ValidationErrorMessage.CategoryNotFound};
         }
 
-        _category.name = name;
+        _category.name = title;
         _category.description = description;
-        _category.isVisible = isVisible;
-
-        if (file !== undefined) {
-            _category.coverPhoto = path + filename;
-        }
 
         const query = await this.categoriesRepository.save(_category);
 

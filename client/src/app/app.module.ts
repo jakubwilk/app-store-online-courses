@@ -24,6 +24,11 @@ import { DashboardIndexComponent } from './otherComponents/dashboard/dashboard-i
 import { DashboardNavigationComponent } from './otherComponents/dashboard/dashboard-navigation/dashboard-navigation.component';
 import { AuthGuard } from './guard/auth.guard';
 import { RoleGuard } from './guard/role.guard';
+import { DashboardCategoriesComponent } from './otherComponents/dashboard/dashboard-categories/dashboard-categories.component';
+import { DashboardUsersComponent } from './otherComponents/dashboard/dashboard-users/dashboard-users.component';
+import { DashboardCoursesComponent } from './otherComponents/dashboard/dashboard-courses/dashboard-courses.component';
+import { CategoriesFormComponent } from './otherComponents/dashboard/dashboard-categories/categories-form/categories-form.component';
+import { CategoriesUpdateComponent } from './otherComponents/dashboard/dashboard-categories/categories-update/categories-update.component';
 
 
 
@@ -47,6 +52,11 @@ import { RoleGuard } from './guard/role.guard';
     DashboardComponent,
     DashboardIndexComponent,
     DashboardNavigationComponent,
+    DashboardCategoriesComponent,
+    DashboardUsersComponent,
+    DashboardCoursesComponent,
+    CategoriesFormComponent,
+    CategoriesUpdateComponent,
 
   ],
   imports: [
