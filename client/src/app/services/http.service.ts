@@ -35,7 +35,7 @@ export class HttpService {
   public updateCategories(data): Observable<any> {
     console.log(data);
 
-    return this.http.post<any>('http://localhost:44125/categories/edit', { data });
+    return this.http.post<any>('http://localhost:44125/categories/edit', data);
   }
 
 

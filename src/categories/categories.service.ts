@@ -89,7 +89,7 @@ export class CategoriesService {
         const validTitle = await this.checkIfFieldIsCorrect(title);
 
         if (validTitle) {
-            return validationMessage(400, HttpStatusMessage.BadRequest, 'username', ValidationErrorMessage.CategoryTitleWrongFormat);
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'title', ValidationErrorMessage.CategoryTitleWrongFormat);
         }
 
         const categoryName = await this.categoriesRepository.findOne({name: title});
@@ -112,6 +112,12 @@ export class CategoriesService {
 
     async editCategory(category: CategoriesDto, id: number) {
         const {title, description} = category;
+
+        const validTitle = await this.checkIfFieldIsCorrect(title);
+
+        if (validTitle) {
+            return validationMessage(400, HttpStatusMessage.BadRequest, 'title', ValidationErrorMessage.CategoryTitleWrongFormat);
+        }
 
         const _category = await this.categoriesRepository.findOne({id: id});
 

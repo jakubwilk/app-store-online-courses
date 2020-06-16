@@ -24,6 +24,19 @@
         margin-bottom: 1.5rem;
     }
 
+  .c-error-box {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    padding: 0.7rem 1.5rem;
+    background-color: $error-color-primary;
+    color: $font-primary;
+    border-radius: 5px;
+  }
+
     & form {
         & > div {
             position: relative;

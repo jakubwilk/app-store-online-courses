@@ -41,7 +41,15 @@ export class CategoriesUpdateComponent implements OnInit {
       description: this.editCategoriesForm.get(['description']).value,
     };
 
-    this.categories.updateCategories(data).subscribe(response => console.log(response));
+    this.categories.updateCategories(data).subscribe(response => {
+      if (response.statusCode === 400) {
+        this.message = response.message[0].constraints.value;
+      } else {
+        this.isHiddenEdit = false;
+        console.log(response);
+        this.hideModalEdit();
+      }
+    });
 
   }
   hideModalEdit() {
