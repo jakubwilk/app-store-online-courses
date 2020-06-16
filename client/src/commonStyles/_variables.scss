@@ -19,7 +19,10 @@ $border-courses: #eeeeee;
 $btn-border: #ffffff;
 
 $error-color-primary: #e74c3c;
+$error-color-secondary: #c0392b;
 $success-color-primary: #27ae60;
+
+$border-color-primary: #eaeaea;
 
 @mixin card-style() {
   & {

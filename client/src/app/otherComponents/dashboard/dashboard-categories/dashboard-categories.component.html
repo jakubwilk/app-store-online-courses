@@ -4,20 +4,19 @@
     <button (click)="showModal()" class="c-button c-button--management">Add Category</button>
   </header>
   <section class="c-dashboard-list">
-    lista kategorii
     <p>
       {{message}}
     </p>
   </section>
-  <section *ngFor="let categories of listOfCategories">
-    <div>
+  <section *ngFor="let categories of listOfCategories" class="c-dashboard-category-list">
+    <div class="c-category-list-content">
       <div>
         <h5>{{categories.name}}</h5>
         <p>{{categories.description}}</p>
       </div>
       <div>
-        <button (click)="deleteCategories(categories.id)">delete</button>
-        <button (click)="showModal()">edit</button>
+        <button class="c-button c-button--delete" (click)="deleteCategories(categories.id)">delete</button>
+        <button class="c-button c-button--edit" (click)="showModal()">edit</button>
       </div>
     </div>
 
